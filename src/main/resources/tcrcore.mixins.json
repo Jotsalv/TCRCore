@@ -39,6 +39,7 @@
     "ItemStackMixin",
     "KnightSwordItemMixin",
     "MazeRoseMixin",
+    "MenuHooksMixin",
     "PiglinAiMixin",
     "PlayerAdvancementsMixin",
     "PlayerPatchMixin",

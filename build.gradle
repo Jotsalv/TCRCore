@@ -20,6 +20,7 @@ plugins {
 apply plugin: 'org.spongepowered.mixin'
 
 group = mod_group_id
+
 version = mod_version
 
 base {
@@ -203,7 +204,7 @@ dependencies {
     implementation ("libs:tcrmodfilter:1.0.4")
     implementation fg.deobf("libs:WeaponsOfMiracles:2.0.11:")
 //    implementation ("curse.maven:preloading-tricks-1372086:7210447")
-    implementation fg.deobf("curse.maven:accelerated-rendering-1314021:7196153")
+//    implementation fg.deobf("curse.maven:accelerated-rendering-1314021:7196153")
 
     implementation fg.deobf("curse.maven:shelmarows-hud-1346457:7201614")
 

@@ -9,6 +9,7 @@ public class TCRMixinCanceller implements MixinCanceller {
     public boolean shouldCancel(List<String> list, String s) {
         return s.equals("com.obscuria.obscureapi.mixin.client.MixinBossHealthOverlay")
                 || s.contains("com.legacy.lost_aether.mixin.MusicManagerMixins")
+                || s.contains("com.aetherteam.aether.mixin.mixins.client.TitleScreenMixin")
                 || s.contains("net.shelmarow.betterlockon.compat.mixins.BasicMultipleAttackAnimationMixin");
     }
 }
