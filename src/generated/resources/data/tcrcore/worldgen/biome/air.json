@@ -11,6 +11,10 @@
   "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {
+    "aether_aerwhale": [],
+    "aether_darkness_monster": [],
+    "aether_sky_monster": [],
+    "aether_surface_monster": [],
     "ambient": [],
     "axolotls": [],
     "creature": [],

@@ -155,6 +155,7 @@ public class PlayerEventListeners {
 
                 PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new OpenStartScreenPacket(), serverPlayer);
 
+
                 PlayerDataManager.firstJoint.put(serverPlayer, true);
             }
 

@@ -166,15 +166,15 @@ public abstract class TCRLangProvider extends LanguageProvider implements Dialog
     }
 
     public void addScreenName(String key, String name) {
-        this.add("screen.tcr." + key, name);
+        this.add("screen." + TCRCoreMod.MOD_ID + "." + key, name);
     }
 
     public void addScreenAns(String key, int id, String text) {
-        this.add("screen.tcr.ans." + key + "_" + id, text);
+        this.add("screen." + TCRCoreMod.MOD_ID + ".ans." + key + "_" + id, text);
     }
 
     public void addScreenOpt(String key, int id, String text) {
-        this.add("screen.tcr.opt." + key + "_" + id, text);
+        this.add("screen." + TCRCoreMod.MOD_ID + ".opt." + key + "_" + id, text);
     }
 
     public void addSubtitle(RegistryObject<SoundEvent> sound, String name) {

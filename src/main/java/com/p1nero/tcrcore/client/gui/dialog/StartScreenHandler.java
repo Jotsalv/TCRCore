@@ -20,8 +20,9 @@ public class StartScreenHandler {
         if(localPlayer == null) {
             return;
         }
-        StreamDialogueScreenBuilder screenBuilder = new StreamDialogueScreenBuilder(Component.literal("")
-                .append(localPlayer.getDisplayName().copy().withStyle(ChatFormatting.AQUA)).append(": \n"), "", TCRCoreMod.MOD_ID);
+        StreamDialogueScreenBuilder screenBuilder = new StreamDialogueScreenBuilder(Component.empty(), "", TCRCoreMod.MOD_ID);
+
+        screenBuilder.setCustomTitle(Component.literal("").append(localPlayer.getDisplayName().copy().withStyle(ChatFormatting.AQUA)).append(": \n"));
 
         screenBuilder.start(builder.ans(0))
                         .addOption(builder.opt(0), builder.ans(1))
