@@ -1,6 +1,11 @@
 package com.p1nero.tcrcore.item.custom;
 
+import com.yesman.epicskills.registry.entry.EpicSkillsSounds;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -18,8 +23,19 @@ public class ResonanceStoneItem extends SimpleDescriptionItem{
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level p_41432_, Player p_41433_, InteractionHand p_41434_) {
-        return super.use(p_41432_, p_41433_, p_41434_);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack itemStack = player.getItemInHand(hand);
+        if(!level.isClientSide) {
+            String dimension = itemStack.getOrCreateTag().getString("target_dimension");
+            String targetBoss = itemStack.getOrCreateTag().getString("target_boss");
+            ResourceKey<Level> levelResourceKey = ResourceKey.create(Registries.DIMENSION, ResourceLocation.parse(dimension));
+            if(level.dimension().equals(levelResourceKey)) {
+                //TODO 搜结构
+                itemStack.shrink(1);
+                player.playSound(EpicSkillsSounds.GAIN_ABILITY_POINTS.get(), 1.0F, 1.0F);
+            }
+        }
+        return super.use(level, player, hand);
     }
 
     @Override

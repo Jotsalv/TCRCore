@@ -8,10 +8,19 @@ import net.minecraft.core.BlockPos;
 
 public class TCRQuests {
 
+    //序章
     public static Quest TALK_TO_AINE_1;
     public static Quest TALK_TO_CHRONOS_1;
     public static Quest TALK_TO_FERRY_GIRL_1;
     public static Quest TALK_TO_ORNN_1;
+
+    //养龙支线
+    public static Quest TAME_DRAGON;
+    public static Quest TAME_DRAGON_BACK_TO_FERRY_GIRL;
+
+    //前往获取大地之眼
+    public static Quest USE_RESONANCE_STONE_1;
+    public static Quest GET_DESERT_EYE;
 
     public static void init() {
         TALK_TO_AINE_1 = TCRQuestManager.create("talk_to_aine_1")
@@ -28,6 +37,7 @@ public class TCRQuests {
                 .shortDescParam(TCREntities.ORNN.get().getDescription())
                 .descParam(TCREntities.CHRONOS_SOL.get().getDescription(), TCREntities.ORNN.get().getDescription())
                 .withTrackingPos(new BlockPos(WorldUtil.ORNN_POS.above(3)), TCRDimensions.SANCTUM_LEVEL_KEY);
+
 
     }
 }

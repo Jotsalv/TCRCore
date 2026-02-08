@@ -23,6 +23,7 @@ public class PlayerDataManager {
     public static BoolData ornnTalked = new BoolData("ornnTalked", false);
     public static BoolData chonosTalked = new BoolData("chonosTalked", false);
     public static BoolData ferryGirlTalked = new BoolData("ferryGirlTalked", false);
+    public static BoolData ferryGirlGiftGet = new BoolData("ferryGirlGiftGet", false);
     public static BoolData wraithonKilled = new BoolData("wraithonKilled", false);
     public static BoolData letterGet = new BoolData("letterGet", false);
     public static BoolData tudigongGiftGet = new BoolData("tudigongGiftGet", false);

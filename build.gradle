@@ -315,7 +315,7 @@ dependencies {
     implementation fg.deobf("curse.maven:ribbits-622967:6182692")
 
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-1.20.1:4.8.2")
-    implementation fg.deobf("curse.maven:book-of-dragons-1413424:7390141")
+    implementation fg.deobf("curse.maven:book-of-dragons-1413424:7447643")
 
     implementation fg.deobf("curse.maven:explorers-compass-edited-1203888:6733733")
     implementation fg.deobf("curse.maven:natures-compass-252848:4712189")

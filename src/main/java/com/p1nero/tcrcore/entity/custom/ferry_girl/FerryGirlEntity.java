@@ -12,6 +12,7 @@ import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.capability.PlayerDataManager;
 import com.p1nero.tcrcore.capability.TCRQuestManager;
 import com.p1nero.tcrcore.capability.TCRQuests;
+import com.p1nero.tcrcore.entity.TCREntities;
 import com.p1nero.tcrcore.events.OverworldVillageTeleporter;
 import com.p1nero.tcrcore.events.PlayerEventListeners;
 import com.p1nero.tcrcore.events.SafeNetherTeleporter;
@@ -180,33 +181,73 @@ public class FerryGirlEntity extends PathfinderMob implements IEntityNpc, GeoEnt
         StreamDialogueScreenBuilder treeBuilder = new StreamDialogueScreenBuilder(this, TCRCoreMod.MOD_ID);
         DialogueComponentBuilder dBuilder = treeBuilder.getComponentBuildr();
 
-        DialogNode root = new DialogNode(dBuilder.ans(0), dBuilder.optWithBrackets(0));
+        DialogNode root = new DialogNode(dBuilder.ans(0), dBuilder.opt(-3));
+
+        DialogNode whoAreU = new DialogNode(dBuilder.ans(1, TCREntities.CHRONOS_SOL.get().getDescription(), TCRItems.ARTIFACT_TICKET.get().getDescription().copy().withStyle(ChatFormatting.GOLD), TCRItems.ARTIFACT_TICKET.get().getDescription().copy().withStyle(ChatFormatting.GOLD)), dBuilder.opt(0))
+                .addChild(root);
+
+        DialogNode aboutChronos = new DialogNode(dBuilder.ans(2), dBuilder.opt(1, TCREntities.CHRONOS_SOL.get().getDescription()))
+                .addChild(root);
+
+        DialogNode aboutOrnn = new DialogNode(dBuilder.ans(3, TCREntities.ORNN.get().getDescription()), dBuilder.opt(1, TCREntities.ORNN.get().getDescription()))
+                .addChild(root);
+
+        DialogNode tradeArtifact = new DialogNode.FinalNode(dBuilder.opt(2), 1);
+        DialogNode goToOverworld = new DialogNode.FinalNode(dBuilder.opt(3), 2);
+
+        DialogNode gift = new DialogNode(dBuilder.ans(4), dBuilder.opt(4))
+                .addLeaf(dBuilder.opt(5), 3);
 
         if(currentQuest.equals(TCRQuests.TALK_TO_FERRY_GIRL_1)) {
-
+            root.addChild(whoAreU);
         } else {
 
         }
+        if(PlayerDataManager.chonosTalked.get(localPlayer)) {
+            root.addChild(aboutChronos);
+        }
+        if(PlayerDataManager.ornnTalked.get(localPlayer)) {
+            root.addChild(aboutOrnn);
+        }
+
+        if(!PlayerDataManager.ferryGirlGiftGet.get(localPlayer)) {
+            root.addChild(gift);
+        }
+
+        root.addChild(tradeArtifact)
+                .addChild(goToOverworld)
+                .addLeaf(dBuilder.opt(-3));
 
         return treeBuilder.buildWith(root);
     }
 
     @Override
     public void handleNpcInteraction(ServerPlayer serverPlayer, int i) {
-
+        TCRQuestManager.Quest currentQuest = TCRQuestManager.getCurrentQuest(serverPlayer);
         if(i == 1) {
+            offers.addAll(offersArtifact);
+            startTrade(serverPlayer);
+        }
+
+        if(i == 2) {
             if(PlayerDataManager.wayStoneInteracted.get(serverPlayer)){
                 //传送主世界
                 ServerLevel level = serverPlayer.server.getLevel(Level.OVERWORLD);
                 serverPlayer.changeDimension(level, new OverworldVillageTeleporter());
+                //后续的搞到PlayerDimensionChanged事件来
+                if(currentQuest.equals(TCRQuests.TALK_TO_FERRY_GIRL_1)) {
+                    TCRQuests.TALK_TO_FERRY_GIRL_1.finish(serverPlayer);
+                    TCRQuests.USE_RESONANCE_STONE_1.start(serverPlayer);
+                }
             } else {
                 serverPlayer.displayClientMessage(TCRCoreMod.getInfo("need_to_unlock_waystone").withStyle(ChatFormatting.RED), false);
             }
         }
 
-        if(i == 7) {
-            offers.addAll(offersArtifact);
-            startTrade(serverPlayer);
+        //获得龙龙，以及养大龙龙的任务
+        if(i == 3) {
+
+            TCRQuests.TAME_DRAGON.start(serverPlayer);
         }
 
         this.setConversingPlayer(null);

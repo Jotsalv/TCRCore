@@ -38,7 +38,7 @@ public class CustomQuestOverlayRenderer {
     private static int textX;
     private static int textY;
     private static long timeSinceStateChange;
-    public static final ResourceLocation TASK_ICON = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/task_icon.png");
+    public static final ResourceLocation TASK_ICON = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/quest_icon.png");
     public static final ResourceLocation QUEST_ARROW_ICON = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/quest_arrow.png");
     public static double QUEST_INDICATOR_MIN_DISTANCE = 5.0D;
     private static final int QUEST_ICON_SIZE = 12;

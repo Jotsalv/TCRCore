@@ -32,7 +32,7 @@ public class TCRZHLangGenerator extends TCRLangProvider {
 
         this.addQuest(TCRQuests.TALK_TO_AINE_1, "序章", "和%s对话", "和%s说好了一起来到这个世界，但是当你回过神来后%s已经找不着人影了，快去圣殿里找找她吧！你依稀记得她好像说有什么新时装要给你。");
         this.addQuest(TCRQuests.TALK_TO_CHRONOS_1, "序章", "和？对话", "和%s说好了一起来到这个世界，但是当你回过神来后%s已经找不着人影了。这里到底是什么地方？和圣殿长廊中那位端庄的女人交流看看吧！");
-        this.addQuest(TCRQuests.TALK_TO_FERRY_GIRL_1, "序章", "前往Overworld", "你已经听说了这个世界的故事，准备好了就前往码头寻找 %s 吧！她将为我们打开前往Overworld的路！");
+        this.addQuest(TCRQuests.TALK_TO_FERRY_GIRL_1, "序章", "前往Overworld", "你已经听说了这个世界的故事，准备好了就前往码头寻找 %s 吧！她将为我们打开前往Overworld的路！她似乎有什么宝贝要送给你。");
         this.addQuest(TCRQuests.TALK_TO_ORNN_1, "序章", "和%s对话", "在%s的建议下，先去武库找%s武装一下我们自己吧！充分的武装才能保证我们顺利的冒险！");
 
         this.addEffect(TCREffects.INVULNERABLE, "无敌");
@@ -313,8 +313,20 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.addDialogAnswer(TCREntities.ORNN.get(), 4, "这是一些边角碎料所铸成的，你暂且拿去防身吧。");
         this.addDialogOption(TCREntities.ORNN.get(), 4, "%s");;
 
-        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 0, "阁下，好久不见！");
-        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 1, "阁下忘了我么？我是圣殿摆渡人，为众人指点迷津。阁下如有奇珍异宝，可与我瞧瞧，小女子可提取忆质，将其化为宝具！当你踏足过§c地狱§f或§d末地§f后，我也可以送你一程。");
+        this.addDialogOption(TCREntities.FERRY_GIRL.get(), -3, "继续");
+        this.addDialogOption(TCREntities.FERRY_GIRL.get(), -2, "结束对话");
+        this.addDialogOption(TCREntities.FERRY_GIRL.get(), -1, "继续");
+        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 0, "你好，阁下，有什么可以帮助您的吗？");
+        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 0, "你是何人？");
+        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 1, "吾乃圣殿摆渡人，受%s大人之令在此处护送阁下离开结界前往那方世界。吾也会接纳那方世界的亡魂，因此也留下了不少他们散落的饰品遗物。但需使用[%s]才能于原始之海中打捞。若是阁下有%s，也可交予我。");
+        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 1, "关于%s");
+        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 2, "守望者大人日夜为拯救圣殿而操劳，实在令人敬佩。");
+        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 3, "%s锻造之术此间无人可与之比肩，吾也常常将一些珍奇饰品交由他修复。");
+        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 2, "§6饰品提取");
+        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 3, "§a前往主世界");
+        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 4, "§6见面礼");
+        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 4, "一份微薄的礼物，还望阁下笑纳。此灵宠孵化成年之后，可日行万里，希望对阁下主世界之旅有所帮助！§6当阁下将灵宠养大后，再来找我吧。");
+        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 5, "§6收下");
 
         this.addDialogAnswer(NFIEntities.ARTERIUS.get(), 0, "异界之人，你为何来此？");
         this.addDialogAnswer(NFIEntities.ARTERIUS.get(), 1, "哈哈哈，守望者将烈焰之眼托付于我，为的是避免落入不义之人手中。即使是她老人家亲自来了，也得过我这关！我倒是要看看，你有没有这个能耐！");

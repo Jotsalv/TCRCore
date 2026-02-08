@@ -28,7 +28,7 @@ public class TCRQuestScreen extends Screen {
 
     private final LocalPlayer player;
 
-    public static final ResourceLocation TASK_ICON_TEXTURE = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/task_icon.png");
+    public static final ResourceLocation TASK_ICON_TEXTURE = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/quest_icon.png");
 
     private static final int LIST_WIDTH = 220;
     private static final int LIST_MARGIN_VERTICAL = 24;
