@@ -44,11 +44,11 @@ import java.util.function.Predicate;
 
 public class ResonanceStoneItem extends Item {
 
-    private final ResourceLocation targetStructure;
-    private final ResourceLocation dimension;
-    private final int y;
-    private final BiConsumer<BlockPos, ServerPlayer> callback;
-    private final Predicate<ServerPlayer> predicate;
+    protected final ResourceLocation targetStructure;
+    protected final ResourceLocation dimension;
+    protected final int y;
+    protected final BiConsumer<BlockPos, ServerPlayer> callback;
+    protected final Predicate<ServerPlayer> predicate;
 
     public ResonanceStoneItem(Properties properties, ResourceLocation targetStructure, int y, ResourceLocation dimension, Predicate<ServerPlayer> predicate, BiConsumer<BlockPos, ServerPlayer> callback) {
         super(properties);
@@ -85,7 +85,7 @@ public class ResonanceStoneItem extends Item {
                 });
             }
         }
-        return super.use(level, player, hand);
+        return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide);
     }
 
     @Override

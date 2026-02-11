@@ -23,13 +23,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.SmithingMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.Merchant;
@@ -100,7 +97,7 @@ public class OrnnEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
         DialogNode aboutFerryGirl = new DialogNode(dBuilder.ans(3), dBuilder.opt(1, TCREntities.FERRY_GIRL.get().getDescription()))
                 .addLeaf(dBuilder.opt(-2));
         DialogNode smithHelp = new DialogNode.FinalNode(dBuilder.opt(2), 1);
-        if(currentQuest.equals(TCRQuests.TALK_TO_ORNN_1)) {
+        if(currentQuest.equals(TCRQuests.TALK_TO_ORNN_0)) {
             DialogNode whoAreU = new DialogNode(dBuilder.ans(1), dBuilder.opt(0))
                     .addLeaf(dBuilder.opt(-2));
             DialogNode firstMeetGift = new DialogNode(dBuilder.ans(4), dBuilder.opt(3))
@@ -164,7 +161,7 @@ public class OrnnEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
 
         //领了礼物才算结束
         if(i >= 2 && i <=7) {
-            TCRQuests.TALK_TO_ORNN_1.finish(serverPlayer);
+            TCRQuests.TALK_TO_ORNN_0.finish(serverPlayer);
         }
         this.setConversingPlayer(null);
     }

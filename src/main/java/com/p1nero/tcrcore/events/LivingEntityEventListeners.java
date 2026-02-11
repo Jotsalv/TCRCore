@@ -1,5 +1,6 @@
 package com.p1nero.tcrcore.events;
 
+import com.brass_amber.ba_bt.entity.hostile.golem.LandGolem;
 import com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Guardian_Entity;
 import com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity;
 import com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Harbinger_Entity;
@@ -22,7 +23,6 @@ import com.p1nero.entityrespawner.entity.SoulEntity;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.capability.PlayerDataManager;
 import com.p1nero.tcrcore.capability.TCRCapabilityProvider;
-import com.p1nero.tcrcore.capability.TCRQuestManager;
 import com.p1nero.tcrcore.client.sound.CorneliaMusicPlayer;
 import com.p1nero.tcrcore.client.sound.WraithonMusicPlayer;
 import com.p1nero.tcrcore.gameassets.TCRSkills;
@@ -35,20 +35,15 @@ import com.p1nero.tcrcore.worldgen.TCRDimensions;
 import com.yesman.epicskills.registry.entry.EpicSkillsItems;
 import net.kenddie.fantasyarmor.item.FAItems;
 import net.minecraft.ChatFormatting;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
-import net.minecraft.network.protocol.game.ClientboundSetTitleTextPacket;
 import net.minecraft.network.protocol.game.ClientboundSoundPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -73,7 +68,6 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.p1nero.ss.item.SwordSoaringItems;
-import net.shelmarow.nightfall_invade.entity.NFIEntities;
 import net.shelmarow.nightfall_invade.entity.spear_knight.Arterius;
 import net.sonmok14.fromtheshadows.server.entity.mob.BulldrogiothEntity;
 import net.unusual.blockfactorysbosses.entity.SwordWaveEntity;
@@ -90,7 +84,6 @@ import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -101,8 +94,8 @@ public class LivingEntityEventListeners {
 
     @SubscribeEvent
     public static void onLivingAttack(LivingAttackEvent event) {
-        LivingEntity entity = event.getEntity();
         Entity attacker = event.getSource().getEntity();
+        //禁用原版攻击
         if(attacker instanceof Player player && player.level().isClientSide) {
             if(player.isLocalPlayer()) {
                 EpicFightCapabilities.getUnparameterizedEntityPatch(player, PlayerPatch.class).ifPresent(playerPatch -> {
@@ -113,6 +106,7 @@ public class LivingEntityEventListeners {
                 });
             }
         }
+        //骑士剑剑气
         if (attacker instanceof ServerPlayer serverPlayer) {
             EpicFightCapabilities.getUnparameterizedEntityPatch(serverPlayer, PlayerPatch.class).ifPresent(playerPatch -> {
                 if (playerPatch.isVanillaMode()) {
@@ -135,14 +129,9 @@ public class LivingEntityEventListeners {
 
         }
 
+        //重生保护
         if (event.getEntity() instanceof Bone_Chimera_Entity boneChimeraEntity) {
             if (boneChimeraEntity.isDeadOrDying()) {
-                event.setCanceled(true);
-            }
-        }
-
-        if (event.getEntity() instanceof UnderworldKnightEntity underworldKnight) {
-            if (underworldKnight.isDeadOrDying()) {
                 event.setCanceled(true);
             }
         }
@@ -209,8 +198,10 @@ public class LivingEntityEventListeners {
         }
         livingEntity.getPersistentData().putBoolean(TRIGGERED, true);
         Vec3 center = livingEntity.position();
+        //附近玩家都获得
         livingEntity.level().getEntitiesOfClass(ServerPlayer.class, (new AABB(center, center)).inflate(30)).forEach(player -> {
 
+            //击败祭坛内的boss
             if (livingEntity instanceof Scylla_Entity) {
                 if(!PlayerDataManager.stormEyeKilled.get(player)) {
                     ItemUtil.addItemEntity(player, EpicSkillsItems.ABILIITY_STONE.get(), 5, ChatFormatting.GOLD.getColor());
@@ -267,57 +258,13 @@ public class LivingEntityEventListeners {
                 }
             }
 
-            if (livingEntity instanceof EnderDragon && !PlayerDataManager.voidEyeTraded.get(player)) {
-                ItemUtil.addItemEntity(player, ModItems.VOID_EYE.get(), 1, ChatFormatting.LIGHT_PURPLE.getColor().intValue());
-            }
-
-            if (livingEntity instanceof WitherBoss && !PlayerDataManager.mechEyeTraded.get(player)) {
-                ItemUtil.addItemEntity(player, ModItems.MECH_EYE.get(), 1, ChatFormatting.DARK_RED.getColor().intValue());
-            }
-
-            if (livingEntity instanceof IronGolem && WorldUtil.isInStructure(livingEntity, WorldUtil.SKY_ISLAND)) {
-                if (!PlayerDataManager.stormEyeTraded.get(player)) {
-                    ItemUtil.addItemEntity(player, ModItems.STORM_EYE.get(), 1, ChatFormatting.AQUA.getColor().intValue());
-                    player.displayClientMessage(TCRCoreMod.getInfo("kill_boss1"), false);
-                    player.connection.send(new ClientboundSetTitleTextPacket(TCRCoreMod.getInfo("you_pass")));
+            //处理主线的boss掉落眼睛
+            if (livingEntity instanceof LandGolem) {
+                //捡起来之前都会掉
+                if (!PlayerDataManager.desertEyeGotten.get(player)) {
+                    ItemUtil.addItemEntity(player, ModItems.DESERT_EYE.get(), 1, ChatFormatting.YELLOW.getColor().intValue());
                     player.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
-                    //看PlayerPickUp那边
                 }
-            }
-
-            if (livingEntity instanceof BulldrogiothEntity
-                    && PlayerDataManager.stormEyeBlessed.get(player)
-                    && !PlayerDataManager.abyssEyeTraded.get(player)) {
-                ItemUtil.addItemEntity(player, ModItems.ABYSS_EYE.get(), 1, ChatFormatting.BLUE.getColor().intValue());
-                player.displayClientMessage(TCRCoreMod.getInfo("kill_boss3"), false);
-            }
-
-
-            if (livingEntity instanceof Bone_Chimera_Entity && !PlayerDataManager.desertEyeTraded.get(player) && PlayerDataManager.abyssEyeBlessed.get(player)) {
-                ItemUtil.addItemEntity(player, ModItems.DESERT_EYE.get(), 1, ChatFormatting.YELLOW.getColor().intValue());
-                player.displayClientMessage(TCRCoreMod.getInfo("kill_boss5"), false);
-
-                CommandSourceStack commandSourceStack = player.createCommandSourceStack().withPermission(2).withSuppressedOutput();
-                if (!PlayerDataManager.fireAvoidUnlocked.get(player)) {
-                    Objects.requireNonNull(player.getServer()).getCommands().performPrefixedCommand(commandSourceStack, "/skilltree unlock @s dodge_parry_reward:passive tcrcore:fire_avoid true");
-                    player.displayClientMessage(TCRCoreMod.getInfo("unlock_new_skill", Component.translatable(TCRSkills.FIRE_AVOID.getTranslationKey()).withStyle(ChatFormatting.AQUA)), false);
-                    player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, SoundSource.PLAYERS, 1.0F, 1.0F);
-                    PlayerDataManager.fireAvoidUnlocked.put(player, true);
-                }
-            }
-
-            if (livingEntity instanceof CaptainCornelia && !PlayerDataManager.cursedEyeTraded.get(player) && PlayerDataManager.desertEyeBlessed.get(player)) {
-                ItemUtil.addItemEntity(player, ModItems.CURSED_EYE.get(), 1, ChatFormatting.DARK_GREEN.getColor().intValue());
-                player.displayClientMessage(TCRCoreMod.getInfo("kill_boss4"), false);
-            }
-
-            //保险措施，一般到不了
-            if (livingEntity instanceof Arterius arterius) {
-                if(!PlayerDataManager.flameEyeTraded.get(player) && PlayerDataManager.cursedEyeBlessed.get(player)) {
-                    ItemUtil.addItemEntity(player, ModItems.FLAME_EYE.get(), 1, ChatFormatting.RED.getColor().intValue());
-                }
-                player.displayClientMessage(TCRCoreMod.getInfo("kill_arterius", NFIEntities.ARTERIUS.get().getDescription().copy().withStyle(ChatFormatting.RED), EFNItem.DUSKFIRE_INGOT.get().getDescription()), false);
-                ItemUtil.addItemEntity(player, EFNItem.DUSKFIRE_INGOT.get(), 2 + arterius.getRandom().nextInt(3), ChatFormatting.RED.getColor());
             }
 
         });
@@ -326,7 +273,7 @@ public class LivingEntityEventListeners {
 
             if (CataclysmDimensions.LEVELS.contains(serverLevel.dimension()) && livingEntity.getType().is(Tags.EntityTypes.BOSSES)) {
                 TCRDimSaveData.get(serverLevel).setBossKilled(true);
-                //回城
+                //发送回城按钮
                 MutableComponent clickToReturn = TCRCoreMod.getInfo("click_to_return");
                 clickToReturn.setStyle(Style.EMPTY
                         .applyFormat(ChatFormatting.GREEN)
@@ -341,17 +288,9 @@ public class LivingEntityEventListeners {
 
             }
 
-            //保险措施，一般到不了
-            if (livingEntity instanceof Arterius arterius) {
-                arterius.resetBossStatus(true);
-                arterius.backToHomePos();
-                arterius.setInBattle(false);
-                event.setCanceled(true);
-            }
-
+            //打似战灵处理通关
             if (livingEntity instanceof WraithonEntity wraithonEntity && !wraithonEntity.isDead()) {
                 serverLevel.players().forEach(serverPlayer -> {
-//                    serverPlayer.displayClientMessage(TCRCoreMod.getInfo("wraithon_end_tip"), false);
                     TCRCapabilityProvider.getTCRPlayer(serverPlayer).setTickAfterBossDieLeft(600);
                 });
             }
@@ -363,7 +302,7 @@ public class LivingEntityEventListeners {
                 livingEntity.getPersistentData().putBoolean("already_respawn", true);
             }
 
-            if (livingEntity instanceof Bone_Chimera_Entity boneChimeraEntity && WorldUtil.isInStructure(livingEntity, WorldUtil.SAND) && !livingEntity.getPersistentData().getBoolean("already_respawn")) {
+            if (livingEntity instanceof Bone_Chimera_Entity boneChimeraEntity && WorldUtil.isInStructure(livingEntity, WorldUtil.BONE_CHIMERA_STRUCTURE) && !livingEntity.getPersistentData().getBoolean("already_respawn")) {
                 //偷懒，直接秽土转生
                 SoulEntity soulEntity = EntityRespawnerMod.addToRespawn(boneChimeraEntity, 200, true);
                 if(boneChimeraEntity.getPersistentData().contains("spawnX") && soulEntity != null) {
@@ -372,21 +311,7 @@ public class LivingEntityEventListeners {
                 livingEntity.getPersistentData().putBoolean("already_respawn", true);
             }
 
-            if (livingEntity instanceof BulldrogiothEntity bulldrogiothEntity && EntityUtil.getNearByEntities(serverLevel, bulldrogiothEntity.position(), 50, BulldrogiothEntity.class).size() <= 3 && !livingEntity.getPersistentData().getBoolean("already_respawn")) {
-                //秽土转生
-                SoulEntity soulEntity = EntityRespawnerMod.addToRespawn(bulldrogiothEntity, 300, true);
-                if(bulldrogiothEntity.getPersistentData().contains("spawnX") && soulEntity != null) {
-                    soulEntity.setPos(readSpawnPos(bulldrogiothEntity));
-                }
-                livingEntity.getPersistentData().putBoolean("already_respawn", true);
-            }
-
-//            if(livingEntity instanceof UnderworldKnightEntity underworldKnight && WorldUtil.isInStructure(livingEntity, WorldUtil.FIRE) && !livingEntity.getPersistentData().getBoolean("already_respawn")) {
-//                //偷懒，直接秽土转生
-//                EntityRespawnerMod.addToRespawn(underworldKnight, 100, true);
-//                livingEntity.getPersistentData().putBoolean("already_respawn", true);
-//            }
-
+            //彩蛋物品
             if (livingEntity instanceof Maledictus_Entity) {
                 ItemUtil.addItemEntity(livingEntity, TCRItems.DUAL_BOKKEN.get(), 1, ChatFormatting.LIGHT_PURPLE.getColor());
             }
@@ -395,6 +320,7 @@ public class LivingEntityEventListeners {
 
         if (livingEntity instanceof CaptainCornelia) {
             if (livingEntity.level().isClientSide) {
+                //修它bgm播放bug，不知道现在修了没
                 CorneliaMusicPlayer.stopBossMusic(livingEntity);
             } else {
                 ItemUtil.addItemEntity(livingEntity, EFNItem.DEEPDARK_HEART.get(), 1, ChatFormatting.LIGHT_PURPLE.getColor().intValue());
@@ -411,6 +337,12 @@ public class LivingEntityEventListeners {
             }
         }
 
+        //似了换地狱傀儡出来
+        if(livingEntity instanceof EnderDragon enderDragon) {
+            enderDragon.discard();
+            //TODO 生成终末傀儡以及出场动画
+        }
+
         if (livingEntity instanceof ServerPlayer serverPlayer && !event.isCanceled()) {
             serverPlayer.displayClientMessage(TCRCoreMod.getInfo("death_info"), false);
             ServerLevel wraithonLevel = serverPlayer.server.getLevel(WraithonDimensions.SANCTUM_OF_THE_WRAITHON_LEVEL_KEY);
@@ -419,21 +351,18 @@ public class LivingEntityEventListeners {
                 TCRDimSaveData.get(wraithonLevel).setBossSummoned(false);
             }
 
-//            //多人则重置出生点
-//            if (!serverPlayer.server.isSingleplayer()) {
-//                serverPlayer.setRespawnPosition(TCRDimensions.SANCTUM_LEVEL_KEY, new BlockPos(WorldUtil.START_POS), 0, true, false);
-//            }
-
-            if (EntityUtil.getNearByPlayers(serverPlayer, 30).isEmpty()) {
-                if (event.getSource().getEntity() instanceof LivingEntity living) {
-                    living.setHealth(living.getMaxHealth());
-                    living.removeAllEffects();
-                    if (living instanceof WraithonEntity wraithonEntity) {
-                        wraithonEntity.setPhase(WraithonEntity.START_PHASE);
+            //防堆命机制
+            if (event.getSource().getEntity() instanceof LivingEntity living) {
+                if (living instanceof WraithonEntity wraithonEntity) {
+                    if (!EntityUtil.getNearByPlayers(serverPlayer, 30).isEmpty()) {
+                        return;
                     }
-                    if (living instanceof Arterius arterius) {
-                        arterius.resetBossStatus(true);
-                    }
+                    wraithonEntity.setPhase(WraithonEntity.START_PHASE);
+                }
+                living.setHealth(living.getMaxHealth());
+                living.removeAllEffects();
+                if (living instanceof Arterius arterius) {
+                    arterius.resetBossStatus(true);
                 }
             }
         }
@@ -444,15 +373,10 @@ public class LivingEntityEventListeners {
         if (TCRCoreMod.hasCheatMod()) {
             event.getEntity().setHealth(0);
         }
-        if(event.getEntity() instanceof BulldrogiothEntity bulldrogiothEntity) {
-            if(event.getSource().is(DamageTypes.IN_WALL)) {
-                bulldrogiothEntity.moveTo(bulldrogiothEntity.position().add(0, 1, 0));
-            }
-        }
     }
 
     /**
-     * 减少呼吸消耗
+     * 有避水咒就减少呼吸消耗
      */
     @SubscribeEvent
     public static void onLivingBreath(LivingBreatheEvent event) {
@@ -513,23 +437,18 @@ public class LivingEntityEventListeners {
         }
 
         if (event.getEntity() instanceof Bone_Chimera_Entity boneChimeraEntity) {
-            if (WorldUtil.isInStructure(boneChimeraEntity, WorldUtil.SAND)) {
+            if (WorldUtil.isInStructure(boneChimeraEntity, WorldUtil.BONE_CHIMERA_STRUCTURE)) {
                 saveSpawnPos(boneChimeraEntity);
             }
         }
-//
-//        if (event.getEntity() instanceof ItemEntity itemEntity) {
-//            if (PlayerEventListeners.illegalItems.contains(itemEntity.getItem().getItem())) {
-//                event.setCanceled(true);
-//                return;
-//            }
+
+        //交给incontrol
+//        if (illegalEntityTypes.contains(event.getEntity().getType())) {
+//            event.setCanceled(true);
+//            return;
 //        }
 
-        if (illegalEntityTypes.contains(event.getEntity().getType())) {
-            event.setCanceled(true);
-            return;
-        }
-
+        //移除远古守卫者在海洋塔的生成
         if(event.getEntity() instanceof Guardian guardian && WorldUtil.isInStructure(guardian, WorldUtil.OCEAN_GOLEM)) {
             event.setCanceled(true);
         }
@@ -543,7 +462,7 @@ public class LivingEntityEventListeners {
             }
         }
 
-        //末影龙血少，走个过场
+        //末影龙血少，走个过场，似了以后换末地傀儡
         if (event.getEntity() instanceof EnderDragon enderDragon) {
             enderDragon.getAttribute(Attributes.MAX_HEALTH).removeModifier(uuid);
             AttributeModifier healthBoost = new AttributeModifier(uuid, "Dragon Health Boost", -0.6, AttributeModifier.Operation.MULTIPLY_BASE);
@@ -551,6 +470,7 @@ public class LivingEntityEventListeners {
             enderDragon.setHealth(enderDragon.getMaxHealth());
         }
 
+        //血给多点，假装很强大
         if (event.getEntity() instanceof WitherBoss witherBoss) {
             witherBoss.getAttribute(Attributes.MAX_HEALTH).removeModifier(uuid);
             AttributeModifier healthBoost = new AttributeModifier(uuid, "Wither Health Boost", 1, AttributeModifier.Operation.MULTIPLY_BASE);
@@ -558,17 +478,6 @@ public class LivingEntityEventListeners {
             witherBoss.setHealth(witherBoss.getMaxHealth());
         }
 
-//        if(event.getEntity() instanceof LivingEntity livingEntity
-//                && !(livingEntity instanceof Player)
-//                && !(livingEntity instanceof WraithonEntity)) {
-//            ServerLevel end = serverLevel.getServer().getLevel(Level.END);
-//            if(end != null && end.getDragonFight() != null && end.getDragonFight().hasPreviouslyKilledDragon()) {
-//                livingEntity.getAttribute(Attributes.MAX_HEALTH).removeModifier(uuid);
-//                AttributeModifier healthBoost = new AttributeModifier(uuid, "Health Boost After Dragon Killed", 1, AttributeModifier.Operation.MULTIPLY_BASE);
-//                livingEntity.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(healthBoost);
-//                livingEntity.setHealth(livingEntity.getMaxHealth());
-//            }
-//        }
     }
 
     public static void saveSpawnPos(Entity entity) {
@@ -583,16 +492,6 @@ public class LivingEntityEventListeners {
         return new Vec3(entity.getPersistentData().getDouble("spawnX"),
                 entity.getPersistentData().getDouble("spawnY"),
                 entity.getPersistentData().getDouble("spawnZ"));
-    }
-
-    /**
-     * 保险
-     */
-    @SubscribeEvent
-    public static void onLivingDespawn(MobSpawnEvent.AllowDespawn event) {
-        if (event.getEntity() instanceof BulldrogiothEntity bulldrogiothEntity && WorldUtil.isInStructure(bulldrogiothEntity, WorldUtil.RIBBIT_VILLAGE)) {
-            event.setResult(Event.Result.DENY);
-        }
     }
 
 }

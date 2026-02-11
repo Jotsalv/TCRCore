@@ -3,13 +3,10 @@ package com.p1nero.tcrcore.block.entity;
 import com.github.L_Ender.cataclysm.init.ModItems;
 import com.github.L_Ender.cataclysm.init.ModParticle;
 import com.p1nero.tcrcore.capability.PlayerDataManager;
-import com.p1nero.tcrcore.save_data.TCRMainLevelSaveData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class CursedAltarBlockEntity extends AbstractAltarBlockEntity {
@@ -39,7 +36,7 @@ public class CursedAltarBlockEntity extends AbstractAltarBlockEntity {
 
     @Override
     public boolean checkEyeFound(Player player) {
-        return PlayerDataManager.cursedEyeTraded.get(player);
+        return PlayerDataManager.cursedEyeGotten.get(player);
     }
 
     @Override

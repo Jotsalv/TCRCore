@@ -32,8 +32,8 @@ public class TCRItems {
     public static final RegistryObject<Item> DRAGON_FLUTE = REGISTRY.register("dragon_flute", () -> new DragonFluteItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
 
     public static final RegistryObject<Item> LAND_RESONANCE_STONE = REGISTRY.register("land_resonance_stone",
-            () -> new ResonanceStoneItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(), ResourceLocation.parse(WorldUtil.LAND_GOLEM), 114, Level.OVERWORLD.location(), (serverPlayer) ->
-                    TCRQuestManager.hasQuest(serverPlayer, TCRQuests.USE_RESONANCE_STONE_1),
+            () -> new LandResonanceStoneItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(), ResourceLocation.parse(WorldUtil.LAND_GOLEM), 114, Level.OVERWORLD.location(), (serverPlayer) ->
+                    TCRQuestManager.hasQuest(serverPlayer, TCRQuests.USE_RESONANCE_STONE_1) || serverPlayer.isCreative(),
                     ((pos, serverPlayer) -> {
                         WaypointUtil.sendWaypoint(serverPlayer, "eye_pos_mark", TCRCoreMod.getInfo("eye_pos_mark", ModItems.DESERT_EYE.get().getDescription(), Component.translatable(Util.makeDescriptionId("structure", ResourceLocation.parse(WorldUtil.LAND_GOLEM)))), pos, WaypointColor.YELLOW);
                         TCRQuests.USE_RESONANCE_STONE_1.finish(serverPlayer, true);
@@ -46,7 +46,7 @@ public class TCRItems {
                     TCRQuestManager.hasQuest(serverPlayer, TCRQuests.USE_RESONANCE_STONE_1),
                     ((pos, serverPlayer) ->
                     {
-                        WaypointUtil.sendWaypoint(serverPlayer, "eye_pos_mark", TCRCoreMod.getInfo("eye_pos_mark"), pos, WaypointColor.AQUA);
+                        WaypointUtil.sendWaypoint(serverPlayer, "eye_pos_mark", TCRCoreMod.getInfo("eye_pos_mark", ModItems.ABYSS_EYE.get().getDescription(), Component.translatable(Util.makeDescriptionId("structure", ResourceLocation.parse(WorldUtil.OCEAN_GOLEM)))), pos, WaypointColor.AQUA);
                         TCRQuests.USE_RESONANCE_STONE_1.finish(serverPlayer, true);
                         TCRQuests.GET_DESERT_EYE.start(serverPlayer);
                     }))

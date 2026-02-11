@@ -2,12 +2,9 @@ package com.p1nero.tcrcore.block.entity;
 
 import com.github.L_Ender.cataclysm.init.ModItems;
 import com.p1nero.tcrcore.capability.PlayerDataManager;
-import com.p1nero.tcrcore.save_data.TCRMainLevelSaveData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class FlameAltarBlockEntity extends AbstractAltarBlockEntity {
@@ -32,7 +29,7 @@ public class FlameAltarBlockEntity extends AbstractAltarBlockEntity {
 
     @Override
     public boolean checkEyeFound(Player player) {
-        return PlayerDataManager.flameEyeTraded.get(player);
+        return PlayerDataManager.flameEyeGotten.get(player);
     }
 
     @Override

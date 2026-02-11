@@ -30,8 +30,6 @@ public class PlayerDataManager {
     public static BoolData arteriusKilled = new BoolData("arteriusKilled", false);
     public static BoolData canEnterNether = new BoolData("canEnterNether", false);
     public static BoolData canEnterEnd = new BoolData("canEnterEnd", false);
-    public static BoolData netherEntered = new BoolData("netherEntered", false);
-    public static BoolData endEntered = new BoolData("endEntered", false);
     public static BoolData swordSoaringUnlocked = new BoolData("sword_soaring_avoid_unlocked", false);
     public static BoolData fireAvoidUnlocked = new BoolData("fire_avoid_unlocked", false);
     public static BoolData waterAvoidUnlocked = new BoolData("water_avoid_unlocked", false);
@@ -46,14 +44,14 @@ public class PlayerDataManager {
     public static BoolData mapMarked = new BoolData("map_marked", false);//是否标记过地图了，省的二次搜索地图浪费
 
     //是否获取过
-    public static BoolData stormEyeTraded = new BoolData("storm_eye_traded", false);
-    public static BoolData flameEyeTraded = new BoolData("flame_eye_traded", false);
-    public static BoolData abyssEyeTraded = new BoolData("abyss_eye_traded", false);
-    public static BoolData cursedEyeTraded = new BoolData("cursed_eye_traded", false);
-    public static BoolData desertEyeTraded = new BoolData("desert_eye_traded", false);
-    public static BoolData mechEyeTraded = new BoolData("mech_eye_traded", false);
-    public static BoolData voidEyeTraded = new BoolData("void_eye_traded", false);
-    public static BoolData monstEyeTraded = new BoolData("monst_eye_traded", false);
+    public static BoolData stormEyeGotten = new BoolData("storm_eye_gotton", false);
+    public static BoolData flameEyeGotten = new BoolData("flame_eye_gotton", false);
+    public static BoolData abyssEyeGotten = new BoolData("abyss_eye_gotton", false);
+    public static BoolData cursedEyeGotten = new BoolData("cursed_eye_gotton", false);
+    public static BoolData desertEyeGotten = new BoolData("desert_eye_gotton", false);
+    public static BoolData mechEyeGotten = new BoolData("mech_eye_gotton", false);
+    public static BoolData voidEyeGotten = new BoolData("void_eye_gotton", false);
+    public static BoolData monstEyeGotten = new BoolData("monst_eye_gotton", false);
 
     //是否击败过里面的boss
     public static BoolData stormEyeKilled = new BoolData("storm_eye_killed", false);
@@ -86,7 +84,7 @@ public class PlayerDataManager {
     public static BoolData voidEyeActivated = new BoolData("voidEyeActivated", false);
 
     public static boolean canGetInvite(Player player) {
-        return mechEyeTraded.get(player) && monstEyeTraded.get(player) && voidEyeTraded.get(player);
+        return mechEyeGotten.get(player) && monstEyeGotten.get(player) && voidEyeGotten.get(player);
     }
 
     public static boolean canGetInviteTip(Player player) {
@@ -94,11 +92,11 @@ public class PlayerDataManager {
     }
 
     public static boolean isAllEyeGet(Player player) {
-        return stormEyeTraded.get(player)
-                && flameEyeTraded.get(player)
-                && abyssEyeTraded.get(player)
-                && cursedEyeTraded.get(player)
-                && desertEyeTraded.get(player);
+        return stormEyeGotten.get(player)
+                && flameEyeGotten.get(player)
+                && abyssEyeGotten.get(player)
+                && cursedEyeGotten.get(player)
+                && desertEyeGotten.get(player);
     }
 
     public static boolean isAllAltarKilled(Player player) {

@@ -30,9 +30,9 @@ public class Bone_ChimeraMixin extends IABoss_monster {
 
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
     private void tcr$baseTick(CallbackInfo ci) {
-        if(!tcr$hurtMark) {
+        if(!tcr$hurtMark && !level().isClientSide) {
             EntityUtil.nearPlayerDo(this, 30, (player -> {
-                if(PlayerDataManager.desertEyeTraded.get(player)) {
+                if(PlayerDataManager.desertEyeGotten.get(player)) {
                     player.displayClientMessage(TCRCoreMod.getInfo("attack_to_restart"), true);
                 }
             }));
@@ -42,12 +42,7 @@ public class Bone_ChimeraMixin extends IABoss_monster {
 
     @Inject(method = "aiStep", at = @At("HEAD"), cancellable = true)
     private void tcr$aiStep(CallbackInfo ci) {
-        if(!tcr$hurtMark) {
-            EntityUtil.nearPlayerDo(this, 30, (player -> {
-                if(PlayerDataManager.desertEyeTraded.get(player)) {
-                    player.displayClientMessage(TCRCoreMod.getInfo("attack_to_restart"), true);
-                }
-            }));
+        if(!tcr$hurtMark && !level().isClientSide) {
             ci.cancel();
         }
     }

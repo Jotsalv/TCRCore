@@ -1,18 +1,13 @@
 package com.p1nero.tcrcore.block.entity;
 
 import com.github.L_Ender.cataclysm.init.ModItems;
-import com.github.L_Ender.cataclysm.init.ModParticle;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.capability.PlayerDataManager;
-import com.p1nero.tcrcore.save_data.TCRMainLevelSaveData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class VoidAltarBlockEntity extends AbstractAltarBlockEntity {
@@ -42,7 +37,7 @@ public class VoidAltarBlockEntity extends AbstractAltarBlockEntity {
 
     @Override
     public boolean checkEyeFound(Player player) {
-        return PlayerDataManager.voidEyeTraded.get(player);
+        return PlayerDataManager.voidEyeGotten.get(player);
     }
 
     protected void playUseEyeTip(Player player) {

@@ -157,9 +157,9 @@ public class FerryGirlEntity extends PathfinderMob implements IEntityNpc, GeoEnt
                 PlayerDataManager.ferryGirlTalked.put(player, true);
             }
             CompoundTag tag = new CompoundTag();
-            boolean canGoOverworld = TCRQuestManager.hasFinished(serverPlayer, TCRQuests.TALK_TO_CHRONOS_1);
+            boolean canGoOverworld = TCRQuestManager.hasFinished(serverPlayer, TCRQuests.TALK_TO_CHRONOS_0);
             //必须追踪现在的任务才能去主世界
-            if(TCRQuestManager.hasQuest(serverPlayer, TCRQuests.TALK_TO_FERRY_GIRL_1) && !TCRQuestManager.getCurrentQuest(serverPlayer).equals(TCRQuests.TALK_TO_FERRY_GIRL_1)) {
+            if(TCRQuestManager.hasQuest(serverPlayer, TCRQuests.TALK_TO_FERRY_GIRL_0) && !TCRQuestManager.getCurrentQuest(serverPlayer).equals(TCRQuests.TALK_TO_FERRY_GIRL_0)) {
                 canGoOverworld = false;
             }
             tag.putBoolean("can_go_overworld", canGoOverworld);
@@ -211,7 +211,7 @@ public class FerryGirlEntity extends PathfinderMob implements IEntityNpc, GeoEnt
                 .addLeaf(dBuilder.opt(5, ModEntities.MONSTROUSNIGHTMARE.get().getDescription()), 8)
                 .addLeaf(dBuilder.opt(5, ModEntities.WHISPERING_DEATH.get().getDescription()), 9);
 
-        if (currentQuest.equals(TCRQuests.TALK_TO_FERRY_GIRL_1)) {
+        if (currentQuest.equals(TCRQuests.TALK_TO_FERRY_GIRL_0)) {
             root.addChild(whoAreU);
         }
 
@@ -259,8 +259,8 @@ public class FerryGirlEntity extends PathfinderMob implements IEntityNpc, GeoEnt
                 ServerLevel level = serverPlayer.server.getLevel(Level.OVERWORLD);
                 serverPlayer.changeDimension(level, new OverworldVillageTeleporter());
                 //后续的搞到PlayerDimensionChanged事件来
-                if (currentQuest.equals(TCRQuests.TALK_TO_FERRY_GIRL_1)) {
-                    TCRQuests.TALK_TO_FERRY_GIRL_1.finish(serverPlayer);
+                if (currentQuest.equals(TCRQuests.TALK_TO_FERRY_GIRL_0)) {
+                    TCRQuests.TALK_TO_FERRY_GIRL_0.finish(serverPlayer);
                     TCRQuests.USE_RESONANCE_STONE_1.start(serverPlayer);
                 }
             } else {

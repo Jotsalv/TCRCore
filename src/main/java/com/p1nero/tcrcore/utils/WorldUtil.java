@@ -48,7 +48,7 @@ public class WorldUtil {
 //    public static final String COVES = "trek:overworld/very_rare/coves";
     public static final String RIBBIT_VILLAGE = "ribbits:ribbit_village";
     public static final String SKY_ISLAND = "trek:overworld/very_rare/floating_farm_large";
-    public static final String SAND = "dodosmobs:jungle_prison";
+    public static final String BONE_CHIMERA_STRUCTURE = "dodosmobs:jungle_prison";
     public static final String CURSED = "aquamirae:ship";
     public static final String FIRE = "tcrcore:underworld_arena";
     public static final String SKY_GOLEM = "lost_aether_content:platinum_dungeon";

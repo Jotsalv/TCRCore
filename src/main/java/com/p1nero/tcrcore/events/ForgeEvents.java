@@ -41,30 +41,6 @@ public class ForgeEvents {
                 ironGolem.setTarget(event.getServerPlayer());
             }
         }
-
-        if(event.getSelf() instanceof Arterius arterius) {
-            if(event.getInteractId() == 1) {
-                arterius.resetBossStatus(true);
-                TCRPlayer tcrPlayer = TCRCapabilityProvider.getTCRPlayer(event.getServerPlayer());
-                tcrPlayer.setArterius(arterius);
-                tcrPlayer.setTickAfterStartArterius(62);
-            }
-            if(event.getInteractId() == 2) {
-                if(!PlayerDataManager.letterGet.get(event.getServerPlayer())) {
-                    ItemUtil.addItemEntity(event.getServerPlayer(), MimicItems.MIMIC_INVITATION.get(), 1, ChatFormatting.RED.getColor());
-                    event.getServerPlayer().displayClientMessage(TCRCoreMod.getInfo("get_mimic_invite", NFIEntities.ARTERIUS.get().getDescription().copy().withStyle(ChatFormatting.RED), MimicItems.MIMIC_INVITATION.get().getDescription()), false);
-                    PlayerDataManager.letterGet.put(event.getServerPlayer(), true);
-                }
-            }
-        }
-
-        if(event.getSelf() instanceof AbstractLargeMonster<?, ?> abstractLargeMonster) {
-            if(event.getInteractId() == 1) {
-                ServerPlayer player = event.getServerPlayer();
-                abstractLargeMonster.tame(player);
-                player.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
-            }
-        }
     }
 
     @SubscribeEvent

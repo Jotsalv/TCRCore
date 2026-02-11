@@ -7,12 +7,9 @@ import com.p1nero.dialog_lib.client.screen.DialogueScreen;
 import com.p1nero.dialog_lib.client.screen.builder.StreamDialogueScreenBuilder;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.capability.PlayerDataManager;
-import com.p1nero.tcrcore.capability.TCRPlayer;
 import com.p1nero.tcrcore.capability.TCRQuestManager;
 import com.p1nero.tcrcore.capability.TCRQuests;
 import com.p1nero.tcrcore.entity.TCREntities;
-import com.p1nero.tcrcore.item.TCRItems;
-import com.p1nero.tcrcore.save_data.TCRMainLevelSaveData;
 import com.p1nero.tcrcore.utils.ItemUtil;
 import com.p1nero.tcrcore.utils.WorldUtil;
 import moe.plushie.armourers_workshop.init.ModItems;
@@ -102,7 +99,7 @@ public class AineIrisEntity extends PathfinderMob implements IEntityNpc, GeoEnti
 
         DialogNode enchantment;//TODO 法术淬灵
 
-        if(currentQuest.equals(TCRQuests.TALK_TO_AINE_1)) {
+        if(currentQuest.equals(TCRQuests.TALK_TO_AINE_0)) {
             if(PlayerDataManager.chonosTalked.get(localPlayer)) {
                 root.addChild(aboutChronos);
                 root.addChild(aboutThisWorld);
@@ -129,7 +126,7 @@ public class AineIrisEntity extends PathfinderMob implements IEntityNpc, GeoEnti
             ItemUtil.addItemEntity(serverPlayer, ModItems.SKIN_LIBRARY_GLOBAL.get().getDefaultInstance());
             ItemUtil.addItemEntity(serverPlayer, ModItems.SKIN_LIBRARY.get().getDefaultInstance());
             ItemUtil.addItemEntity(serverPlayer, ModItems.SKINNING_TABLE.get().getDefaultInstance());
-            TCRQuests.TALK_TO_AINE_1.finish(serverPlayer);
+            TCRQuests.TALK_TO_AINE_0.finish(serverPlayer);
         }
         this.setConversingPlayer(null);
     }

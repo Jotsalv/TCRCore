@@ -159,7 +159,7 @@ public class ChronosSolEntity extends PathfinderMob implements IEntityNpc, GeoEn
         DialogNode aboutOrnn = new DialogNode(dBuilder.ans(5), dBuilder.opt(3, TCREntities.ORNN.get().getDescription()))
                 .addLeaf(dBuilder.opt(-2));
 
-        if(TCRQuests.TALK_TO_CHRONOS_1.equals(currentQuest)) {
+        if(TCRQuests.TALK_TO_CHRONOS_0.equals(currentQuest)) {
             //初次对话
             root = new DialogNode(dBuilder.ans(6), dBuilder.opt(-3));
             //你是何人
@@ -205,10 +205,10 @@ public class ChronosSolEntity extends PathfinderMob implements IEntityNpc, GeoEn
     public void handleNpcInteraction(ServerPlayer player, int code) {
         //初次对话，准备启程
         if(code == 1) {
-            TCRQuests.TALK_TO_CHRONOS_1.finish(player);
+            TCRQuests.TALK_TO_CHRONOS_0.finish(player);
 
-            TCRQuests.TALK_TO_FERRY_GIRL_1.start(player);
-            TCRQuests.TALK_TO_ORNN_1.start(player);
+            TCRQuests.TALK_TO_FERRY_GIRL_0.start(player);
+            TCRQuests.TALK_TO_ORNN_0.start(player);
             ItemUtil.addItem(player, TCRItems.LAND_RESONANCE_STONE.get(), 1, true);
             PlayerDataManager.chonosTalked.put(player, true);
         }

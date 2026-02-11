@@ -42,7 +42,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
 
         this.add("item.domesticationinnovation.collar_tag.tcr_info", "It allows for special enchantments to be applied to pets.");
         this.addTCRItemInfo(net.blay09.mods.waystones.item.ModItems.warpStone, "Click the §6[Scroll]§r button in the inventory to teleport to activated waystones!");
-        this.addTCRItemInfo("§cWarning! This item may cause important items to be sucked into the backpack and become invalid!", net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.ADVANCED_MAGNET_UPGRADE.get(), net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.MAGNET_UPGRADE.get(), net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.PICKUP_UPGRADE.get());
+        this.addTCRItemInfo("§cWarning! This item may cause important items to be sucked into the backpack and become invalid!", net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.ADVANCED_MAGNET_UPGRADE.get(), net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.MAGNET_UPGRADE.get(), net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.PICKUP_UPGRADE.get(), net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.ADVANCED_PICKUP_UPGRADE.get());
         this.addTCRItemInfo(ItemRegistry.BOTTLE_OF_BLOOD.get(), "Brewed using §c[Crystallized Blood Marrow]§r, a drop from §d[Nehemoth]§r");
         this.addTCRItemInfo(EFNItem.DEEPDARK_HEART.get(), "Obtained by defeating the §2[Warden]§r or §2[Captain Cornelia]§r");
         this.addTCRItemInfo(BlockFactorysBossesModItems.DRAGON_SKULL.get(), "Obtained by defeating the §c[Underworld Knight]§r or §4[Infernal Dragon]§r");
@@ -149,11 +149,6 @@ public class TCRENLangGenerator extends TCRLangProvider {
 
         this.addInfo("get_mimic_invite", "[%s]: Otherworldly one, I knew I was right about you! Take this §6[%s§6]§f!");
         this.addInfo("kill_arterius", "[%s]: Otherworlder, you are indeed formidable! It seems the prophecy is true! Then, I shall bestow these pieces of [%s] upon you!");
-        this.addInfo("kill_boss1", "§d[Voice from unknown origin]:§r Defend... Sky Island... Eliminate... the Black Tide...");
-        this.addInfo("kill_boss2", "§c[Voice from unknown origin]:§r Defend... the Dragonborn... Eliminate... the Black Tide...");
-        this.addInfo("kill_boss3", "§3[Voice from unknown origin]:§r ...Run...");
-        this.addInfo("kill_boss4", "§a[Voice from unknown origin]:§r ...Give it... back... I want more...");
-        this.addInfo("kill_boss5", "§e[Voice from unknown origin]:§r Hahaha, I am free at last!");
 
         this.addInfo("finish_all_eye", "§dAll altars are lit!§r");
         this.addInfo("time_to_altar", "The scattered embers have been found. It's time to return and light-up the altars...");

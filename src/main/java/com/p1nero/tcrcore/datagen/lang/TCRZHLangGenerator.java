@@ -30,11 +30,16 @@ public class TCRZHLangGenerator extends TCRLangProvider {
     @Override
     protected void addTranslations() {
 
+        this.addQuest(TCRQuests.WAIT_RESONANCE_STONE_CHARGE, "间章", "", "");
+        this.addQuest(TCRQuests.PUT_THE_EYE_ON_ALTAR, "间章", "", "");
+        this.addQuest(TCRQuests.TRY_GO_CLOUDLAND, "间章", "", "");
+        this.addQuest(TCRQuests.BLESS_ON_THE_GODNESS_STATUE, "间章", "", "");
+
         //序章
-        this.addQuest(TCRQuests.TALK_TO_AINE_1, "序章", "和%s对话", "和%s说好了一起来到这个世界，但是当你回过神来后%s已经找不着人影了，快去圣殿里找找她吧！你依稀记得她好像说有什么新时装要给你。");
-        this.addQuest(TCRQuests.TALK_TO_CHRONOS_1, "序章", "和？对话", "和%s说好了一起来到这个世界，但是当你回过神来后%s已经找不着人影了。这里到底是什么地方？和圣殿长廊中那位端庄的女人交流看看吧！");
-        this.addQuest(TCRQuests.TALK_TO_FERRY_GIRL_1, "序章", "前往Overworld", "你已经听说了这个世界的故事，准备好了就前往码头寻找 %s 吧！她将为我们打开前往Overworld的路！她似乎有什么宝贝要送给你。");
-        this.addQuest(TCRQuests.TALK_TO_ORNN_1, "序章", "和%s对话", "在%s的建议下，先去武库找%s武装一下我们自己吧！充分的武装才能保证我们顺利的冒险！");
+        this.addQuest(TCRQuests.TALK_TO_AINE_0, "序章", "和%s对话", "和%s说好了一起来到这个世界，但是当你回过神来后%s已经找不着人影了，快去圣殿里找找她吧！你依稀记得她好像说有什么新时装要给你。");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_0, "序章", "和？对话", "和%s说好了一起来到这个世界，但是当你回过神来后%s已经找不着人影了。这里到底是什么地方？和圣殿长廊中那位端庄的女人交流看看吧！");
+        this.addQuest(TCRQuests.TALK_TO_FERRY_GIRL_0, "序章", "前往Overworld", "你已经听说了这个世界的故事，准备好了就前往码头寻找 %s 吧！她将为我们打开前往Overworld的路！她似乎有什么宝贝要送给你。");
+        this.addQuest(TCRQuests.TALK_TO_ORNN_0, "序章", "和%s对话", "在%s的建议下，先去武库找%s武装一下我们自己吧！充分的武装才能保证我们顺利的冒险！");
 
         //驯龙支线
         this.addQuest(TCRQuests.TAME_DRAGON, "驯龙之章", "将龙养大", "%s送给了你一条龙，现在，按[%s]上说的办法，将它养成年吧！龙，可是帝王之征！");
@@ -42,8 +47,9 @@ public class TCRZHLangGenerator extends TCRLangProvider {
 
         //主线·沙漠之眼
         this.addQuest(TCRQuests.USE_RESONANCE_STONE_1, "大地之章", "使用[%s]", "你终于来到了传说中的Overworld。在这里将会遇到什么样的冒险呢？快使用[%s]吧！它将指引我们寻回第一颗眼睛。");
-        this.addQuest(TCRQuests.GET_DESERT_EYE, "大地之章", "寻回[%s]", "[%s]为我们标记了[%s]所散落的位置，快出发去寻回[%s]吧！");
+        this.addQuest(TCRQuests.GET_DESERT_EYE, "大地之章", "寻回[%s]", "[%s]为我们标记了[%s]所散落的位置，快出发去寻回[%s]吧！\n\n§4[注意]：若获取后无法完成任务，请尝试关闭可能自动拾取物品的插件，并重新拾取！");
         this.addQuest(TCRQuests.BONE_CHIMERA_QUEST, "大地之章", "前往[%s]", "[%s]似乎为我们标记了一个另一个地点，说不定有什么奇遇，快去看看吧！");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_1, "大地之章", "和%s对话", "[%s]已经寻回，快回主城找%s汇报吧！她将告诉我们下一步该做什么。");
 
         this.addEffect(TCREffects.INVULNERABLE, "无敌");
         this.addEffect(TCREffects.SOUL_INCINERATOR, "灵魂火");
@@ -58,7 +64,7 @@ public class TCRZHLangGenerator extends TCRLangProvider {
 
         this.add("item.domesticationinnovation.collar_tag.tcr_info", "可进行特殊附魔，并将附魔应用于宠物身上。");
         this.addTCRItemInfo(net.blay09.mods.waystones.item.ModItems.warpStone, "点击物品栏中的传送卷轴按钮以进行传送。");
-        this.addTCRItemInfo("§c警告！此物品可能导致重要道具被吸入背包而失效！", net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.ADVANCED_MAGNET_UPGRADE.get(), net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.MAGNET_UPGRADE.get(), net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.PICKUP_UPGRADE.get());
+        this.addTCRItemInfo("§c警告！此物品可能导致重要道具被吸入背包而失效！", net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.ADVANCED_MAGNET_UPGRADE.get(), net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.MAGNET_UPGRADE.get(), net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.PICKUP_UPGRADE.get(), net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.ADVANCED_PICKUP_UPGRADE.get());
         this.addTCRItemInfo(ItemRegistry.BOTTLE_OF_BLOOD.get(), "使用§d[尼赫莫斯]§r掉落物§c[晶化血髓]§r酿造获取");
         this.addTCRItemInfo(EFNItem.DEEPDARK_HEART.get(), "击败§2[监守者]§r或§2[可妮莉亚船长]§r获取");
         this.addTCRItemInfo(BlockFactorysBossesModItems.DRAGON_SKULL.get(), "击败§c[冥界骑士]§r或§4[炼狱魔龙]§r获取");
@@ -167,11 +173,6 @@ public class TCRZHLangGenerator extends TCRLangProvider {
 
         this.addInfo("get_mimic_invite", "[%s]: 异界之人，我果然没看错你！这封§6[%s§6]§f，你收下罢！");
         this.addInfo("kill_arterius", "[%s]: 异界之人，果然有几分本事！看来预言是对的！这几块[%s§f]，赠予你罢！");
-        this.addInfo("kill_boss1", "§d[不知何处的声音]：§r捍卫…天空岛…扫除…黑潮…");
-        this.addInfo("kill_boss2", "§c[不知何处的声音]：§r捍卫…龙裔…扫除…黑潮…");
-        this.addInfo("kill_boss3", "§3[不知何处的声音]：§r…快逃…");
-        this.addInfo("kill_boss4", "§a[不知何处的声音]：§r…还…给我…我还要…");
-        this.addInfo("kill_boss5", "§e[不知何处的声音]：§r哈哈哈，吾自由矣！");
 
         this.addInfo("finish_all_eye", "§d众祭坛已点亮！§r");
         this.addInfo("time_to_altar", "失散火种已寻，该回去点亮祭坛了...");
