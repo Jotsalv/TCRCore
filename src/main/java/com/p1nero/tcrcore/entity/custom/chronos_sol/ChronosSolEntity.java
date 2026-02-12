@@ -185,6 +185,8 @@ public class ChronosSolEntity extends PathfinderMob implements IEntityNpc, GeoEn
                             .addChild(new DialogNode(dBuilder.ans(14), dBuilder.opt(-1))
                                     .addChild(new DialogNode(dBuilder.ans(15), dBuilder.opt(-1))
                                             .addLeaf(dBuilder.opt(-2), 2))));
+        } else if(TCRQuests.TALK_TO_CHRONOS_2.equals(currentQuest)) {
+            //充能完毕，去开始领海洋共鸣石
         } else {
             //默认的情况
 
@@ -210,7 +212,6 @@ public class ChronosSolEntity extends PathfinderMob implements IEntityNpc, GeoEn
         //初次对话，准备启程
         if(code == 1) {
             TCRQuests.TALK_TO_CHRONOS_0.finish(player);
-
             TCRQuests.TALK_TO_FERRY_GIRL_0.start(player);
             TCRQuests.TALK_TO_ORNN_0.start(player);
             ItemUtil.addItem(player, TCRItems.LAND_RESONANCE_STONE.get(), 1, true);
@@ -219,6 +220,7 @@ public class ChronosSolEntity extends PathfinderMob implements IEntityNpc, GeoEn
 
         //拿回大地眼睛后的对话
         if(code == 2) {
+            TCRQuests.TALK_TO_CHRONOS_1.finish(player);
             //还没摆放则提示摆放沙漠眼
             if(!PlayerDataManager.desertEyeActivated.get(player)) {
                 TCRQuests.PUT_DESERT_EYE_ON_ALTAR.start(player);
@@ -230,9 +232,6 @@ public class ChronosSolEntity extends PathfinderMob implements IEntityNpc, GeoEn
 
             TCRPlayer tcrPlayer = TCRCapabilityProvider.getTCRPlayer(player);
             tcrPlayer.startWaitingResonanceStoneCharge(player);
-
-            TCRQuests.TALK_TO_CHRONOS_2.finish(player);
-
         }
 
         this.setConversingPlayer(null);

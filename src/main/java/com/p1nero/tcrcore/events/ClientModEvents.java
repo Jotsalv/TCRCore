@@ -20,12 +20,16 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ItemEntityRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import yesman.epicfight.api.client.forgeevent.PatchedRenderersEvent;
+import yesman.epicfight.api.client.model.Meshes;
+import yesman.epicfight.client.renderer.patched.entity.PCustomHumanoidEntityRenderer;
+import yesman.epicfight.client.renderer.patched.entity.PHumanoidRenderer;
 import yesman.epicfight.client.renderer.patched.entity.PIronGolemRenderer;
 
 @Mod.EventBusSubscriber(modid = TCRCoreMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -74,6 +78,7 @@ public class ClientModEvents {
     public static void onRenderPatched(PatchedRenderersEvent.Add event) {
         EntityRendererProvider.Context context = event.getContext();
         event.addPatchedEntityRenderer(TCREntities.TUTORIAL_GOLEM.get(), (entityType) -> new PIronGolemRenderer(context, entityType).initLayerLast(context, entityType));
+        event.addPatchedEntityRenderer(EntityType.DROWNED, (entityType -> new PHumanoidRenderer<>(Meshes.BIPED_OLD_TEX, context, entityType)));
     }
 
     @SubscribeEvent

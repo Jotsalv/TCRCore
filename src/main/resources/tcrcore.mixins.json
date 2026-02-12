@@ -7,6 +7,7 @@
   "mixins": [
     "AbilityStoneItemMixin",
     "AdvancedCombatGoalMixin",
+    "AetherMixin",
     "AltarOfAbyssBlockEntityMixin",
     "Ancient_Remnant_EntityMixin",
     "AnimatedAttackGoalMixin",

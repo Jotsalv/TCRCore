@@ -34,14 +34,14 @@ import java.util.regex.Pattern;
 
 public class WorldUtil {
     //祭坛定位
-    public static final Vec3i DESERT_EYE_ALTAR_POS = new Vec3i(-140, 85, -176);
-    public static final Vec3i ABYSS_EYE_ALTAR_POS = new Vec3i(-128, 85, -206);
-    public static final Vec3i CURSED_EYE_ALTAR_POS = new Vec3i(-128, 85, -176);
-    public static final Vec3i FLAME_EYE_ALTAR_POS = new Vec3i(-116, 85, -176);
-    public static final Vec3i MECH_EYE_ALTAR_POS = new Vec3i(-104, 85, -176);
-    public static final Vec3i STORM_EYE_ALTAR_POS = new Vec3i(-140, 85, -206);
-    public static final Vec3i VOID_EYE_ALTAR_POS = new Vec3i(-116, 85, -206);
-    public static final Vec3i MONST_EYE_ALTAR_POS = new Vec3i(-104, 85, -206);
+    public static final Vec3i DESERT_EYE_ALTAR_POS = new Vec3i(-140, 83, -176);
+    public static final Vec3i ABYSS_EYE_ALTAR_POS = new Vec3i(-128, 83, -206);
+    public static final Vec3i CURSED_EYE_ALTAR_POS = new Vec3i(-128, 83, -176);
+    public static final Vec3i FLAME_EYE_ALTAR_POS = new Vec3i(-116, 83, -176);
+    public static final Vec3i MECH_EYE_ALTAR_POS = new Vec3i(-104, 83, -176);
+    public static final Vec3i STORM_EYE_ALTAR_POS = new Vec3i(-140, 83, -206);
+    public static final Vec3i VOID_EYE_ALTAR_POS = new Vec3i(-116, 83, -206);
+    public static final Vec3i MONST_EYE_ALTAR_POS = new Vec3i(-104, 83, -206);
 
     public static final Vec3i ORNN_POS = new Vec3i(-224, 80, -99);
     public static final BlockPos SMITH_BLOCK_POS = new BlockPos(-226, 77, -100);
@@ -49,7 +49,7 @@ public class WorldUtil {
     public static final Vec3i FERRY_GIRL_POS = new Vec3i(80, 74, -133);
     public static final Vec3i FERRY_GIRL_PORTAL_POS = new Vec3i(80, 73, -138);
     public static final Vec3i START_POS = new Vec3i(-3, 75, -190);
-    public static final Vec3i GODNESS_STATUE_POS = new Vec3i(-169, 79, -118);
+    public static final Vec3i GODNESS_STATUE_POS = new Vec3i(-169, 86, -118);
     public static final Vec3 GOLEM_CENTER_POS_VEC3 = new Vec3(78, 75, -190);
     public static final Vec3i GOLEM_CENTER_POS_VEC3I = new Vec3i(78, 75, -190);
     public static final Vec3 CENTER_POS = new Vec3(-19, 75, -79);
