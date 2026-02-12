@@ -33,6 +33,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class WorldUtil {
+    //祭坛定位
+    public static final Vec3i DESERT_EYE_ALTAR_POS = new Vec3i(-140, 85, -176);
+    public static final Vec3i ABYSS_EYE_ALTAR_POS = new Vec3i(-128, 85, -206);
+    public static final Vec3i CURSED_EYE_ALTAR_POS = new Vec3i(-128, 85, -176);
+    public static final Vec3i FLAME_EYE_ALTAR_POS = new Vec3i(-116, 85, -176);
+    public static final Vec3i MECH_EYE_ALTAR_POS = new Vec3i(-104, 85, -176);
+    public static final Vec3i STORM_EYE_ALTAR_POS = new Vec3i(-140, 85, -206);
+    public static final Vec3i VOID_EYE_ALTAR_POS = new Vec3i(-116, 85, -206);
+    public static final Vec3i MONST_EYE_ALTAR_POS = new Vec3i(-104, 85, -206);
+
     public static final Vec3i ORNN_POS = new Vec3i(-224, 80, -99);
     public static final BlockPos SMITH_BLOCK_POS = new BlockPos(-226, 77, -100);
     public static final Vec3i AINE_POS = new Vec3i(-115, 80, -127);

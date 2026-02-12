@@ -17,7 +17,6 @@ import com.yungnickyoung.minecraft.ribbits.module.EntityTypeModule;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
-import net.shelmarow.nightfall_invade.entity.NFIEntities;
 import net.sonmok14.fromtheshadows.server.utils.registry.ItemRegistry;
 import net.unusual.blockfactorysbosses.init.BlockFactorysBossesModItems;
 
@@ -71,6 +70,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addItemUsageInfo(TCRItems.MYSTERIOUS_WEAPONS.get(), "It seems to record all manner of weapons from around the world. You should show it to someone who knows about such things.");
         this.add(TCRItems.DRAGON_FLUTE.get(), "Dragon Flute");
         this.addItemUsageInfo(TCRItems.DRAGON_FLUTE.get(), "Right-click to capture a dragon; right-click again to release it.");
+        this.add(TCRItems.RESONANCE_STONE.get(), "Resonance Stone");
         this.add(TCRItems.LAND_RESONANCE_STONE.get(), "Land Resonance Stone");
         this.addInfo("resonance_stone_usage", "Can resonate with the location of the Angel's seal");
         this.add(TCRItems.CORE_FLINT.get(), "Core Flint");
@@ -259,89 +259,6 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addDialogOption(EntityType.VILLAGER, 2, "[What are you mumbling about?]");
         this.addDialogOption(EntityType.VILLAGER, 3, "[Why can't I understand the villagers' language...]");
 
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 0, "Back");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 1, "Who are you?");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 2, "What Haidilao?");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 3, "Why is this world entirely ocean?");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 4, "How can I help you?");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 5, "Mark Location");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 6, "I was just joking earlier!");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 7, "§aI have already defeated a pillager§f");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 8, "Wow, how did you turn into a beautiful girl?");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 9, "Reveal the Oracle");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 0, "So... you drifted here from beyond this world?");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 1, "I am a deity, a guardian of this world. On that day, the heavens showed strange signs, thunder roared, and you descended upon this land. You must be the otherworldly heroes foretold in the ancient prophecy!");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 2, "Once, the world was full of life, and heroic spirits protected the heavens and earth. Until one day, the §d「Black Tide」§f descended upon the world, everything was corrupted, and some villagers even turned into illagers. The gods, unable to resist the §d「Black Tide」§f, became spirits, the world was destroyed, leaving only a vast ocean. According to the ancient prophecy, I sealed their remaining power here, §6but some of their sparks have scattered to various places.§f Cursed, I cannot leave this place, so I can only wait silently for a savior to appear...");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 3, "Though the world is destroyed, with the ferryman's power, stepping into the Primordial Ocean can restore the past! The ancient prophecy says that once you retrieve all the lost divine eyes from the world of the past, you can rebuild the temple, perform the ritual, cleanse the §d「Black Tide」§f, and restart the world! But before that, first §6defeat an illager (pillager)§f and then §fcome back to me.");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 4, "It seems you truly are the savior foretold in the prophecy! Have you collected any §d『Oracle Fragments』§f during your journey? Give the §d『Oracle Fragments』§f to me, and I will reveal the locations of the sparks recorded in the oracle! Once you light all the sparks, I will initiate the §d「Black Tide」§f cleansing ritual!");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 5, "Why did you attack me?");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 6, "Since you have proven your strength, I shall shed my disguise and show you my true form.");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 7, "§d『Oracle Fragments!』§f Give them to me, and I will reveal the locations of the divine eyes scattered in the world of the past as recorded in the oracle! Once you step into the memory of the Overworld, I will mark the clues revealed by the oracle for you!");
-
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 8, "O prophesied savior, what troubles you?");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 10, "How can I obtain the most powerful strength in this world?");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 11, "What should we do next?");
-
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 16, "What are the other unknown altars in the long corridor?");
-
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 12, "[I have lit all the altars, begin the ritual!]");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 13, "[I don't understand...]");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 14, "[Who are you, really?]");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 15, "[Continue]"); // Pull into the barrier
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 17, "[You caught me, hehe]");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 18, "How can I obtain Oracle Fragments?");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 9, "The §dEnder Dragon§f, located within the End's alien space, has a deep connection to the §d「Black Tide」§f. After defeating it, the essence it gives birth to can be forged into the Yamato, a power from another world, immeasurable.");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 10, "You simply need to give the §d『Oracle Fragments』§f to me. Once you step into the memory of the Overworld, I will reveal the locations of the divine eyes recorded in the oracle! Then you can go to the places I've marked on your map, defeat the demons, reclaim the divine eyes, §6and offer them at the altars in the long corridor§f. Once the divine eyes are retrieved, you can initiate the ritual to purify the §d「Black Tide」§f!");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 11, "Outsider... You don't actually believe you're some savior, do you? Hahahaha, you are merely a puppet I've used to reclaim my power!");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 12, "Everything you defeated, they were the divine guardians of this world, the very ones who stood in the way of my grand plan! This place is my dwelling. As long as they are gone, losing a few illagers means nothing to me. Moreover, the demon god sparks you brought back can help me rebuild my physical form.");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 13, "Who am I? You, as a sacrificial offering, have no right to know! What foolish ritual? After absorbing your power, the world shall be under my rule! Die!");
-
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 14, "This... I've once fought the §d「Black Tide Legion」§f here. Some of the spirits sealed in the altars have lost their response and will never return... But the remaining spirits are enough to initiate the ritual.");
-
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 15, "§bThe Eye of Storm§f... I sense it scattered in §6[%s]§f, defeat %s and reclaim it! I will wait here.");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 19, "§6The Eye of Blaze§f... I sense it scattered in §6[%s]§f, defeat %s and reclaim it! I will wait here.");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 16, "§3The Eye of Abyss§f... I sense it scattered in §6[%s]§f, defeat %s and reclaim it! I will wait here.");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 17, "§2The Eye of Curse§f... I sense it scattered in §6[%s]§f defeat %s and reclaim it! I will wait here.");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 18, "§eThe Eye of Desert§f... I sense it scattered in §6[%s]§f defeat %s and reclaim it! I will wait here.");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 20, "Following the normal process, how could there be extra Oracle Fragments? Did you steal them from someone?");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 21, "Since you have lit all the altars, after you §6enter and defeat the spirits, absorbing the power of all the spirits§f, we shall begin the ritual!");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 22, "Go to the place I guide you, retrieve the §d[Eye of God]§f, and offer it to §6[the goddess statue in the central courtyard of the temple]§f. The goddess statue will reveal the oracle to you!");
-
-        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 0, "Long time no see, esteemed one!");
-        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 1, "Have you forgotten me? I am the Ferry girl of the Saint Temple, here to guide the lost. If you have any rare treasures, show them to me. I can extract their memoria and transform them into artifacts! When you can set foot in §cthe Nether§f or §dthe End§f, I can also give you a ride.");
-        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 2, "If you have sufficient experience, open the skill panel to learn skills. §6Click the experience orb in the top right corner of the skill tree interface to convert experience into skill points.§f Skill allocation is crucial; consider learning skills that enhance survivability, like Health Boost!");
-        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 3, "I am the Ferry girl of the Saint Temple, here to guide the lost. If you have any rare treasures, show them to me. I can extract their memoria and transform them into artifacts! When you can set foot in §cthe Nether§f or §dthe End§f, I can also give you a ride. As a first meeting gift, take this artifact. Press §d[%s]§f to deploy the sail and travel thousands of miles!");
-        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 4, "Esteemed one, are you sure you wish to go? I cannot bring you back... Please ensure you have the Waystone with you.");
-        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 5, "§d[%s]§f can be obtained through relic chests or by completing certain quests. If you possess §d[%s]§f, press §6[%s]§f to open the skill panel and learn skills. Skill allocation is very important—it is recommended to learn skills like Health Boost and others that enhance survivability!");
-
-        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 0, "Back");
-        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 1, "Who are you?");
-        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 2, "Weapon Extraction");
-        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 3, "Armor Refining");
-        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 4, "Learn Skills");
-        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 5, "Open Skill Tree");
-        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 6, "Go to the Nether");
-        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 7, "Go to the End");
-        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 8, "Confirm");
-        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 9, "Artifact Extraction");
-        this.addDialogOption(TCREntities.FERRY_GIRL.get(), 10, "§aGo to the Overworld§f");
-
-        this.addDialogAnswer(NFIEntities.ARTERIUS.get(), 0, "Otherworldly one, why have you come here?");
-        this.addDialogAnswer(NFIEntities.ARTERIUS.get(), 1, "Hahaha, the Sanctuary Keeper entrusted the Eye of Flame to me to prevent it from falling into the hands of the unworthy. Even if she were to come herself, she would have to get through me! Let me see if you have what it takes!");
-        this.addDialogAnswer(NFIEntities.ARTERIUS.get(), 2, "Otherworldly one, long time no see!");
-        this.addDialogAnswer(NFIEntities.ARTERIUS.get(), 3, "Are you ready?");
-        this.addDialogAnswer(NFIEntities.ARTERIUS.get(), 4, "During the Black Tide, the §6[Piglin clan]§f§f of the Nether created [%s] to resist the darkness. Unfortunately, they were defeated and lost their sanity. However, they still recognize [%s§f§f]. Use [%s§f§f] to trade with them, and you may unveil the secrets of the ancient war machines.");
-        this.addDialogAnswer(NFIEntities.ARTERIUS.get(), 5, "[%s] and [%s] guard the echoes of [%s] and [%s], respectively.");
-        this.addDialogAnswer(NFIEntities.ARTERIUS.get(), 6, "After you retrieve them, come find me again, and I will show you the power of §4§l[The Lethean Sea]§f§f!");
-        this.addDialogOption(NFIEntities.ARTERIUS.get(), 0, "Retrieve the Eye of Flame");
-        this.addDialogOption(NFIEntities.ARTERIUS.get(), 1, "Take your life");
-        this.addDialogOption(NFIEntities.ARTERIUS.get(), 2, "I'm ready");
-        this.addDialogOption(NFIEntities.ARTERIUS.get(), 3, "Wait a moment");
-        this.addDialogOption(NFIEntities.ARTERIUS.get(), 4, "Spar with me");
-        this.addDialogOption(NFIEntities.ARTERIUS.get(), 5, "Ask for information");
-        this.addDialogOption(NFIEntities.ARTERIUS.get(), 6, "Continue");
-        this.addDialogOption(NFIEntities.ARTERIUS.get(), 7, "Take my leave");
-        this.addDialogOption(NFIEntities.ARTERIUS.get(), 8, "§aFinish");
 
         this.addDialogAnswer(EntityTypeModule.RIBBIT.get(), 0, "Gu Gu ga ga!");
         this.addDialogOption(EntityTypeModule.RIBBIT.get(), 0, "Accept");

@@ -7,10 +7,7 @@ import com.p1nero.dialog_lib.api.entity.goal.LookAtConservingPlayerGoal;
 import com.p1nero.dialog_lib.client.screen.DialogueScreen;
 import com.p1nero.dialog_lib.client.screen.builder.StreamDialogueScreenBuilder;
 import com.p1nero.tcrcore.TCRCoreMod;
-import com.p1nero.tcrcore.capability.PlayerDataManager;
-import com.p1nero.tcrcore.capability.TCRCapabilityProvider;
-import com.p1nero.tcrcore.capability.TCRQuestManager;
-import com.p1nero.tcrcore.capability.TCRQuests;
+import com.p1nero.tcrcore.capability.*;
 import com.p1nero.tcrcore.entity.TCREntities;
 import com.p1nero.tcrcore.item.TCRItems;
 import com.p1nero.tcrcore.utils.ItemUtil;
@@ -183,7 +180,11 @@ public class ChronosSolEntity extends PathfinderMob implements IEntityNpc, GeoEn
                     .addChild(aboutNext);
         } else if(TCRQuests.TALK_TO_CHRONOS_1.equals(currentQuest)) {
             //提交沙漠眼
-//            root = new DialogNode(dBuilder.ans());
+            root = new DialogNode(dBuilder.ans(12))
+                    .addChild(new DialogNode(dBuilder.ans(13), dBuilder.opt(7))
+                            .addChild(new DialogNode(dBuilder.ans(14), dBuilder.opt(-1))
+                                    .addChild(new DialogNode(dBuilder.ans(15), dBuilder.opt(-1))
+                                            .addLeaf(dBuilder.opt(-2), 2))));
         } else {
             //默认的情况
 
@@ -215,6 +216,25 @@ public class ChronosSolEntity extends PathfinderMob implements IEntityNpc, GeoEn
             ItemUtil.addItem(player, TCRItems.LAND_RESONANCE_STONE.get(), 1, true);
             PlayerDataManager.chonosTalked.put(player, true);
         }
+
+        //拿回大地眼睛后的对话
+        if(code == 2) {
+            //还没摆放则提示摆放沙漠眼
+            if(!PlayerDataManager.desertEyeActivated.get(player)) {
+                TCRQuests.PUT_DESERT_EYE_ON_ALTAR.start(player);
+            }
+            //还没祈福则提示祈福
+            if(!PlayerDataManager.desertEyeBlessed.get(player)) {
+                TCRQuests.BLESS_ON_THE_GODNESS_STATUE.start(player);
+            }
+
+            TCRPlayer tcrPlayer = TCRCapabilityProvider.getTCRPlayer(player);
+            tcrPlayer.startWaitingResonanceStoneCharge(player);
+
+            TCRQuests.TALK_TO_CHRONOS_2.finish(player);
+
+        }
+
         this.setConversingPlayer(null);
     }
 

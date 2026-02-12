@@ -30,10 +30,18 @@ public class TCRZHLangGenerator extends TCRLangProvider {
     @Override
     protected void addTranslations() {
 
-        this.addQuest(TCRQuests.WAIT_RESONANCE_STONE_CHARGE, "间章", "", "");
-        this.addQuest(TCRQuests.PUT_THE_EYE_ON_ALTAR, "间章", "", "");
-        this.addQuest(TCRQuests.TRY_GO_CLOUDLAND, "间章", "", "");
-        this.addQuest(TCRQuests.BLESS_ON_THE_GODNESS_STATUE, "间章", "", "");
+        this.addQuest(TCRQuests.WAIT_RESONANCE_STONE_CHARGE, "间章", "等待[%s]充能", "[%s]的能量已经耗尽，重新充能需要一段时间。在充能完成之前先去做点别的事吧！\n\n§6[注意]：若不想等待，可使用\"/time add\"命令将时间增加6000。");
+        this.addQuest(TCRQuests.PUT_DESERT_EYE_ON_ALTAR, "间章", "将[%s]置于祭坛上", "[%s]已经寻回，快将它归位到圣殿长廊的祭坛上吧！");
+        this.addQuest(TCRQuests.PUT_ABYSS_EYE_ON_ALTAR, "间章", "将[%s]置于祭坛上", "[%s]已经寻回，快将它归位到圣殿长廊的祭坛上吧！");
+        this.addQuest(TCRQuests.PUT_CURSED_EYE_ON_ALTAR, "间章", "将[%s]置于祭坛上", "[%s]已经寻回，快将它归位到圣殿长廊的祭坛上吧！");
+        this.addQuest(TCRQuests.PUT_FLAME_EYE_ON_ALTAR, "间章", "将[%s]置于祭坛上", "[%s]已经寻回，快将它归位到圣殿长廊的祭坛上吧！");
+        this.addQuest(TCRQuests.PUT_MECH_EYE_ON_ALTAR, "间章", "将[%s]置于祭坛上", "[%s]已经寻回，快将它归位到圣殿长廊的祭坛上吧！");
+        this.addQuest(TCRQuests.PUT_STORM_EYE_ON_ALTAR, "间章", "将[%s]置于祭坛上", "[%s]已经寻回，快将它归位到圣殿长廊的祭坛上吧！");
+        this.addQuest(TCRQuests.PUT_VOID_EYE_ON_ALTAR, "间章", "将[%s]置于祭坛上", "[%s]已经寻回，快将它归位到圣殿长廊的祭坛上吧！");
+        this.addQuest(TCRQuests.PUT_MONST_EYE_ON_ALTAR, "间章", "将[%s]置于祭坛上", "[%s]已经寻回，快将它归位到圣殿长廊的祭坛上吧！");
+        this.addQuest(TCRQuests.BLESS_ON_THE_GODNESS_STATUE, "间章", "在女神像处祈福", "[神之眼]已经寻回，借助花园里的女神像，我们可以与神之眼共鸣，获得来自使徒们的力量。");
+
+        this.addQuest(TCRQuests.TALK_TO_AINE_CLOUDLAND, "间章", "", "");
 
         //序章
         this.addQuest(TCRQuests.TALK_TO_AINE_0, "序章", "和%s对话", "和%s说好了一起来到这个世界，但是当你回过神来后%s已经找不着人影了，快去圣殿里找找她吧！你依稀记得她好像说有什么新时装要给你。");
@@ -48,9 +56,13 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         //主线·沙漠之眼
         this.addQuest(TCRQuests.USE_RESONANCE_STONE_1, "大地之章", "使用[%s]", "你终于来到了传说中的Overworld。在这里将会遇到什么样的冒险呢？快使用[%s]吧！它将指引我们寻回第一颗眼睛。");
         this.addQuest(TCRQuests.GET_DESERT_EYE, "大地之章", "寻回[%s]", "[%s]为我们标记了[%s]所散落的位置，快出发去寻回[%s]吧！\n\n§4[注意]：若获取后无法完成任务，请尝试关闭可能自动拾取物品的插件，并重新拾取！");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_1, "大地之章", "和%s对话", "[%s]已经寻回，快回主城找%s汇报吧！她将告诉我们下一步该做什么。");
+        //奇美拉支线
         this.addQuest(TCRQuests.BONE_CHIMERA_QUEST, "大地之章", "前往[%s]", "[%s]似乎为我们标记了一个另一个地点，说不定有什么奇遇，快去看看吧！");
         this.addQuest(TCRQuests.TALK_TO_ORNN_1, "大地之章", "和%s对话", "从[%s]身上获得了[%s]。上面到底记载了什么秘密？带回主城找%s看看吧！");
-        this.addQuest(TCRQuests.TALK_TO_CHRONOS_1, "大地之章", "和%s对话", "[%s]已经寻回，快回主城找%s汇报吧！她将告诉我们下一步该做什么。");
+
+        //主线·深渊之眼
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_2, "海洋之章", "和%s对话", "经过漫长的等待，%s已完成充能。快回去找%s吧！她在圣殿里等你。");
 
         this.addEffect(TCREffects.INVULNERABLE, "无敌");
         this.addEffect(TCREffects.SOUL_INCINERATOR, "灵魂火");
@@ -94,6 +106,7 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.addItemUsageInfo(TCRItems.MYSTERIOUS_WEAPONS.get(), "上面似乎记载了世间百般兵器，拿给了解的人看看吧。");
         this.add(TCRItems.DRAGON_FLUTE.get(), "龙之笛");
         this.addItemUsageInfo(TCRItems.DRAGON_FLUTE.get(), "右键可收服龙，再次右键可释放龙。");
+        this.add(TCRItems.RESONANCE_STONE.get(), "共鸣石");
         this.add(TCRItems.LAND_RESONANCE_STONE.get(), "大地共鸣石");
         this.addInfo("resonance_stone_usage", "可与使徒封印的位置共鸣。");
         this.add(TCRItems.CORE_FLINT.get(), "炉心火石");
@@ -308,7 +321,11 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 10, "原始之海屏蔽了外界的气息，吾在此处无从得知祂们的位置。但借此§6共鸣石§f可再外界寻得神之眼散落的位置。我将这枚共鸣石给予阁下，待阁下到了主世界，共鸣石将引领你寻找使徒所在之处。切记，每个阶段仅能使用一次共鸣石！待阁下寻回神之眼后，吾方可利用神之眼铸造新的共鸣石。");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 11, "阁下可以先去§6[武库]§f找 %s 取一样趁手的武器。准备好了就去港口寻找 %s 吧，她将带你前往旅程的起点。");
 
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 12, "");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 12, "阁下，寻找沙漠之眼的旅途可还顺利？");
+        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 7, "§a我已寻回沙漠之眼");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 13, "阁下不愧是预言中的救世主！请阁下将神之眼归位到祭坛上吧！");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 14, "神之眼也可在女神像处祈福，神之眼所蕴含的使徒（Angel）的部分力量将通过神像享与阁下。");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 15, "共鸣石充能仍需要点时间，还请阁下等待！");
 
         this.addDialogOption(TCREntities.AINE_IRIS.get(), -2, "结束对话");
         this.addDialogOption(TCREntities.AINE_IRIS.get(), -1, "继续");

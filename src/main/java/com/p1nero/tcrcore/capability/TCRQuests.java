@@ -21,9 +21,14 @@ public class TCRQuests {
     //等共鸣石充能
     public static Quest WAIT_RESONANCE_STONE_CHARGE;
     //放置祭坛之上
-    public static Quest PUT_THE_EYE_ON_ALTAR;
-    //尝试进入幻境
-    public static Quest TRY_GO_CLOUDLAND;
+    public static Quest PUT_DESERT_EYE_ON_ALTAR;
+    public static Quest PUT_ABYSS_EYE_ON_ALTAR;
+    public static Quest PUT_CURSED_EYE_ON_ALTAR;
+    public static Quest PUT_FLAME_EYE_ON_ALTAR;
+    public static Quest PUT_MECH_EYE_ON_ALTAR;
+    public static Quest PUT_STORM_EYE_ON_ALTAR;
+    public static Quest PUT_VOID_EYE_ON_ALTAR;
+    public static Quest PUT_MONST_EYE_ON_ALTAR;
     //去女神像处祈福
     public static Quest BLESS_ON_THE_GODNESS_STATUE;
     //向安了解幻境
@@ -49,14 +54,68 @@ public class TCRQuests {
     public static Quest TALK_TO_ORNN_1;
 
     //获取海洋眼
+    public static Quest TALK_TO_CHRONOS_2;
 
     public static void init() {
 
-        WAIT_RESONANCE_STONE_CHARGE = TCRQuestManager.create("wait_resonance_stone_charge");
-        PUT_THE_EYE_ON_ALTAR = TCRQuestManager.create("put_the_eye_on_altar");
-        TRY_GO_CLOUDLAND = TCRQuestManager.create("try_go_cloudland");
-        BLESS_ON_THE_GODNESS_STATUE = TCRQuestManager.create("bless_on_the_godness_statue");
-        TALK_TO_AINE_CLOUDLAND = TCRQuestManager.create("talk_to_aine_cloudland");
+        WAIT_RESONANCE_STONE_CHARGE = TCRQuestManager.create("wait_resonance_stone_charge")
+                .shortDescParam(TCRItems.RESONANCE_STONE.get().getDescription())
+                .descParam(TCRItems.RESONANCE_STONE.get().getDescription());
+
+        PUT_DESERT_EYE_ON_ALTAR = TCRQuestManager.create("put_desert_eye_on_altar")
+                .withIcon(SIDE_QUEST_1)
+                .shortDescParam(com.github.L_Ender.cataclysm.init.ModItems.DESERT_EYE.get().getDescription())
+                .descParam(com.github.L_Ender.cataclysm.init.ModItems.DESERT_EYE.get().getDescription())
+                .withTrackingPos(new BlockPos(WorldUtil.DESERT_EYE_ALTAR_POS.above()), TCRDimensions.SANCTUM_LEVEL_KEY);
+
+        PUT_ABYSS_EYE_ON_ALTAR = TCRQuestManager.create("put_abyss_eye_on_altar")
+                .withIcon(SIDE_QUEST_1)
+                .shortDescParam(com.github.L_Ender.cataclysm.init.ModItems.ABYSS_EYE.get().getDescription())
+                .descParam(com.github.L_Ender.cataclysm.init.ModItems.ABYSS_EYE.get().getDescription())
+                .withTrackingPos(new BlockPos(WorldUtil.ABYSS_EYE_ALTAR_POS.above()), TCRDimensions.SANCTUM_LEVEL_KEY);
+
+        PUT_CURSED_EYE_ON_ALTAR = TCRQuestManager.create("put_cursed_eye_on_altar")
+                .withIcon(SIDE_QUEST_1)
+                .shortDescParam(com.github.L_Ender.cataclysm.init.ModItems.CURSED_EYE.get().getDescription())
+                .descParam(com.github.L_Ender.cataclysm.init.ModItems.CURSED_EYE.get().getDescription())
+                .withTrackingPos(new BlockPos(WorldUtil.CURSED_EYE_ALTAR_POS.above()), TCRDimensions.SANCTUM_LEVEL_KEY);
+
+        PUT_FLAME_EYE_ON_ALTAR = TCRQuestManager.create("put_flame_eye_on_altar")
+                .withIcon(SIDE_QUEST_1)
+                .shortDescParam(com.github.L_Ender.cataclysm.init.ModItems.FLAME_EYE.get().getDescription())
+                .descParam(com.github.L_Ender.cataclysm.init.ModItems.FLAME_EYE.get().getDescription())
+                .withTrackingPos(new BlockPos(WorldUtil.FLAME_EYE_ALTAR_POS.above()), TCRDimensions.SANCTUM_LEVEL_KEY);
+
+        PUT_MECH_EYE_ON_ALTAR = TCRQuestManager.create("put_mech_eye_on_altar")
+                .withIcon(SIDE_QUEST_1)
+                .shortDescParam(com.github.L_Ender.cataclysm.init.ModItems.MECH_EYE.get().getDescription())
+                .descParam(com.github.L_Ender.cataclysm.init.ModItems.MECH_EYE.get().getDescription())
+                .withTrackingPos(new BlockPos(WorldUtil.MECH_EYE_ALTAR_POS.above()), TCRDimensions.SANCTUM_LEVEL_KEY);
+
+        PUT_STORM_EYE_ON_ALTAR = TCRQuestManager.create("put_storm_eye_on_altar")
+                .withIcon(SIDE_QUEST_1)
+                .shortDescParam(com.github.L_Ender.cataclysm.init.ModItems.STORM_EYE.get().getDescription())
+                .descParam(com.github.L_Ender.cataclysm.init.ModItems.STORM_EYE.get().getDescription())
+                .withTrackingPos(new BlockPos(WorldUtil.STORM_EYE_ALTAR_POS.above()), TCRDimensions.SANCTUM_LEVEL_KEY);
+
+        PUT_VOID_EYE_ON_ALTAR = TCRQuestManager.create("put_void_eye_on_altar")
+                .withIcon(SIDE_QUEST_1)
+                .shortDescParam(com.github.L_Ender.cataclysm.init.ModItems.VOID_EYE.get().getDescription())
+                .descParam(com.github.L_Ender.cataclysm.init.ModItems.VOID_EYE.get().getDescription())
+                .withTrackingPos(new BlockPos(WorldUtil.VOID_EYE_ALTAR_POS.above()), TCRDimensions.SANCTUM_LEVEL_KEY);
+
+        PUT_MONST_EYE_ON_ALTAR = TCRQuestManager.create("put_monst_eye_on_altar")
+                .withIcon(SIDE_QUEST_1)
+                .shortDescParam(com.github.L_Ender.cataclysm.init.ModItems.MONSTROUS_EYE.get().getDescription())
+                .descParam(com.github.L_Ender.cataclysm.init.ModItems.MONSTROUS_EYE.get().getDescription())
+                .withTrackingPos(new BlockPos(WorldUtil.MONST_EYE_ALTAR_POS.above()), TCRDimensions.SANCTUM_LEVEL_KEY);
+
+        BLESS_ON_THE_GODNESS_STATUE = TCRQuestManager.create("bless_on_the_godness_statue")
+                .withIcon(SIDE_QUEST_1)
+                .withTrackingPos(new BlockPos(WorldUtil.GODNESS_STATUE_POS), TCRDimensions.SANCTUM_LEVEL_KEY);
+
+        TALK_TO_AINE_CLOUDLAND = TCRQuestManager.create("talk_to_aine_cloudland")
+                .withTrackingPos(new BlockPos(WorldUtil.AINE_POS.above(2)), TCRDimensions.SANCTUM_LEVEL_KEY);
 
         TALK_TO_AINE_0 = TCRQuestManager.create("talk_to_aine_0")
                 .shortDescParam(TCREntities.AINE_IRIS.get().getDescription())
@@ -102,10 +161,14 @@ public class TCRQuests {
                 .descParam(ModEntities.BONE_CHIMERA.get().getDescription(), TCRItems.MYSTERIOUS_WEAPONS.get().getDescription(),TCREntities.ORNN.get().getDescription())
                 .withTrackingPos(new BlockPos(WorldUtil.ORNN_POS.above(3)), TCRDimensions.SANCTUM_LEVEL_KEY);
 
-        //找回眼睛后
         TALK_TO_CHRONOS_1 = TCRQuestManager.create("talk_to_chronos_1")
                 .shortDescParam(TCREntities.CHRONOS_SOL.get().getDescription())
                 .descParam(com.github.L_Ender.cataclysm.init.ModItems.DESERT_EYE.get().getDescription(), TCREntities.CHRONOS_SOL.get().getDescription())
+                .withTrackingPos(new BlockPos(WorldUtil.CHRONOS_SOL_BLOCK_POS.above(4)), TCRDimensions.SANCTUM_LEVEL_KEY);
+
+        TALK_TO_CHRONOS_2 = TCRQuestManager.create("talk_to_chronos_2")
+                .shortDescParam(TCREntities.CHRONOS_SOL.get().getDescription())
+                .descParam(TCRItems.RESONANCE_STONE.get().getDescription(), TCREntities.CHRONOS_SOL.get().getDescription())
                 .withTrackingPos(new BlockPos(WorldUtil.CHRONOS_SOL_BLOCK_POS.above(4)), TCRDimensions.SANCTUM_LEVEL_KEY);
 
     }

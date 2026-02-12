@@ -56,6 +56,12 @@ public class TCRPlayer {
     private int tickAfterBless;
     private BlockPos blessPos;
     private Item blessItem;
+
+    //=======共鸣石冷却任务计时=======
+    private boolean resonanceStoneInCooldown;
+    private long resonanceStoneStartTime;
+    private final int resonanceStoneCooldown = 6000;
+
     //=======指路粒子=====
     private int spawnParticleTimer = 0;
     private final int particleCount = 20;
@@ -83,6 +89,13 @@ public class TCRPlayer {
 
     public List<TCRQuestManager.Quest> getCurrentQuests() {
         return currentQuests;
+    }
+
+    public void startWaitingResonanceStoneCharge(ServerPlayer serverPlayer) {
+        ServerLevel overworld = serverPlayer.server.overworld();
+        resonanceStoneStartTime = overworld.getDayTime();//防止玩家使用add
+        resonanceStoneInCooldown = true;
+        TCRQuests.WAIT_RESONANCE_STONE_CHARGE.start(serverPlayer);
     }
 
     public void setTickAfterBless(int tickAfterBless) {
@@ -144,6 +157,8 @@ public class TCRPlayer {
         tag.putDouble("healthAdder", healthAdder);
         tag.putInt("tickAfterBossDieLeft", tickAfterBossDieLeft);
         tag.putInt("tickAfterBless", tickAfterBless);
+        tag.putBoolean("resonanceStoneInCooldown", resonanceStoneInCooldown);
+        tag.putLong("resonanceStoneStartTime", resonanceStoneStartTime);
         tag.putInt("questSize", currentQuests.size());
         for (int i = 0; i < currentQuests.size(); i++) {
             tag.putInt("quest_" + i, currentQuests.get(i).getId());
@@ -162,6 +177,8 @@ public class TCRPlayer {
         tickAfterBossDieLeft = tag.getInt("tickAfterBossDieLeft");
         tickAfterBless = tag.getInt("tickAfterBless");
         currentQuests.clear();
+        resonanceStoneInCooldown = tag.getBoolean("resonanceStoneInCooldown");
+        resonanceStoneStartTime = tag.getLong("resonanceStoneStartTime");
         int questSize = tag.getInt("questSize");
         for (int i = 0; i < questSize; i++) {
             String key = "quest_" + i;
@@ -180,6 +197,8 @@ public class TCRPlayer {
     public void copyFrom(TCRPlayer old) {
         this.data = old.data;
         this.healthAdder = old.healthAdder;
+        this.resonanceStoneInCooldown = old.resonanceStoneInCooldown;
+        this.resonanceStoneStartTime = old.resonanceStoneStartTime;
         this.tickAfterBossDieLeft = old.tickAfterBossDieLeft;
         this.tickAfterBless = old.tickAfterBless;
         this.currentQuests = old.currentQuests;
@@ -205,6 +224,23 @@ public class TCRPlayer {
             handleAfterBossFight(serverPlayer);
             handleBless(serverLevel, serverPlayer);
             handleParticle(serverPlayer);
+            handleResonanceStoneCooldown(serverPlayer);
+        }
+    }
+
+    private void handleResonanceStoneCooldown(ServerPlayer serverPlayer) {
+        if(!resonanceStoneInCooldown) {
+            return;
+        }
+        ServerLevel overworld = serverPlayer.server.overworld();
+        long currentTime = overworld.getDayTime();
+        //冷却结束，根据任务给予共鸣石
+        if(currentTime < resonanceStoneStartTime || currentTime - resonanceStoneStartTime > 6000) {
+            TCRQuests.WAIT_RESONANCE_STONE_CHARGE.finish(serverPlayer, true);
+            if(PlayerDataManager.desertEyeGotten.get(serverPlayer)) {
+                TCRQuests.TALK_TO_CHRONOS_2.start(serverPlayer);
+            }
+            resonanceStoneInCooldown = false;
         }
     }
 
@@ -390,6 +426,9 @@ public class TCRPlayer {
                 }
                 if (oldAdder < healthAdder) {
                     updateHealth(serverPlayer, true, oldAdder);
+                    if(TCRQuestManager.hasQuest(serverPlayer, TCRQuests.BLESS_ON_THE_GODNESS_STATUE)){
+                        TCRQuests.BLESS_ON_THE_GODNESS_STATUE.finish(serverPlayer, true);
+                    }
                 } else {
                     serverPlayer.displayClientMessage(TCRCoreMod.getInfo("nothing_happen_after_bless"), false);
                 }
