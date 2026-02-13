@@ -28,9 +28,9 @@ public class TCRQuestScreen extends Screen {
 
     private final LocalPlayer player;
 
-    public static final ResourceLocation DEFAULT_TASK_ICON_TEXTURE = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/quest_icon.png");
-    public static final ResourceLocation BORDER = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/quest_border.png");
-    public static final ResourceLocation BORDER_SMALL = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/quest_border_small.png");
+    public static final ResourceLocation DEFAULT_QUEST_ICON_TEXTURE = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/quest_icon.png");
+    public static final ResourceLocation QUEST_BORDER_TEXTURE = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/quest_border.png");
+    public static final ResourceLocation QUEST_BORDER_SMALL_TEXTURE = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/quest_border_small.png");
 
     private static final int LIST_WIDTH = 220;
     private static final int LIST_MARGIN_VERTICAL = 24;
@@ -136,6 +136,7 @@ public class TCRQuestScreen extends Screen {
             super.render(guiGraphics, mouseX, mouseY, partialTick);
             return;
         }
+        renderListBorder(guiGraphics);
         int contentHeight = getContentHeight();
         int visibleHeight = listY1 - listY0;
         int maxScroll = Math.max(0, contentHeight - visibleHeight);
@@ -163,7 +164,6 @@ public class TCRQuestScreen extends Screen {
             index++;
         }
         guiGraphics.disableScissor();
-        renderListBorder(guiGraphics);
         renderDetailPanel(guiGraphics);
         renderScrollbar(guiGraphics, contentHeight);
         super.render(guiGraphics, mouseX, mouseY, partialTick);
@@ -198,25 +198,15 @@ public class TCRQuestScreen extends Screen {
     private void renderQuestEntry(GuiGraphics guiGraphics, TCRQuestManager.Quest quest, int index, int top, int entryHeight, boolean hovered, boolean selected) {
         int left = listX0;
         int right = listX1;
-        int backgroundColor;
+        drawNineSlice(guiGraphics, QUEST_BORDER_SMALL_TEXTURE, left, top, right - left, entryHeight, 5, 32, 32);
         if (selected) {
-            backgroundColor = 0x804080FF;
+            guiGraphics.fill(left, top, right, top + entryHeight, 0x804080FF);
         } else if (hovered) {
-            backgroundColor = 0x404080FF;
-        } else {
-            backgroundColor = 0x40000000;
-        }
-        guiGraphics.fill(left, top, right, top + entryHeight, backgroundColor);
-        if (selected || hovered) {
-            int borderColor = selected ? 0xFFFFFFFF : 0xFFAAAAAA;
-            guiGraphics.fill(left, top, right, top + 1, borderColor);
-            guiGraphics.fill(left, top + entryHeight - 1, right, top + entryHeight, borderColor);
-            guiGraphics.fill(left, top, left + 1, top + entryHeight, borderColor);
-            guiGraphics.fill(right - 1, top, right, top + entryHeight, borderColor);
+            guiGraphics.fill(left, top, right, top + entryHeight, 0x404080FF);
         }
         int iconX = left + ENTRY_PADDING;
         int iconY = top + ENTRY_PADDING;
-        ResourceLocation currentIcon = quest.getIcon() == null ? DEFAULT_TASK_ICON_TEXTURE : quest.getIcon();
+        ResourceLocation currentIcon = quest.getIcon() == null ? DEFAULT_QUEST_ICON_TEXTURE : quest.getIcon();
         guiGraphics.blit(currentIcon, iconX, iconY, 0, 0, ICON_SIZE, ICON_SIZE, ICON_SIZE, ICON_SIZE);
         int textX = iconX + ICON_SIZE + ENTRY_PADDING;
         int textY = top + ENTRY_PADDING;
@@ -439,33 +429,18 @@ public class TCRQuestScreen extends Screen {
     }
 
     private void renderListBorder(GuiGraphics guiGraphics) {
-        int outer = 0xFF444444;
-        int inner = 0xFFAAAAAA;
         int x0 = listX0 - 4;
         int x1 = listX1 + 4;
         int y0 = listY0 - 4;
         int y1 = listY1 + 4;
-        guiGraphics.fill(x0, y0, x1, y0 + 1, outer);
-        guiGraphics.fill(x0, y1 - 1, x1, y1, outer);
-        guiGraphics.fill(x0, y0, x0 + 1, y1, outer);
-        guiGraphics.fill(x1 - 1, y0, x1, y1, outer);
-        guiGraphics.fill(x0 + 1, y0 + 1, x1 - 1, y0 + 2, inner);
-        guiGraphics.fill(x0 + 1, y1 - 2, x1 - 1, y1 - 1, inner);
-        guiGraphics.fill(x0 + 1, y0 + 1, x0 + 2, y1 - 1, inner);
-        guiGraphics.fill(x1 - 2, y0 + 1, x1 - 1, y1 - 1, inner);
+        drawNineSlice(guiGraphics, QUEST_BORDER_TEXTURE, x0, y0, x1 - x0, y1 - y0, 7, 158, 158);
+
         if (detailX1 > detailX0 + 8) {
             int dx0 = detailX0 - 4;
             int dx1 = detailX1 + 4;
             int dy0 = detailY0 - 4;
             int dy1 = detailY1 + 4;
-            guiGraphics.fill(dx0, dy0, dx1, dy0 + 1, outer);
-            guiGraphics.fill(dx0, dy1 - 1, dx1, dy1, outer);
-            guiGraphics.fill(dx0, dy0, dx0 + 1, dy1, outer);
-            guiGraphics.fill(dx1 - 1, dy0, dx1, dy1, outer);
-            guiGraphics.fill(dx0 + 1, dy0 + 1, dx1 - 1, dy0 + 2, inner);
-            guiGraphics.fill(dx0 + 1, dy1 - 2, dx1 - 1, dy1 - 1, inner);
-            guiGraphics.fill(dx0 + 1, dy0 + 1, dx0 + 2, dy1 - 1, inner);
-            guiGraphics.fill(dx1 - 2, dy0 + 1, dx1 - 1, dy1 - 1, inner);
+            drawNineSlice(guiGraphics, QUEST_BORDER_TEXTURE, dx0, dy0, dx1 - dx0, dy1 - dy0, 7, 158, 158);
         }
     }
 
@@ -473,8 +448,6 @@ public class TCRQuestScreen extends Screen {
         if (detailX1 <= detailX0 + 8 || detailY1 <= detailY0 + 8) {
             return;
         }
-        int bg = 0x40000000;
-        guiGraphics.fill(detailX0, detailY0, detailX1, detailY1, bg);
         if (uiSelectedQuest == null || isEmptyQuest(uiSelectedQuest)) {
             return;
         }
@@ -500,5 +473,51 @@ public class TCRQuestScreen extends Screen {
             guiGraphics.drawString(font, line, x, y, descColor, false);
             y += font.lineHeight + 1;
         }
+    }
+
+    private void drawNineSlice(GuiGraphics guiGraphics, ResourceLocation texture, int x, int y, int width, int height, int border, int textureWidth, int textureHeight) {
+        int u0 = 0;
+        int u1 = border;
+        int u2 = textureWidth - border;
+        int u3 = textureWidth;
+
+        int v0 = 0;
+        int v1 = border;
+        int v2 = textureHeight - border;
+        int v3 = textureHeight;
+
+        int x0 = x;
+        int x1 = x + border;
+        int x2 = x + width - border;
+        int x3 = x + width;
+
+        int y0 = y;
+        int y1 = y + border;
+        int y2 = y + height - border;
+        int y3 = y + height;
+
+        if (width < 2 * border) x2 = x1;
+        if (height < 2 * border) y2 = y1;
+
+        // Top Left
+        guiGraphics.blit(texture, x0, y0, border, border, u0, v0, border, border, textureWidth, textureHeight);
+        // Top Center
+        guiGraphics.blit(texture, x1, y0, x2 - x1, border, u1, v0, u2 - u1, border, textureWidth, textureHeight);
+        // Top Right
+        guiGraphics.blit(texture, x2, y0, border, border, u2, v0, border, border, textureWidth, textureHeight);
+
+        // Center Left
+        guiGraphics.blit(texture, x0, y1, border, y2 - y1, u0, v1, border, v2 - v1, textureWidth, textureHeight);
+        // Center
+        guiGraphics.blit(texture, x1, y1, x2 - x1, y2 - y1, u1, v1, u2 - u1, v2 - v1, textureWidth, textureHeight);
+        // Center Right
+        guiGraphics.blit(texture, x2, y1, border, y2 - y1, u2, v1, border, v2 - v1, textureWidth, textureHeight);
+
+        // Bottom Left
+        guiGraphics.blit(texture, x0, y2, border, border, u0, v2, border, border, textureWidth, textureHeight);
+        // Bottom Center
+        guiGraphics.blit(texture, x1, y2, x2 - x1, border, u1, v2, u2 - u1, border, textureWidth, textureHeight);
+        // Bottom Right
+        guiGraphics.blit(texture, x2, y2, border, border, u2, v2, border, border, textureWidth, textureHeight);
     }
 }
