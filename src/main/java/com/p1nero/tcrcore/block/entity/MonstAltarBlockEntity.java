@@ -56,10 +56,6 @@ public class MonstAltarBlockEntity extends AbstractAltarBlockEntity {
         return PlayerDataManager.monstEyeGotten.get(player);
     }
 
-    protected void playUseEyeTip(Player player) {
-        player.displayClientMessage(TCRCoreMod.getInfo("use_true_eye_tip", Component.literal("???").withStyle(ChatFormatting.GOLD)), true);
-    }
-
     @Override
     public int getColor() {
         return ChatFormatting.DARK_RED.getColor();

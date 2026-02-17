@@ -56,10 +56,6 @@ public class MechAltarBlockEntity extends AbstractAltarBlockEntity {
         return PlayerDataManager.mechEyeGotten.get(player);
     }
 
-    protected void playUseEyeTip(Player player) {
-        player.displayClientMessage(TCRCoreMod.getInfo("use_true_eye_tip", Component.literal("???").withStyle(ChatFormatting.GOLD)), true);
-    }
-
     @Override
     public int getColor() {
         return ChatFormatting.GOLD.getColor();

@@ -169,10 +169,6 @@ public abstract class AbstractAltarBlockEntity extends BlockEntity {
         }
     }
 
-    /**
-     * 某些眼睛显示【？？？】或乱码
-     * @param player
-     */
     protected void playUseEyeTip(Player player) {
         player.displayClientMessage(TCRCoreMod.getInfo("use_true_eye_tip", this.itemInnate.getDescription().copy().withStyle(ChatFormatting.GOLD)), true);
     }

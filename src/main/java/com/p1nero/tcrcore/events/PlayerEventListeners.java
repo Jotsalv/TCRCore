@@ -523,7 +523,7 @@ public class PlayerEventListeners {
                 TCRQuests.TALK_TO_CHRONOS_7.start(player);
             }
 
-            if (itemStack.is(AquamiraeItems.SHELL_HORN.get()) && !PlayerDataManager.abyssEyeGotten.get(player)) {
+            if (itemStack.is(AquamiraeItems.SHELL_HORN.get()) && !PlayerDataManager.cursedEyeGotten.get(player)) {
                 giveOracleEffect(player, AquamiraeItems.SHELL_HORN.get());
             }
 

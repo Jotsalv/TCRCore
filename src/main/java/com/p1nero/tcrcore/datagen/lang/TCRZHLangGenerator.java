@@ -420,7 +420,7 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.addDialogOption(TCREntities.AINE.get(), 11, "轻轻松松！");
         this.addDialogOption(TCREntities.AINE.get(), 12, "累死我了！");
         this.addDialogAnswer(TCREntities.AINE.get(), 25, "本姑娘在这儿研究资料也累坏了，要不是来之前说好了由你自己完成，不然我也想和你一起去冒险呢。");
-        this.addDialogOption(TCREntities.AINE.get(), 13, "%s");
+        this.addDialogOption(TCREntities.AINE.get(), 13, "%s...");
         this.addDialogAnswer(TCREntities.AINE.get(), 26, "嗯？");
         this.addDialogOption(TCREntities.AINE.get(), 14, "我觉得不对劲");
         this.addDialogAnswer(TCREntities.AINE.get(), 27, "怎么啦？");
