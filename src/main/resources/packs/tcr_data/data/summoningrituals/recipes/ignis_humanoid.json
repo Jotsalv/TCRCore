@@ -1,0 +1,26 @@
+{
+    "type": "summoningrituals:altar",
+    "catalyst": { "item": "minecraft:ghast_tear" },
+    "outputs": [
+        {
+            "mob": "tcr_bosses:ignis_humanoid",
+            "count": 1,
+            "data": "{Attributes:[{Base:1000.0d,Name:\"generic.max_health\"}],Health:1000.0d}",
+            "offset": { "x": 0, "y": 3, "z": 0 },
+            "spread": { "x": 0, "y": 0, "z": 0 }
+        }
+    ],
+    "inputs": [
+        { "ingredient": { "item": "cataclysm:ignitium_ingot" }, "count": 9 },
+        { "ingredient": { "item": "cataclysm:burning_ashes" }, "count": 18 },
+        { "ingredient": { "item": "create:blaze_burner" }, "count": 1 },
+        { "ingredient": { "item": "create:blaze_cake" }, "count": 1 },
+        { "ingredient": { "item": "bosses_of_mass_destruction:blazing_eye" }, "count": 1 }
+    ],
+    "sacrifices": {
+    },
+    "recipe_time": 200,
+    "block_below": { "block": "minecraft:calcite" },
+    "day_time": "any",
+    "weather": "any"
+}

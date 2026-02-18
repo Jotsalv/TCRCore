@@ -1,0 +1,25 @@
+{
+    "type": "summoningrituals:altar",
+    "catalyst": { "item": "minecraft:ghast_tear" },
+    "outputs": [
+        {
+            "mob": "tcr_bosses:harbinger_humanoid",
+            "count": 1,
+            "data": "{Attributes:[{Base:1000.0d,Name:\"generic.max_health\"}],Health:1000.0d}",
+            "offset": { "x": 0, "y": 3, "z": 0 },
+            "spread": { "x": 0, "y": 0, "z": 0 }
+        }
+    ],
+    "inputs": [
+        { "ingredient": { "item": "cataclysm:witherite_ingot" }, "count": 18 },
+        { "ingredient": { "item": "minecraft:nether_star" }, "count": 2 },
+        { "ingredient": { "item": "create:electron_tube" }, "count": 3 },
+        { "ingredient": { "item": "create:precision_mechanism" }, "count": 5 }
+    ],
+    "sacrifices": {
+    },
+    "recipe_time": 200,
+    "block_below": { "block": "minecraft:calcite" },
+    "day_time": "any",
+    "weather": "any"
+}
