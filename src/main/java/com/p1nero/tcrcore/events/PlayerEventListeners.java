@@ -465,7 +465,7 @@ public class PlayerEventListeners {
                 player.displayClientMessage(TCRCoreMod.getInfo("can_not_do_this_too_early"), true);
                 event.setCanceled(true);
             }
-            if(!TCRQuests.USE_NETHER_RESONANCE_STONE.isFinished(player) && event.getItem().getItem().is(ModItems.MONSTROUS_EYE.get())) {
+            if((!TCRQuests.GET_WITHER_EYE.isFinished(player) || TCRQuestManager.hasQuest(player, TCRQuests.GET_WITHER_EYE)) && event.getItem().getItem().is(ModItems.MONSTROUS_EYE.get())) {
                 player.displayClientMessage(TCRCoreMod.getInfo("can_not_do_this_too_early"), true);
                 event.setCanceled(true);
             }
@@ -540,6 +540,18 @@ public class PlayerEventListeners {
                     TCRQuests.BLESS_ON_THE_GODNESS_STATUE.start(player);
                 }
                 TCRQuests.TALK_TO_CHRONOS_9.start(player);
+            }
+            if(TCRQuestManager.hasQuest(player, TCRQuests.GET_WITHER_EYE) && itemStack.is(ModItems.MECH_EYE.get())) {
+                giveOracleEffect(player, ModItems.MECH_EYE.get());
+                PlayerDataManager.mechEyeGotten.put(player, true);
+                TCRQuests.GET_WITHER_EYE.finish(player, true);
+                if(!PlayerDataManager.mechEyeActivated.get(player)) {
+                    TCRQuests.PUT_MECH_EYE_ON_ALTAR.start(player);
+                }
+                if(!PlayerDataManager.mechEyeBlessed.get(player)) {
+                    TCRQuests.BLESS_ON_THE_GODNESS_STATUE.start(player);
+                }
+                TCRQuests.TALK_TO_CHRONOS_10.start(player);
             }
 
             if (itemStack.is(AquamiraeItems.SHELL_HORN.get()) && !PlayerDataManager.cursedEyeGotten.get(player)) {

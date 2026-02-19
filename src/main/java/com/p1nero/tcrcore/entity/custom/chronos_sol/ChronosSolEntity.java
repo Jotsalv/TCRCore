@@ -44,7 +44,9 @@ import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -240,6 +242,14 @@ public class ChronosSolEntity extends PathfinderMob implements IEntityNpc, GeoEn
                     .addOption(-1, 27)
                     .addFinalOption(dBuilder.opt(-4, TCRItems.CORE_FLINT.get().getDescription()), 9);
             return treeBuilder.build();
+        } else if(TCRQuests.TALK_TO_CHRONOS_9.equals(currentQuest)) {
+            //找回凋零眼
+            treeBuilder.start(28)
+                    .addOption(dBuilder.opt(10), dBuilder.ans(29, TCRBossEntities.HARBINGER_HUMANOID.get().getDescription()))
+                    .addOption(dBuilder.opt(-1), dBuilder.ans(30))
+                    .addOption(dBuilder.opt(11), dBuilder.ans(31, Items.SOUL_SAND.getDescription(), Items.SOUL_SAND.getDescription(), Items.WITHER_SKELETON_SKULL.getDescription()))
+                    .addFinalOption(-2, 10);
+            return treeBuilder.build();
         }  else {
             //默认的情况
 
@@ -344,6 +354,12 @@ public class ChronosSolEntity extends PathfinderMob implements IEntityNpc, GeoEn
             player.displayClientMessage(TCRCoreMod.getInfo("unlock_new_skill", Component.translatable(TCRSkills.FIRE_AVOID.getTranslationKey()).withStyle(ChatFormatting.RED)), false);
             player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, SoundSource.PLAYERS, 1.0F, 1.0F);
             PlayerDataManager.fireAvoidUnlocked.put(player, true);
+        }
+
+        //开启凋零任务
+        if(code == 10) {
+            TCRQuests.TALK_TO_CHRONOS_9.finish(player);
+            TCRQuests.GET_WITHER_EYE.start(player);
         }
 
         this.setConversingPlayer(null);

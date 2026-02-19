@@ -105,6 +105,10 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.addQuest(TCRQuests.USE_NETHER_RESONANCE_STONE, "地狱之章", "使用[%s]", "你已经抵达The Nether，快使用[%s]吧！它将为我们指引[%s]的位置！到底有什么样的冒险在等着我们呢？");
         this.addQuest(TCRQuests.GET_MONST_EYE, "地狱之章", "寻回[%s]", "[%s]为我们标记了[%s]所散落的位置，快出发去寻回[%s]吧！ \n\n§a[提示]：建议装备[%s]");
         this.addQuest(TCRQuests.TALK_TO_CHRONOS_9, "地狱之章", "和%s对话", "[%s]已经寻回，快回主城找%s汇报吧！她将告诉我们下一步该做什么。");
+
+        //主线·死亡之章
+        this.addQuest(TCRQuests.GET_WITHER_EYE, "毁灭之章", "寻回[%s]", "海船墓地回响的研究有进展了！我们必须启动古老的召唤仪式，将死亡使徒唤回！快按%s所说的，召唤[%s]，夺回[%s]吧！");
+
         //        this.addQuest(TCRQuests., "", "", "");
 
         this.addEffect(TCREffects.INVULNERABLE, "无敌");
@@ -391,9 +395,15 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 25, "创世之初，世界分为了四个维度，分别是主世界（The Overworld），地狱（The Nether），天域（The Aether），和终界（The End），分别由各自的使徒所掌管。");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 26, "黑潮入侵后，祂们的灵魂也永远留在了那里。吾用[%s]的力量为阁下打造了[%s]。用[%s]点燃黑曜石框架，即可打开地狱之门！");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 27, "阁下要是准备好了，就前往地狱使用共鸣石吧！在这之前，阁下请接受赐福，以免受火焰之灾！");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 28, "");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 29, "");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 30, "");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 28, "阁下来得正好！魔女阁下对海船墓地回响的研究有进展了！我们必须启动古老的召唤仪式，将死亡使徒(Death Angel)唤回！");
+        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 10, "死亡使徒？");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 29, "掌管死亡的使徒——%s，从海船墓地中灵魂使徒留下的信息来看，它的灵魂正囚禁在冥河之中！");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 30, "我们必须举行召唤仪式，将祂从冥河中解救出来！");
+        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 11, "召唤仪式？");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 31, "阁下可曾在地狱见到[%s]？将[%s]以T形排列，再在上方摆上三个[%s]，即可召唤！");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 32, "");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 33, "");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 34, "");
 
         this.addDialogOption(TCREntities.AINE.get(), -4, "§6法术淬灵");
         this.addDialogOption(TCREntities.AINE.get(), -3, "§6法术交易");

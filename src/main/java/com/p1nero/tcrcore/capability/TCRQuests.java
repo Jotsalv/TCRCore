@@ -16,6 +16,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
 
 public class TCRQuests {
@@ -99,6 +100,9 @@ public class TCRQuests {
     public static Quest GET_MONST_EYE;
     public static Quest TALK_TO_CHRONOS_9;
 
+    //主线·毁灭之章
+    public static Quest GET_WITHER_EYE;
+    public static Quest TALK_TO_CHRONOS_10;
 
     public static void init() {
 
@@ -336,6 +340,13 @@ public class TCRQuests {
                 .descParam(com.github.L_Ender.cataclysm.init.ModItems.MONSTROUS_EYE.get().getDescription().copy().withStyle(ChatFormatting.RED), TCREntities.CHRONOS_SOL.get().getDescription())
                 .withTrackingPos(new BlockPos(WorldUtil.CHRONOS_SOL_BLOCK_POS.above(4)), TCRDimensions.SANCTUM_LEVEL_KEY);
 
+        GET_WITHER_EYE = TCRQuestManager.create("get_wither_eye")
+                .shortDescParam(com.github.L_Ender.cataclysm.init.ModItems.MECH_EYE.get().getDescription().copy().withStyle(ChatFormatting.GOLD))
+                .descParam(TCREntities.CHRONOS_SOL.get().getDescription(), EntityType.WITHER.getDescription().copy().withStyle(ChatFormatting.GOLD), com.github.L_Ender.cataclysm.init.ModItems.MECH_EYE.get().getDescription().copy().withStyle(ChatFormatting.GOLD));
+
+        TALK_TO_CHRONOS_10 = TCRQuestManager.create("talk_to_chronos_10")
+                .shortDescParam(TCREntities.CHRONOS_SOL.get().getDescription())
+                .withTrackingPos(new BlockPos(WorldUtil.CHRONOS_SOL_BLOCK_POS.above(4)), TCRDimensions.SANCTUM_LEVEL_KEY);
 
     }
 }
