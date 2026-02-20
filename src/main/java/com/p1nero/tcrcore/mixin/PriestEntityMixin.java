@@ -42,7 +42,7 @@ public abstract class PriestEntityMixin extends NeutralWizard implements Village
 
     @Shadow(remap = false) public abstract void setLastRestockGameTime(long time);
 
-    @Inject(method = "getOffers", at = @At("HEAD"), cancellable = true, remap = false)
+    @Inject(method = {"getOffers", "m_6616_"}, at = @At("HEAD"), cancellable = true, remap = false)
     private void tcr$getOffers(CallbackInfoReturnable<MerchantOffers> cir) {
         if (this.offers == null) {
             this.offers = new MerchantOffers();

@@ -5,8 +5,10 @@ import com.p1nero.cataclysm_dimension.worldgen.CataclysmDimensions;
 import com.p1nero.cataclysm_dimension.worldgen.portal.CDNetherTeleporter;
 import com.p1nero.cataclysm_dimension.worldgen.portal.CDTeleporter;
 import com.p1nero.tcrcore.TCRCoreMod;
+import com.p1nero.tcrcore.network.packet.clientbound.helper.DistHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -141,27 +143,26 @@ public abstract class AbstractAltarBlockEntity extends BlockEntity {
 
     public static <T extends BlockEntity> void tick(Level pLevel, BlockPos pPos, BlockState state, T t) {
         if(t instanceof AbstractAltarBlockEntity abstractAltarBlockEntity) {
-            if(FMLEnvironment.dist == Dist.CLIENT) {
-                if(Minecraft.getInstance().player == null) {
-                    return;
-                }
-                if(abstractAltarBlockEntity.isActivated(Minecraft.getInstance().player)) {
-                    if(pLevel.getGameTime() % 10 == 0) {
-                        double rx = pPos.getX() + pLevel.getRandom().nextFloat();
-                        double ry = pPos.getY() + pLevel.getRandom().nextFloat();
-                        double rz = pPos.getZ() + pLevel.getRandom().nextFloat();
-                        pLevel.addParticle(abstractAltarBlockEntity.getSpawnerParticle(), rx, ry, rz ,0.0D, 0.0D, 0.0D);
+            if(pLevel.isClientSide) {
+                DistHelper.localPlayerDo(localPlayer -> {
+                    if(abstractAltarBlockEntity.isActivated(localPlayer)) {
+                        if(pLevel.getGameTime() % 10 == 0) {
+                            double rx = pPos.getX() + pLevel.getRandom().nextFloat();
+                            double ry = pPos.getY() + pLevel.getRandom().nextFloat();
+                            double rz = pPos.getZ() + pLevel.getRandom().nextFloat();
+                            pLevel.addParticle(abstractAltarBlockEntity.getSpawnerParticle(), rx, ry, rz ,0.0D, 0.0D, 0.0D);
 
-                        Vec3 center = pPos.getCenter();
-                        pLevel.getEntitiesOfClass(Player.class, (new AABB(center, center)).inflate(5.0F)).forEach(player ->
-                                player.displayClientMessage(TCRCoreMod.getInfo("enter_dimension_tip"), true));
+                            Vec3 center = pPos.getCenter();
+                            pLevel.getEntitiesOfClass(Player.class, (new AABB(center, center)).inflate(5.0F)).forEach(player ->
+                                    player.displayClientMessage(TCRCoreMod.getInfo("enter_dimension_tip"), true));
+                        }
+                    } else {
+                        if(pLevel.getGameTime() % 10 == 0) {
+                            Vec3 center = pPos.getCenter();
+                            pLevel.getEntitiesOfClass(Player.class, (new AABB(center, center)).inflate(5.0F)).forEach(abstractAltarBlockEntity::playUseEyeTip);
+                        }
                     }
-                } else {
-                    if(pLevel.getGameTime() % 10 == 0) {
-                        Vec3 center = pPos.getCenter();
-                        pLevel.getEntitiesOfClass(Player.class, (new AABB(center, center)).inflate(5.0F)).forEach(abstractAltarBlockEntity::playUseEyeTip);
-                    }
-                }
+                });
             } else if(pLevel.getGameTime() % 120 == 0){
                 pLevel.playSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BEACON_AMBIENT, SoundSource.BLOCKS, 1.0F, 1.0F);
             }

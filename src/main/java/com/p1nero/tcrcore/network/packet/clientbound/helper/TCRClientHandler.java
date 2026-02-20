@@ -86,4 +86,5 @@ public class TCRClientHandler {
     public static void refreshQuestScreen() {
         TCRQuestScreen.refreshSelectedQuest();
     }
+
 }
