@@ -1,6 +1,7 @@
 package com.p1nero.tcrcore.mixin;
 
 import com.brass_amber.ba_bt.entity.block.BTMonolith;
+import com.brass_amber.ba_bt.init.BTEntityType;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -30,14 +31,15 @@ public abstract class BTMonolithMixin extends Entity {
     private Item correctMonolithKey;
 
     @Shadow(remap = false)
-    public abstract int getKeyCountInEntity();
-
-    @Shadow(remap = false)
     public abstract void setEyeSlotDisplayed();
 
     @Shadow(remap = false) public abstract void setKeyCountInEntity(int count);
 
     @Shadow(remap = false) protected abstract void playKeyInteractionSound();
+
+    @Shadow(remap = false) protected abstract void spawnGolem();
+
+    @Shadow(remap = false) protected abstract void playSpawnSound();
 
     public BTMonolithMixin(EntityType<?> p_19870_, Level p_19871_) {
         super(p_19870_, p_19871_);
@@ -48,12 +50,22 @@ public abstract class BTMonolithMixin extends Entity {
         if (this.monolithType != null) {
             Item itemInHand = player.getItemInHand(hand).getItem();
             if (itemInHand.equals(this.correctMonolithKey)) {
-                this.setKeyCountInEntity(3);
-                this.playKeyInteractionSound();
-                if (!player.isCreative()) {
-                    player.getItemInHand(hand).shrink(1);
+                if(this.monolithType.equals(BTEntityType.END_MONOLITH.get())) {
+                    //末地不消耗，保留
+                    spawnGolem();
+                    if (!player.isCreative()) {
+                        player.getItemInHand(hand).shrink(1);
+                    }
+                    this.playSpawnSound();
+                    this.setKeyCountInEntity(0);
+                } else {
+                    this.setKeyCountInEntity(3);
+                    this.playKeyInteractionSound();
+                    if (!player.isCreative()) {
+                        player.getItemInHand(hand).shrink(1);
+                    }
+                    this.setEyeSlotDisplayed();
                 }
-                this.setEyeSlotDisplayed();
                 cir.setReturnValue(InteractionResult.sidedSuccess(this.getCommandSenderWorld().isClientSide()));
             }
         }

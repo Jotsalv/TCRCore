@@ -11,6 +11,7 @@ import com.p1nero.tcrcore.client.gui.BlockTooltipHandler;
 import com.p1nero.tcrcore.client.item_renderer.RenderDualBokken;
 import com.p1nero.tcrcore.entity.TCREntities;
 import com.p1nero.tcrcore.entity.custom.aine_iris.AineIrisRenderer;
+import com.p1nero.tcrcore.entity.custom.fake_npc.fake_sky_golem.FakeSkyGolemRenderer;
 import com.p1nero.tcrcore.entity.custom.ferry_girl.FerryGirlGeoRenderer;
 import com.p1nero.tcrcore.entity.custom.chronos_sol.ChronosSolGeoRenderer;
 import com.p1nero.tcrcore.entity.custom.ornn.OrnnlGeoRenderer;
@@ -38,10 +39,12 @@ public class ClientModEvents {
     public static void onClientSetup(FMLClientSetupEvent event) {
 
         EntityRenderers.register(TCREntities.CUSTOM_COLOR_ITEM.get(), ItemEntityRenderer::new);
+
         EntityRenderers.register(TCREntities.CHRONOS_SOL.get(), ChronosSolGeoRenderer::new);
         EntityRenderers.register(TCREntities.FERRY_GIRL.get(), FerryGirlGeoRenderer::new);
         EntityRenderers.register(TCREntities.ORNN.get(), OrnnlGeoRenderer::new);
         EntityRenderers.register(TCREntities.AINE.get(), AineIrisRenderer::new);
+        EntityRenderers.register(TCREntities.FAKE_SKY_GOLEM.get(), FakeSkyGolemRenderer::new);
         EntityRenderers.register(TCREntities.TUTORIAL_GOLEM.get(), TutorialGolemRenderer::new);
 
         BlockTooltipHandler.registerBlockTooltip(TCRBlocks.ABYSS_ALTAR_BLOCK,

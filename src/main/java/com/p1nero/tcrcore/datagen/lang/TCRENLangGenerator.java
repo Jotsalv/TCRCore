@@ -27,6 +27,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
     @Override
     protected void addTranslations() {
 
+        this.add("travelerstitles.tcrcore.sanctum", "Realm of Dreams");
         this.add("travelerstitles.minecraft.overworld", "Overworld");
         this.add("travelerstitles.aether.the_aether", "The Aether");
         this.add("travelerstitles.minecraft.the_nether", "The Nether");
@@ -40,7 +41,6 @@ public class TCRENLangGenerator extends TCRLangProvider {
 
         this.add("epicfight.skill_slot.passive4", "Passive 4");
         this.add("epicfight.skill_slot.passive5", "Passive 5");
-        this.add("travelerstitles.tcrcore.sanctum", "Realm of Dreams");
         this.addBiome(TCRBiomes.AIR, "Void Region");
 
         StartScreenHandler.onGenerateEN(this);

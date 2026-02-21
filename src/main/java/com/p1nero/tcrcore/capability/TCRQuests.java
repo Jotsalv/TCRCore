@@ -1,5 +1,6 @@
 package com.p1nero.tcrcore.capability;
 
+import com.brass_amber.ba_bt.init.BTEntityType;
 import com.github.dodo.dodosmobs.init.ModEntities;
 import com.obscuria.aquamirae.registry.AquamiraeEntities;
 import com.obscuria.aquamirae.registry.AquamiraeItems;
@@ -379,6 +380,10 @@ public class TCRQuests {
         GET_STORM_EYE = TCRQuestManager.create("get_storm_eye")
                 .shortDescParam(com.github.L_Ender.cataclysm.init.ModItems.STORM_EYE.get().getDescription().copy().withStyle(ChatFormatting.AQUA))
                 .descParam(TCRItems.SKY_RESONANCE_STONE.get().getDescription().copy().withStyle(ChatFormatting.AQUA), com.github.L_Ender.cataclysm.init.ModItems.STORM_EYE.get().getDescription().copy().withStyle(ChatFormatting.AQUA), com.github.L_Ender.cataclysm.init.ModItems.STORM_EYE.get().getDescription().copy().withStyle(ChatFormatting.AQUA));
+
+        TALK_TO_SKY_GOLEM = TCRQuestManager.create("talk_to_sky_golem")
+                .shortDescParam(BTEntityType.SKY_GOLEM.get().getDescription())
+                .descParam(BTEntityType.SKY_GOLEM.get().getDescription(), BTEntityType.SKY_GOLEM.get().getDescription());
 
         TALK_TO_CHRONOS_12 = TCRQuestManager.create("talk_to_chronos_12")
                 .shortDescParam(TCREntities.CHRONOS_SOL.get().getDescription())

@@ -1,6 +1,7 @@
 package com.p1nero.tcrcore.events;
 
 import com.brass_amber.ba_bt.entity.hostile.golem.*;
+import com.brass_amber.ba_bt.init.BTItems;
 import com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Guardian_Entity;
 import com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity;
 import com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Harbinger_Entity;
@@ -12,6 +13,7 @@ import com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonste
 import com.github.L_Ender.cataclysm.init.ModItems;
 import com.github.dodo.dodosmobs.entity.InternalAnimationMonster.IABossMonsters.Bone_Chimera_Entity;
 import com.hm.efn.registries.EFNItem;
+import com.legacy.lost_aether.registry.LCBlocks;
 import com.merlin204.sg.item.SGItems;
 import com.obscuria.aquamirae.Aquamirae;
 import com.obscuria.aquamirae.AquamiraeUtils;
@@ -57,6 +59,8 @@ import net.minecraft.world.entity.monster.Guardian;
 import net.minecraft.world.entity.monster.Pillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.Tags;
@@ -289,10 +293,7 @@ public class LivingEntityEventListeners {
             }
 
             if (livingEntity instanceof SkyGolem) {
-                if (!PlayerDataManager.stormEyeGotten.get(player)) {
-                    ItemUtil.addItemEntity(player, ModItems.STORM_EYE.get(), 1, ChatFormatting.AQUA.getColor().intValue());
-                    player.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
-                }
+
             }
 
         });
@@ -323,11 +324,19 @@ public class LivingEntityEventListeners {
                 });
             }
 
-            if (livingEntity instanceof IronGolem ironGolem && WorldUtil.isInStructure(livingEntity, WorldUtil.SKY_ISLAND) && !livingEntity.getPersistentData().getBoolean("already_respawn")) {
+            //云鲸塔的顺便掉个钥匙
+            if (livingEntity instanceof IronGolem ironGolem && WorldUtil.isInStructure(livingEntity, WorldUtil.SKY_GOLEM) && !livingEntity.getPersistentData().getBoolean("already_respawn")) {
                 //秽土转生
                 EntityRespawnerMod.addToRespawn(ironGolem, 60, true);
                 ItemUtil.addItemEntity(livingEntity, SGItems.GOLEM_HEART.get(), 1, ChatFormatting.GOLD.getColor().intValue());
+                ItemUtil.addItemEntity(livingEntity, TCRItems.DIVINE_FRAGMENT.get(), 1, ChatFormatting.GOLD.getColor().intValue());
+                ItemUtil.addItemEntity(livingEntity, BTItems.SKY_MONOLITH_KEY.get(), 1, ChatFormatting.GOLD.getColor().intValue());
                 livingEntity.getPersistentData().putBoolean("already_respawn", true);
+            }
+
+            //末影龙掉个钥匙
+            if(livingEntity instanceof EnderDragon) {
+                ItemUtil.addItemEntity(livingEntity, BTItems.END_MONOLITH_KEY.get(), 1, ChatFormatting.GOLD.getColor().intValue());
             }
 
             if (livingEntity instanceof Bone_Chimera_Entity boneChimeraEntity && WorldUtil.isInStructure(livingEntity, WorldUtil.BONE_CHIMERA_STRUCTURE) && !livingEntity.getPersistentData().getBoolean("already_respawn")) {
@@ -396,6 +405,20 @@ public class LivingEntityEventListeners {
                     arterius.resetBossStatus(true);
                 }
             }
+        }
+    }
+
+    public static BlockState convertBlock(BlockState state) {
+        if (state.is(LCBlocks.locked_gale_stone)) {
+            return LCBlocks.gale_stone.defaultBlockState();
+        } else if (state.is(LCBlocks.locked_light_gale_stone)) {
+            return LCBlocks.light_gale_stone.defaultBlockState();
+        } else if (state.is(LCBlocks.trapped_gale_stone)) {
+            return LCBlocks.gale_stone.defaultBlockState();
+        } else if (state.is(LCBlocks.trapped_light_gale_stone)) {
+            return LCBlocks.light_gale_stone.defaultBlockState();
+        } else {
+            return !state.is(LCBlocks.boss_doorway_gale_stone) && !state.is(LCBlocks.boss_doorway_light_gale_stone) ? null : Blocks.AIR.defaultBlockState();
         }
     }
 
@@ -486,7 +509,7 @@ public class LivingEntityEventListeners {
 
         UUID uuid = UUID.fromString("d4c3b2a1-f6e5-8b7a-0d9c-cba987654321");
         if (event.getEntity() instanceof IronGolem ironGolem) {
-            if (WorldUtil.isInStructure(ironGolem, WorldUtil.SKY_ISLAND)) {
+            if (WorldUtil.isInStructure(ironGolem, WorldUtil.SKY_GOLEM)) {
                 ironGolem.setCustomName(TCRCoreMod.getInfo("iron_golem_name"));
                 ironGolem.setCustomNameVisible(true);
                 ironGolem.setGlowingTag(true);

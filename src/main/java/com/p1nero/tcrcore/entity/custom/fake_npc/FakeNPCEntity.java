@@ -22,12 +22,12 @@ public abstract class FakeNPCEntity extends PathfinderMob implements IEntityNpc,
 
     private static final EntityDataAccessor<Optional<UUID>> OWNER_UUID = SynchedEntityData.defineId(FakeNPCEntity.class, EntityDataSerializers.OPTIONAL_UUID);
 
-    protected FakeNPCEntity(EntityType<? extends PathfinderMob> entityType, Level level) {
+    public FakeNPCEntity(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
     }
 
     @Override
-    public boolean hurt(@NotNull DamageSource source, float p_21017_) {
+    public boolean hurt(@NotNull DamageSource source, float value) {
         return false;
     }
 

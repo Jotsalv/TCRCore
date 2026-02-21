@@ -3,6 +3,7 @@ package com.p1nero.tcrcore.entity;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.entity.custom.CustomColorItemEntity;
 import com.p1nero.tcrcore.entity.custom.aine_iris.AineEntity;
+import com.p1nero.tcrcore.entity.custom.fake_npc.fake_sky_golem.FakeSkyGolem;
 import com.p1nero.tcrcore.entity.custom.ferry_girl.FerryGirlEntity;
 import com.p1nero.tcrcore.entity.custom.chronos_sol.ChronosSolEntity;
 import com.p1nero.tcrcore.entity.custom.ornn.OrnnEntity;
@@ -41,6 +42,10 @@ public class TCREntities {
     public static final RegistryObject<EntityType<OrnnEntity>> ORNN = register("ornn",
             EntityType.Builder.of(OrnnEntity::new, MobCategory.CREATURE).sized(4f, 4f).fireImmune());
 
+    public static final RegistryObject<EntityType<FakeSkyGolem>> FAKE_SKY_GOLEM = register("fake_sky_golem",
+            EntityType.Builder.<FakeSkyGolem>of(FakeSkyGolem::new, MobCategory.CREATURE).sized(0.6f, 1.9f).fireImmune());
+
+
     public static final RegistryObject<EntityType<TutorialGolem>> TUTORIAL_GOLEM = register("tutorial_golem",
             EntityType.Builder.of(TutorialGolem::new, MobCategory.CREATURE).sized(1.4F, 2.7f).fireImmune());
 
@@ -54,6 +59,7 @@ public class TCREntities {
         event.put(FERRY_GIRL.get(), ChronosSolEntity.setAttributes());
         event.put(ORNN.get(), ChronosSolEntity.setAttributes());
         event.put(AINE.get(), ChronosSolEntity.setAttributes());
+        event.put(FAKE_SKY_GOLEM.get(), ChronosSolEntity.setAttributes());
         event.put(TUTORIAL_GOLEM.get(), TutorialGolem.setAttributes());
 
     }

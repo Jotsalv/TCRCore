@@ -29,6 +29,7 @@ public class TCRZHLangGenerator extends TCRLangProvider {
     @Override
     protected void addTranslations() {
 
+        this.add("travelerstitles.tcrcore.sanctum", "梦之领域");
         this.add("travelerstitles.minecraft.overworld", "记忆中的主世界");
         this.add("travelerstitles.aether.the_aether", "记忆中的天界");
         this.add("travelerstitles.minecraft.the_nether", "记忆中的下界");
@@ -117,7 +118,8 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.addQuest(TCRQuests.GO_TO_AETHER, "天域之章", "前往Aether", "以生命之源（%s）浇灌%s所筑之框，即可开启天堂之门！");
         this.addQuest(TCRQuests.USE_AETHER_RESONANCE_STONE, "天域之章", "使用[%s]", "收集神之眼的旅途至今，仅剩天域使徒（Sky Angel），和虚无使徒（Void Angel）的神之眼尚未归还...");
         this.addQuest(TCRQuests.GET_STORM_EYE, "天域之章", "寻回[%s]", "[%s]为我们标记了[%s]所散落的位置，快出发去寻回[%s]吧！");
-        this.addQuest(TCRQuests.TALK_TO_CHRONOS_12, "天域之章", "和%s对话", "[%s]已经寻回，快回主城找%s汇报吧！她将告诉我们下一步该做什么。");
+        this.addQuest(TCRQuests.TALK_TO_SKY_GOLEM, "天域之章", "和%s对话", "%s似乎...没有完全消散，祂似乎恢复了神智，和%s交流看看吧！");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_12, "天域之章", "和%s对话", "[%s]已经寻回，并且了解了自己的故事...快回主城找%s汇报吧！她将告诉我们下一步该做什么。");
         //        this.addQuest(TCRQuests., "", "", "");
 
         this.addEffect(TCREffects.INVULNERABLE, "无敌");
@@ -125,7 +127,6 @@ public class TCRZHLangGenerator extends TCRLangProvider {
 
         this.add("epicfight.skill_slot.passive4", "被动4");
         this.add("epicfight.skill_slot.passive5", "被动5");
-        this.add("travelerstitles.tcrcore.sanctum", "梦之领域");
         this.addBiome(TCRBiomes.AIR, "虚无之地");
 
         StartScreenHandler.onGenerateZH(this);
@@ -333,15 +334,15 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.add(TCREntities.ORNN.get(), "老奥恩");
         this.add(TCREntities.TUTORIAL_GOLEM.get(), "训练傀儡");
 
-        this.add(TCRBossEntities.LEVIATHAN_HUMANOID.get(), "沧溟 | Thalassa Mare");
-        this.add(TCRBossEntities.HARBINGER_HUMANOID.get(), "归寂 | Letum Quietus");
-        this.add(TCRBossEntities.ENDER_GUARDIAN_HUMANOID.get(), "湮无 | Nihil Vacuum");
-        this.add(TCRBossEntities.IGNIS_HUMANOID.get(), "烬煌 | Ignis Ardens");
+        this.add(TCRBossEntities.LEVIATHAN_HUMANOID.get(), "沧溟|Thalassa-Mare");
+        this.add(TCRBossEntities.HARBINGER_HUMANOID.get(), "归寂|Letum-Quietus");
+        this.add(TCRBossEntities.ENDER_GUARDIAN_HUMANOID.get(), "湮无|Nihil-Vacuum");
+        this.add(TCRBossEntities.IGNIS_HUMANOID.get(), "烬煌|Ignis-Ardens");
         this.add(TCRBossEntities.IGNIS_SHIELD.get(), "烬煌盾");
-        this.add(TCRBossEntities.SCYLLA_HUMANOID.get(), "穹霄 | Caelum Altum");
-        this.add(TCRBossEntities.ANCIENT_REMNANT_HUMANOID.get(), "坤岳 | Terra Montis");
-        this.add(TCRBossEntities.MALEDICTUS_HUMANOID.get(), "魂兮 | Anima Essentia");
-        this.add(TCRBossEntities.NETHERITE_HUMANOID.get(), "狱渊 | Infernus Abyssus");
+        this.add(TCRBossEntities.SCYLLA_HUMANOID.get(), "穹霄|Caelum-Altum");
+        this.add(TCRBossEntities.ANCIENT_REMNANT_HUMANOID.get(), "坤岳|Terra-Montis");
+        this.add(TCRBossEntities.MALEDICTUS_HUMANOID.get(), "魂兮|Anima-Essentia");
+        this.add(TCRBossEntities.NETHERITE_HUMANOID.get(), "狱渊|Infernus-Abyssus");
 
 
         this.addDialogAnswer(EntityType.IRON_GOLEM, 0, "人类，准备好接受试炼了？");
@@ -547,6 +548,42 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.addDialogAnswer(EntityTypeModule.RIBBIT.get(), 3, "呱，打发叫花子呱！我要12个呱！");
         this.addDialogAnswer(EntityTypeModule.RIBBIT.get(), 4, "我们原是海洋村庄的人类，受到黑潮诅咒而变成这副模样呱。");
         this.addDialogAnswer(EntityTypeModule.RIBBIT.get(), 5, "海洋高塔十分危险呱，念在紫水晶块的份上，这些宝具你暂且带着防身呱！");
+
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), -2, "返回");
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), -1, "继续");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 0, "Purus Absolutus！我想起来了，我全都想起来了！");
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 0, "Purus Absolutus？");
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 1, "究竟是什么意思？");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 1, "你不记得了吗？Purus Absolutus！");
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 2, "我？");
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 3, "我的名字？");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 2, "看来你也受黑潮侵蚀，失去了记忆...没错，你，Purus Absolutus，纯净之使徒！");
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 4, "？？？");
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 5, "这一切是怎么回事？");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 3, "吾将神性划入[%s]之中，以免受黑潮之侵蚀。");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 4, "共鸣石指引你取回了[%s]，才能将我的记忆补全！Purus Absolutus，你当真什么都不记得了吗？");
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 6, "抱歉");
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 7, "我什么都不记得了");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 5, "这样啊...在帮助你找回记忆之前，请告诉我都发生了什么，你为何来到这里？");
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 8, "...");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 6, "...（你将之前发生的一切告诉了[%s]）");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 7, "原来如此...%s真的坚持到了最后一刻...没想到你最终竟会和魔女一同归来拯救世界。好吧，关于过去的一切，你想知道些什么，我尽可能地回答你。");
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 9, "我到底是谁？");
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 10, "黑潮到底是什么？");
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 11, "§6我没有想问的了");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 8, "你名为Purus Absolutus，乃纯净之使徒，负责净化世间黑暗，与我们同为尘世十执政。");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 9, "千年以前，恰好轮到你出面解决天外的事务，但在你离去后不久，黑潮便降临世界。");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 10, "也许是失去了来自你的净化的神力，我们无力抵抗黑潮，只能任由黑潮侵蚀我们。");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 11, "我不知道。黑潮刚刚降临时，我们对黑潮做了大量的研究，但毫无进展。");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 12, "黑潮本是代号Risperdal的一种介质，我们无法具体感知其存在。但受它影响的生灵皆逐渐发黑而死，因此我们将其命名为黑潮。");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 13, "我们只知道黑潮来自天外的世界，但黑潮的目标似乎很明确，总是针对以我们使徒为首的生命。");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 14, "也许，由你来带领我们进行再创世，是我们文明延续的唯一希望了。");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 15, "也就是说，现在需要代表我神性的神之眼，来协助完成仪式是吧。但神之眼的剥离，意味着我将放弃身为人的肉体。");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 16, "也罢，现在的我，黑潮缠身，早已不是我原初的身躯...我离开了神之眼的力量，便无法再维持人形...");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 17, "...也许这就是我们的宿命吧。");
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 12, "不要这样...");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 18, "...明天见，Purus Absolutus！愿我们能在约定的新世界相遇！");
+        this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 13, "§4处决");
 
     }
 }
