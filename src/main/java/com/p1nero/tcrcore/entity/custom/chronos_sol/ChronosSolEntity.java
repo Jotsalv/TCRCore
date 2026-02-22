@@ -278,7 +278,23 @@ public class ChronosSolEntity extends PathfinderMob implements IEntityNpc, GeoEn
             root.addChild(whatWrong)
                     .addChild(youLookTerrible);
 
-        } else {
+        } else if(TCRQuests.TALK_TO_CHRONOS_12.equals(currentQuest)) {
+            root = new DialogNode(dBuilder.ans(42));
+            DialogNode chronos = new DialogNode(dBuilder.ans(43), dBuilder.opt(14, TCREntities.CHRONOS_SOL.get().getDescription()));
+            DialogNode known = new DialogNode(dBuilder.ans(43), dBuilder.opt(15));
+
+            DialogNode next = new DialogNode(dBuilder.ans(44), dBuilder.opt(-1))
+                    .addChild(new DialogNode(dBuilder.ans(45), dBuilder.opt(-1))
+                            .addChild(new DialogNode(dBuilder.ans(46), dBuilder.opt(-1))
+                                    .addChild(new DialogNode(dBuilder.ans(47, Component.translatable("structure.integrated_stronghold.stronghold")), dBuilder.opt(-1))
+                                            .addLeaf(dBuilder.opt(-2), 13))));
+
+            chronos.addChild(next);
+            known.addChild(next);
+            root.addChild(chronos)
+                    .addChild(known);
+
+        }  else {
             //默认的情况
 
             if(PlayerDataManager.aineTalked.get(localPlayer)) {
@@ -414,6 +430,12 @@ public class ChronosSolEntity extends PathfinderMob implements IEntityNpc, GeoEn
             player.displayClientMessage(TCRCoreMod.getInfo("unlock_new_skill", Component.translatable(FlyingSkills.SWORD_SOARING_MASTER.getTranslationKey()).withStyle(ChatFormatting.AQUA)), false);
             player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, SoundSource.PLAYERS, 1.0F, 1.0F);
             PlayerDataManager.swordSoaringUnlocked.put(player, true);
+        }
+
+        if(code == 13) {
+            TCRQuests.TALK_TO_CHRONOS_12.finish(player);
+            TCRQuests.GO_TO_OVERWORLD_END.start(player);
+            ItemUtil.addItemEntity(player, TCRItems.END_RESONANCE_STONE.get(), 1, ChatFormatting.LIGHT_PURPLE.getColor());
         }
 
         this.setConversingPlayer(null);

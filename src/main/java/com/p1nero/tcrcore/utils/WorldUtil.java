@@ -7,6 +7,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -33,6 +34,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class WorldUtil {
+    //维度翻译名
+    public static final MutableComponent SANCTUM_NAME = Component.translatable("travelerstitles.tcrcore.sanctum");
+    public static final MutableComponent OVERWORLD_NAME = Component.translatable("travelerstitles.minecraft.overworld");
+    public static final MutableComponent AETHER_NAME = Component.translatable("travelerstitles.aether.the_aether");
+    public static final MutableComponent NETHER_NAME = Component.translatable("travelerstitles.minecraft.the_nether");
+    public static final MutableComponent END_NAME = Component.translatable("travelerstitles.minecraft.the_end");
+    public static final MutableComponent SAMSARA_NAME = Component.translatable("travelerstitles.pbf1.sanctum_of_the_battle1");
+
     //祭坛定位
     public static final Vec3i DESERT_EYE_ALTAR_POS = new Vec3i(-140, 83, -176);
     public static final Vec3i ABYSS_EYE_ALTAR_POS = new Vec3i(-128, 83, -206);
@@ -67,6 +76,7 @@ public class WorldUtil {
     public static final String LAND_GOLEM = "ba_bt:land_tower";
     public static final String CORE_GOLEM = "ba_bt:core_tower";
     public static final String NETHER_GOLEM = "tcrcore:gate_of_disaster";
+    public static final String STRONG_HOLD = "integrated_stronghold:stronghold";
     public static Vec2i storm, flame, abyss, cursed, desert;
 
     public static List<MapColor> surfaceMaterials = Arrays.asList(MapColor.WATER, MapColor.ICE);

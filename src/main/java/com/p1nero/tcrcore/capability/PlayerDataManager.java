@@ -18,8 +18,6 @@ public class PlayerDataManager {
     private final static Set<String> EXISTING_ID = new HashSet<>();
     public static DoubleData currentQuestId = new DoubleData("currentQuestId", 0);
 
-    public static BoolData divineFragmentGotten = new BoolData("divineFragmentGotten", false);
-
     public static BoolData aineTalked = new BoolData("aineTalked", false);
     public static BoolData ornnTalked = new BoolData("ornnTalked", false);
     public static BoolData chonosTalked = new BoolData("chonosTalked", false);

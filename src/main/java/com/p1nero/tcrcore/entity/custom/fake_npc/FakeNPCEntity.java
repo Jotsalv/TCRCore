@@ -20,6 +20,8 @@ import java.util.UUID;
 
 public abstract class FakeNPCEntity extends PathfinderMob implements IEntityNpc, OwnableEntity {
 
+    protected boolean canBeHurt;
+
     private static final EntityDataAccessor<Optional<UUID>> OWNER_UUID = SynchedEntityData.defineId(FakeNPCEntity.class, EntityDataSerializers.OPTIONAL_UUID);
 
     public FakeNPCEntity(EntityType<? extends PathfinderMob> entityType, Level level) {
@@ -28,6 +30,9 @@ public abstract class FakeNPCEntity extends PathfinderMob implements IEntityNpc,
 
     @Override
     public boolean hurt(@NotNull DamageSource source, float value) {
+        if(canBeHurt) {
+            super.hurt(source, value);
+        }
         return false;
     }
 

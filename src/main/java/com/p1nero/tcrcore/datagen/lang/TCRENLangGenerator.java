@@ -90,6 +90,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.add(TCRItems.CORE_RESONANCE_STONE.get(), "Core Resonance Stone");
         this.add(TCRItems.NETHER_RESONANCE_STONE.get(), "Nether Resonance Stone");
         this.add(TCRItems.SKY_RESONANCE_STONE.get(), "Aether Resonance Stone");
+        this.add(TCRItems.END_RESONANCE_STONE.get(), "End Resonance Stone");
         this.addInfo("resonance_stone_usage", "Can resonate with the location of the Angel's seal");
         this.add(TCRItems.CORE_FLINT.get(), "Core Flint");
         this.addItemUsageInfo(TCRItems.CORE_FLINT.get(), "Use on an Obsidian Frame to open a Nether Portal.");
@@ -214,33 +215,10 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addInfo("godness_statue_pos", "Goddess Statue");
         this.addInfo("eye_pos_mark", "Location of [%s]: [%s]");
 
-        this.addAdvancement("dragon_tame", "Dragon Tamer", "Tame Skrythe");
-        this.addAdvancement(TCRCoreMod.MOD_ID, "The Casket of Reveries", "Where the dream begins. Head to the The Sanctuary to find the The Sanctuary Keeper.");
-        this.addAdvancement(TCRCoreMod.MOD_ID + "_weapon", "King's Treasury", "All obtainable and adapted weapons or materials. Check [JEI] for acquisition methods and details.");
-        this.addAdvancement("find_ymsw", "Ribbit Village", "Reach the Ribbit Village");
-        this.addAdvancement("aquamirae_weapon", "Sea Spirit Tale - Weapons", "");
-        this.addAdvancement("cataclysm_weapon", "Cataclysm - Weapons", "");
-        this.addAdvancement("legend_weapon", "Legendary Weapons", "");
-        this.addAdvancement("ef_legacy", "Epic Fight - Weapons", "Everything are obtainable through crafting, featuring different weapon skills and animation templates. Check JEI for recipes and skill info.");
-        this.addAdvancement("kill_pillager", "Proof of Allegiance", "The task is complete. Return to the The Sanctuary Keeper.");
-        this.addAdvancement("mark_map", "Marking Locations", "The Sanctuary Keeper has marked the locations of the scattered Divine Eye on your map. Now, go reclaim them!");
-        this.addAdvancement("storm_eye", "Eye of the Storm", "§a§oWhen war ripped the sky, she used the storm as a stairway, building a suspended paradise for her people.");
-        this.addAdvancement("abyss_eye", "Eye of the Abyss", "§a§oWhen the abyss devoured the land, He fused himself into the seabed, his flesh became a city of bubbles.");
-        this.addAdvancement("flame_eye", "Eye of the Flame", "§a§oWhere magma surged, He pulled out his heart, forging an eternal beacon.");
-        this.addAdvancement("desert_eye", "Eye of the Desert", "§a§oThe guardians are not monsters; they are living tombstones willingly transformed by the people.");
-        this.addAdvancement("cursed_eye", "Cursed Eye", "§a§oWhen the traitor pierced her back, frozen tears instantly sealed three thousand ghost ships.");
-
-        this.addAdvancement("flame_kill", "Soul of Ignis", "Defeat Ignis and obtain The Incinerator.");
-        this.addAdvancement("storm_kill", "Soul of Scylla", "Defeat Scylla and obtain The Ceraunus.");
-        this.addAdvancement("abyss_kill", "Soul of The Leviathan", "Defeat The Leviathan and obtain The Tidal Claw.");
-        this.addAdvancement("desert_kill", "Soul of Ancient Remnant", "Defeat Ancient Remnant and obtain The Wrath of the Desert.");
-        this.addAdvancement("cursed_kill", "Soul of Maledictus", "Defeat Maledictus and obtain The Soul Render.");
-
-        this.addAdvancement("stage1", "Stage 1", "");
-        this.addAdvancement("stage2", "Stage 2", "");
-        this.addAdvancement("stage3", "Stage 3", "");
-        this.addAdvancement("stage4", "Stage 4", "");
-        this.addAdvancement("stage5", "Stage 5", "");
+        this.addAdvancement(TCRCoreMod.MOD_ID, "The Casket of Reveries", "Where the dream begins.");
+        this.addAdvancement("unlock_weapon_armor_book", "Mysterious Weapons", "");
+        this.addAdvancement("unlock_magic_and_boss", "Necromancy Scroll", "");
+        this.addAdvancement("unlock_epic_boss", "Wither Soul Stone", "");
 
         this.add(TCREntities.CHRONOS_SOL.get(), "Chronos Sol");
         this.add(TCREntities.FERRY_GIRL.get(), "Ferry girl");

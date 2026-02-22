@@ -99,6 +99,17 @@ public class TCRItems {
                     }))
     );
 
+    public static final RegistryObject<Item> END_RESONANCE_STONE = REGISTRY.register("end_resonance_stone",
+            () -> new ResonanceStoneItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(), ResourceLocation.parse(WorldUtil.SKY_GOLEM), 80, Level.OVERWORLD, (serverPlayer) ->
+                    TCRQuestManager.hasQuest(serverPlayer, TCRQuests.USE_END_RESONANCE_STONE),
+                    ((pos, serverPlayer) ->
+                    {
+                        WaypointUtil.sendWaypoint(serverPlayer, "eye_pos_mark", TCRCoreMod.getInfo("eye_pos_mark", Component.translatable("structure.integrated_stronghold.stronghold")), pos, WaypointColor.PURPLE);
+                        TCRQuests.USE_END_RESONANCE_STONE.finish(serverPlayer, true);
+                        TCRQuests.GO_TO_THE_END.start(serverPlayer);
+                    }))
+    );
+
     public static final RegistryObject<Item> MYSTERIOUS_WEAPONS = REGISTRY.register("mysterious_weapons", () -> new SimpleDescriptionItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(), true));
 
     public static final RegistryObject<Item> NECROMANCY_SCROLL = REGISTRY.register("necromancy_scroll", () -> new SimpleDescriptionItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(), true));

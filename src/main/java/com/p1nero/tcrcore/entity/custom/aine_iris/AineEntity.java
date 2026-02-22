@@ -199,11 +199,17 @@ public class AineEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
         } else if(TCRQuests.TALK_TO_AINE_SAMSARA.equals(currentQuest)) {
             //打开轮回绝境
             return dialogueScreenBuilder.start(dBuilder.ans(24, localPlayer.getDisplayName()))
-                    .addOption(dBuilder.opt(7, TCRItems.WITHER_SOUL_STONE.get().getDescription()), dBuilder.ans(30, Items.GHAST_TEAR.getDescription().copy().withStyle(ChatFormatting.AQUA), Component.translatable("travelerstitles.pbf1.sanctum_of_the_battle1").withStyle(ChatFormatting.GOLD)))
-                    .addOption(dBuilder.opt(17, Component.translatable("travelerstitles.pbf1.sanctum_of_the_battle1")), dBuilder.ans(31, Component.translatable("travelerstitles.pbf1.sanctum_of_the_battle1"), Component.translatable("travelerstitles.pbf1.sanctum_of_the_battle1")))
+                    .addOption(dBuilder.opt(7, TCRItems.WITHER_SOUL_STONE.get().getDescription()), dBuilder.ans(30, Items.GHAST_TEAR.getDescription().copy().withStyle(ChatFormatting.AQUA), WorldUtil.SAMSARA_NAME.copy().withStyle(ChatFormatting.GOLD)))
+                    .addOption(dBuilder.opt(17, WorldUtil.SAMSARA_NAME), dBuilder.ans(31, WorldUtil.SAMSARA_NAME, WorldUtil.SAMSARA_NAME))
                     .addOption(-1, 32)
                     .addFinalOption(-2, 10)
                     .build();
+        } else if(TCRQuests.TALK_TO_AINE_2.equals(currentQuest)) {
+            dialogueScreenBuilder.start(dBuilder.ans(33, localPlayer.getDisplayName(), WorldUtil.AETHER_NAME))
+                    .addOption(dBuilder.ans(34, WorldUtil.AETHER_NAME, TCREntities.AINE.get().getDescription()), dBuilder.opt(18, TCREntities.AINE.get().getDescription()))
+                    .addOption(dBuilder.ans(35), dBuilder.opt(13, TCREntities.AINE.get().getDescription()))
+                    .addOption(dBuilder.ans(36, com.github.L_Ender.cataclysm.init.ModItems.VOID_EYE.get().getDescription(), localPlayer.getDisplayName()), dBuilder.opt(-1))
+                    .addFinalOption(dBuilder.opt(-2), 11);
         } else {
             if(PlayerDataManager.chonosTalked.get(localPlayer)) {
                 root.addChild(aboutChronos);
@@ -287,8 +293,13 @@ public class AineEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
 
         if(code == 10) {
             TCRQuests.TALK_TO_AINE_SAMSARA.finish(serverPlayer);
+            TCRQuests.GO_TO_SAMSARA.start(serverPlayer);
             TCRAdvancementData.finishAdvancement("unlock_epic_boss", serverPlayer);
             PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new PlayTitlePacket(PlayTitlePacket.UNLOCK_NEW_CHAPTER), serverPlayer);
+        }
+
+        if(code == 11) {
+            TCRQuests.TALK_TO_AINE_2.finish(serverPlayer);
         }
 
         this.setConversingPlayer(null);

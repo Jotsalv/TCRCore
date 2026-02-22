@@ -4,6 +4,7 @@ import com.aetherteam.aether.data.resources.registries.AetherDimensions;
 import com.github.L_Ender.cataclysm.init.ModItems;
 import com.hm.efn.gameasset.EFNSkills;
 import com.obscuria.aquamirae.registry.AquamiraeItems;
+import com.p1nero.battle_field1.worldgen.PBF1Dimensions;
 import com.p1nero.cataclysm_dimension.worldgen.CataclysmDimensions;
 import com.p1nero.dpr.gameassets.DPRSkills;
 import com.p1nero.fast_tpa.network.PacketRelay;
@@ -404,7 +405,15 @@ public class PlayerEventListeners {
                 }
             }
             if(event.getTo().equals(Level.END)) {
-
+                if(TCRQuestManager.hasQuest(serverPlayer, TCRQuests.GO_TO_THE_END)) {
+                    TCRQuests.GO_TO_THE_END.finish(serverPlayer, true);
+                    TCRQuests.GET_VOID_EYE.start(serverPlayer);
+                }
+            }
+            if(event.getTo().equals(PBF1Dimensions.SANCTUM_OF_THE_BATTLE_LEVEL_KEY)) {
+                if(TCRQuestManager.hasQuest(serverPlayer, TCRQuests.GO_TO_SAMSARA)) {
+                    TCRQuests.GO_TO_SAMSARA.finish(serverPlayer, true);
+                }
             }
             updateHealth(serverPlayer, event.getFrom());
             updateHealth(serverPlayer, event.getTo());
@@ -480,6 +489,10 @@ public class PlayerEventListeners {
                 event.setCanceled(true);
             }
             if(!(TCRQuests.GET_WITHER_EYE.isFinished(player) || TCRQuestManager.hasQuest(player, TCRQuests.GET_WITHER_EYE)) && event.getItem().getItem().is(ModItems.MECH_EYE.get())) {
+                player.displayClientMessage(TCRCoreMod.getInfo("can_not_do_this_too_early"), true);
+                event.setCanceled(true);
+            }
+            if(!TCRQuests.TALK_TO_SKY_GOLEM.isFinished(player) && event.getItem().getItem().is(ModItems.STORM_EYE.get())) {
                 player.displayClientMessage(TCRCoreMod.getInfo("can_not_do_this_too_early"), true);
                 event.setCanceled(true);
             }
@@ -568,6 +581,20 @@ public class PlayerEventListeners {
                 TCRQuests.TALK_TO_CHRONOS_10.start(player);
             }
 
+            if(TCRQuestManager.hasQuest(player, TCRQuests.GET_STORM_EYE) && itemStack.is(ModItems.STORM_EYE.get())) {
+                giveOracleEffect(player, ModItems.STORM_EYE.get());
+                PlayerDataManager.stormEyeGotten.put(player, true);
+                TCRQuests.GET_STORM_EYE.finish(player, true);
+                if(!PlayerDataManager.stormEyeActivated.get(player)) {
+                    TCRQuests.PUT_STORM_EYE_ON_ALTAR.start(player);
+                }
+                if(!PlayerDataManager.stormEyeBlessed.get(player)) {
+                    TCRQuests.BLESS_ON_THE_GODNESS_STATUE.start(player);
+                }
+                TCRQuests.TALK_TO_AINE_2.start(player);
+                TCRQuests.TALK_TO_CHRONOS_12.start(player);
+            }
+
             if (itemStack.is(AquamiraeItems.SHELL_HORN.get()) && !PlayerDataManager.cursedEyeGotten.get(player)) {
                 giveOracleEffect(player, AquamiraeItems.SHELL_HORN.get());
             }
@@ -576,11 +603,6 @@ public class PlayerEventListeners {
             if(itemStack.is(TCRItems.MYSTERIOUS_WEAPONS.get()) && !TCRQuestManager.hasFinished(player, TCRQuests.TALK_TO_ORNN_1)) {
                 giveOracleEffect(player, TCRItems.MYSTERIOUS_WEAPONS.get());
                 TCRQuests.TALK_TO_ORNN_1.start(player, true);
-            }
-
-            //标记为知道真相
-            if(itemStack.is(TCRItems.DIVINE_FRAGMENT.get()) && !PlayerDataManager.divineFragmentGotten.get(player)) {
-                PlayerDataManager.divineFragmentGotten.put(player, true);
             }
 
         }

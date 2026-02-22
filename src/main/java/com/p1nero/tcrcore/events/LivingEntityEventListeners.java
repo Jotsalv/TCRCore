@@ -24,8 +24,11 @@ import com.p1nero.entityrespawner.entity.SoulEntity;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.capability.PlayerDataManager;
 import com.p1nero.tcrcore.capability.TCRCapabilityProvider;
+import com.p1nero.tcrcore.capability.TCRQuestManager;
+import com.p1nero.tcrcore.capability.TCRQuests;
 import com.p1nero.tcrcore.client.sound.CorneliaMusicPlayer;
 import com.p1nero.tcrcore.client.sound.WraithonMusicPlayer;
+import com.p1nero.tcrcore.entity.custom.fake_npc.fake_sky_golem.FakeSkyGolem;
 import com.p1nero.tcrcore.gameassets.TCRSkills;
 import com.p1nero.tcrcore.item.TCRItems;
 import com.p1nero.tcrcore.mixin.AbstractGolemInvoker;
@@ -289,7 +292,21 @@ public class LivingEntityEventListeners {
             }
 
             if (livingEntity instanceof SkyGolem) {
+                if(TCRQuestManager.hasQuest(player, TCRQuests.GET_STORM_EYE)) {
+                    FakeSkyGolem fakeSkyGolem = new FakeSkyGolem(player);
+                    fakeSkyGolem.setPos(player.position());
+                    player.serverLevel().addFreshEntity(fakeSkyGolem);
+                    TCRQuests.GET_STORM_EYE.finish(player, true);
+                    TCRQuests.TALK_TO_SKY_GOLEM.start(player);
+                }
+            }
 
+            if(livingEntity instanceof FakeSkyGolem) {
+                if (!PlayerDataManager.stormEyeGotten.get(player) && TCRQuests.TALK_TO_SKY_GOLEM.isFinished(player)) {
+                    ItemUtil.addItemEntity(player, ModItems.STORM_EYE.get(), 1, ChatFormatting.AQUA.getColor().intValue());
+                    player.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
+                    TCRQuests.GET_STORM_EYE.start(player);
+                }
             }
 
         });

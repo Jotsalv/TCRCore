@@ -23,6 +23,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.player.Player;
@@ -30,6 +31,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.loading.FMLEnvironment;
+import net.shelmarow.combat_evolution.execution.ExecutionHandler;
 import org.jetbrains.annotations.NotNull;
 
 public class FakeSkyGolem extends FakeNPCEntity {
@@ -41,6 +43,11 @@ public class FakeSkyGolem extends FakeNPCEntity {
     public FakeSkyGolem(ServerPlayer serverPlayer) {
         super(TCREntities.FAKE_SKY_GOLEM.get(), serverPlayer.level());
         this.setOwner(serverPlayer);
+    }
+
+    @Override
+    public boolean hurt(@NotNull DamageSource source, float value) {
+        return super.hurt(source, 999999);
     }
 
     @Override
@@ -133,12 +140,13 @@ public class FakeSkyGolem extends FakeNPCEntity {
     @Override
     public void handleNpcInteraction(ServerPlayer player, int i) {
         if(i == 1) {
-            //TODO 播放处决
             if (!PlayerDataManager.stormEyeGotten.get(player)) {
                 ItemUtil.addItemEntity(player, ModItems.STORM_EYE.get(), 1, ChatFormatting.AQUA.getColor().intValue());
                 player.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
             }
             TCRQuests.TALK_TO_SKY_GOLEM.finish(player);
+            canBeHurt = true;
+            ExecutionHandler.entityForceExecute(player, this, false);
         }
         setConversingPlayer(null);
     }
