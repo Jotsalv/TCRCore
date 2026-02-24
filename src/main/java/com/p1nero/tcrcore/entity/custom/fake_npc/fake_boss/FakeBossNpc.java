@@ -1,12 +1,15 @@
 package com.p1nero.tcrcore.entity.custom.fake_npc.fake_boss;
 
+import com.p1nero.dialog_lib.api.entity.goal.LookAtConservingPlayerGoal;
 import com.p1nero.dialog_lib.client.screen.DialogueScreen;
 import com.p1nero.dialog_lib.client.screen.builder.StreamDialogueScreenBuilder;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.client.sound.TCRSounds;
 import com.p1nero.tcrcore.entity.custom.fake_npc.FakeNPCEntity;
 import com.p1nero.tcrcore.utils.EntityUtil;
+import com.p1nero.tcrcore.utils.WorldUtil;
 import com.yesman.epicskills.registry.entry.EpicSkillsSounds;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -38,6 +41,7 @@ public class FakeBossNpc extends FakeNPCEntity {
     @Override
     protected void registerGoals() {
         super.registerGoals();
+        this.goalSelector.addGoal(0, new LookAtConservingPlayerGoal<>(this));
         this.goalSelector.addGoal(0, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
 
@@ -46,8 +50,11 @@ public class FakeBossNpc extends FakeNPCEntity {
         super.tick();
         if(tickCount % 35 == 0) {
             if(!level().isClientSide) {
-                level().playSound(null, getX(), getY(), getZ(), TCRSounds.CLAP.get(), SoundSource.PLAYERS, 0.33F, 1.0F);
+                level().playSound(null, getX(), getY(), getZ(), TCRSounds.CLAP.get(), SoundSource.PLAYERS, 0.1F, 1.0F);
             }
+        }
+        if(tickCount < 60) {
+            this.getLookControl().setLookAt(new BlockPos(WorldUtil.BED_POS).above(1).getCenter());
         }
     }
 
@@ -66,7 +73,7 @@ public class FakeBossNpc extends FakeNPCEntity {
     @OnlyIn(Dist.CLIENT)
     public DialogueScreen getDialogueScreen(CompoundTag compoundTag) {
         StreamDialogueScreenBuilder builder = new StreamDialogueScreenBuilder(this, TCRCoreMod.MOD_ID);
-        builder.start(TCRCoreMod.getInfo("congratulation"))
+        builder.start(Component.literal("\n").append(TCRCoreMod.getInfo("congratulation")))
                 .addFinalOption(Component.literal("..."), 1);
         return builder.build();
     }
