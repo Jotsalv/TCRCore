@@ -13,7 +13,8 @@
     },
     {
         "dimension": [
-            "tcrcore:sanctum"
+            "tcrcore:sanctum",
+            "tcrcore:real"
         ],
         "result": "deny"
     },
