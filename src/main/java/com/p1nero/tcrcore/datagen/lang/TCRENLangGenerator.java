@@ -112,6 +112,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "It bears an ancient oracle hinting at the locations of scattered embers. Show it to the The Sanctuary Keeper in the The Sanctuary; it might aid your adventure!");
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "§cIn multiplayer mode, do not occupy other players'! Everyone must submit their own!", 2);
 
+        this.addInfo("pec_weapon_lock", "Weapon skill locked! Defeat [%s] in [%s] to unlock!");
         this.addInfo("resonance_stone_usage", "Can resonate with the location of the Angel's seal");
         this.addInfo("resonance_search_failed", "ERROR：Failed to Resonate！Please use locate command or structure compass to search [%s]");
         this.addInfo("yamato_skill_lock", "[%s] are locked. Requires special enchantment book to unlock!");

@@ -1,5 +1,8 @@
 package com.p1nero.tcrcore.entity.custom.ornn;
 
+import com.hm.efn.gameasset.EFNEnchantment;
+import com.hm.efn.gameasset.EFNSkills;
+import com.hm.efn.registries.EFNItem;
 import com.p1nero.dialog_lib.api.component.DialogNode;
 import com.p1nero.dialog_lib.api.component.DialogueComponentBuilder;
 import com.p1nero.dialog_lib.api.entity.custom.IEntityNpc;
@@ -17,6 +20,8 @@ import com.p1nero.tcrcore.network.TCRPacketHandler;
 import com.p1nero.tcrcore.network.packet.clientbound.PlayTitlePacket;
 import com.p1nero.tcrcore.utils.ItemUtil;
 import com.p1nero.tcrcore.utils.WorldUtil;
+import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
+import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -38,6 +43,7 @@ import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.trading.Merchant;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
@@ -57,6 +63,9 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import yesman.epicfight.world.item.EpicFightItems;
+import yesman.epicfight.world.item.SkillBookItem;
+
+import java.util.Map;
 
 public class OrnnEntity extends PathfinderMob implements IEntityNpc, GeoEntity, Merchant {
     protected static final RawAnimation IDLE = RawAnimation.begin().thenLoop("idle");
@@ -85,6 +94,7 @@ public class OrnnEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
 
     @Override
     protected @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand hand) {
+        initOffers();
         if (player instanceof ServerPlayer serverPlayer) {
             if(!PlayerDataManager.ornnTalked.get(player)) {
                 PlayerDataManager.ornnTalked.put(player, true);
@@ -142,6 +152,10 @@ public class OrnnEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
                     .addChild(new DialogNode(dBuilder.ans(6), dBuilder.opt(-1))
                             .addChild(new DialogNode(dBuilder.ans(7), dBuilder.opt(-1))
                                     .addLeaf(dBuilder.opt(6), 8))));
+        } else if(currentQuest.equals(TCRQuests.TALK_TO_ORNN_YAMATO)){
+            root.addChild(new DialogNode(dBuilder.ans(8, EFNItem.YAMATO_DMC_IN_SHEATH.get().getDescription()), dBuilder.opt(5, EFNItem.YAMATO_DMC_IN_SHEATH.get().getDescription()))
+                    .addChild(new DialogNode(dBuilder.ans(9), dBuilder.opt(-1))
+                            .addLeaf(dBuilder.opt(-3), 9)));
         } else {
             if(!PlayerDataManager.gameCleared.get(localPlayer)) {
                 if(PlayerDataManager.chronosTalked.get(localPlayer)) {
@@ -152,6 +166,9 @@ public class OrnnEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
                 root.addChild(aboutFerryGirl);
             }
             root.addChild(smithHelp);
+            if(TCRQuests.TALK_TO_ORNN_YAMATO.isFinished(localPlayer)) {
+                root.addLeaf(dBuilder.opt(-4), 10);
+            }
             root.addLeaf(dBuilder.opt(-2));
         }
         return treeBuilder.buildWith(root);
@@ -196,6 +213,14 @@ public class OrnnEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
             TCRAdvancementData.finishAdvancement("unlock_weapon_armor_book", player);
             PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new PlayTitlePacket(PlayTitlePacket.UNLOCK_NEW_CHAPTER), player);
             player.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
+        }
+
+        if(i == 9) {
+            TCRQuests.TALK_TO_ORNN_YAMATO.finish(player);
+        }
+
+        if(i == 10) {
+            this.startTrade(player);
         }
 
         this.setConversingPlayer(null);
@@ -267,6 +292,47 @@ public class OrnnEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
     @Override
     public Player getTradingPlayer() {
         return tradingPlayer;
+    }
+
+
+    public void initOffers() {
+        offers = new MerchantOffers();
+
+        ItemStack guard = new ItemStack(Items.ENCHANTED_BOOK);
+        EnchantmentHelper.setEnchantments(Map.of(EFNEnchantment.YAMATO_GUARD.get(), 1), guard);
+
+        ItemStack summonedSword = new ItemStack(Items.ENCHANTED_BOOK);
+        EnchantmentHelper.setEnchantments(Map.of(EFNEnchantment.YAMATO_SUMMONED_SWORD.get(), 1), summonedSword);
+
+        ItemStack judgementCutEnd = new ItemStack(Items.ENCHANTED_BOOK);
+        EnchantmentHelper.setEnchantments(Map.of(EFNEnchantment.YAMATO_JUDGEMENT_CUT_END.get(), 1), judgementCutEnd);
+
+        ItemStack doppelganger = new ItemStack(Items.ENCHANTED_BOOK);
+        EnchantmentHelper.setEnchantments(Map.of(EFNEnchantment.YAMATO_DOPPELGANGER.get(), 1), doppelganger);
+
+        ItemStack skillBook = new ItemStack(EpicFightItems.SKILLBOOK.get());
+        SkillBookItem.setContainingSkill(EFNSkills.ZANSETSU, skillBook);
+
+        offers.add(new MerchantOffer(
+                new ItemStack(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), 1),
+                guard,
+                142857, 0, 0.01f));
+        offers.add(new MerchantOffer(
+                new ItemStack(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), 1),
+                summonedSword,
+                142857, 0, 0.01f));
+        offers.add(new MerchantOffer(
+                new ItemStack(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), 1),
+                doppelganger,
+                142857, 0, 0.01f));
+        offers.add(new MerchantOffer(
+                new ItemStack(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), 1),
+                judgementCutEnd,
+                142857, 0, 0.01f));
+        offers.add(new MerchantOffer(
+                new ItemStack(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), 1),
+                skillBook,
+                142857, 0, 0.01f));
     }
 
     @Override

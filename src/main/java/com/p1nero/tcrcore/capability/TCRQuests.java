@@ -3,6 +3,7 @@ package com.p1nero.tcrcore.capability;
 import com.brass_amber.ba_bt.init.BTEntityType;
 import com.github.L_Ender.cataclysm.init.ModItems;
 import com.github.dodo.dodosmobs.init.ModEntities;
+import com.hm.efn.registries.EFNItem;
 import com.obscuria.aquamirae.registry.AquamiraeEntities;
 import com.obscuria.aquamirae.registry.AquamiraeItems;
 import com.p1nero.tcrcore.TCRCoreMod;
@@ -122,6 +123,8 @@ public class TCRQuests {
     public static Quest USE_END_RESONANCE_STONE;
     public static Quest GO_TO_THE_END;
     public static Quest GET_VOID_EYE;
+
+    public static Quest TALK_TO_ORNN_YAMATO;
 
     //大结局
     public static Quest TALK_TO_CHRONOS_END;
@@ -400,7 +403,7 @@ public class TCRQuests {
 
         USE_NETHER_RESONANCE_STONE = TCRQuestManager.create("use_nether_resonance_stone")
                 .shortDescParam(TCRItems.NETHER_RESONANCE_STONE.get().getDescription().copy().withStyle(ChatFormatting.DARK_RED))
-                .descParam(WorldUtil.OVERWORLD_NAME, TCRItems.NETHER_RESONANCE_STONE.get().getDescription().copy().withStyle(ChatFormatting.DARK_RED),
+                .descParam(WorldUtil.NETHER_NAME, TCRItems.NETHER_RESONANCE_STONE.get().getDescription().copy().withStyle(ChatFormatting.DARK_RED),
                         ModItems.MONSTROUS_EYE.get().getDescription().copy().withStyle(ChatFormatting.DARK_RED));
 
         GET_MONST_EYE = TCRQuestManager.create("get_monst_eye")
@@ -506,6 +509,12 @@ public class TCRQuests {
                 .shortDescParam(ModItems.VOID_EYE.get().getDescription())
                 .descParam(ModItems.VOID_EYE.get().getDescription(),
                         WorldUtil.END_NAME);
+
+        TALK_TO_ORNN_YAMATO = TCRQuestManager.create("talk_to_ornn_yamato")
+                .withIcon(SIDE_QUEST_1)
+                .shortDescParam(TCREntities.ORNN.get().getDescription())
+                .descParam(EFNItem.YAMATO_DMC_IN_SHEATH.get().getDescription(), TCREntities.ORNN.get().getDescription())
+                .withTrackingPos(new BlockPos(WorldUtil.ORNN_POS.above(3)), TCRDimensions.SANCTUM_LEVEL_KEY);
 
         TALK_TO_CHRONOS_END = TCRQuestManager.create("talk_to_chronos_end")
                 .shortDescParam(TCREntities.CHRONOS_SOL.get().getDescription())

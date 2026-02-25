@@ -88,6 +88,8 @@ public class ResonanceStoneItem extends Item {
                     serverPlayer.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(EpicSkillsSounds.GAIN_ABILITY_POINTS.get()), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
                     callback.accept(pos, serverPlayer);
                 });
+            } else {
+                player.displayClientMessage(TCRCoreMod.getInfo("can_not_do_this_too_early"), false);
             }
         }
         return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide);

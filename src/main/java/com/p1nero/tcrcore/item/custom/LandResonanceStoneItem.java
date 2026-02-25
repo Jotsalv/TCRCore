@@ -92,6 +92,8 @@ public class LandResonanceStoneItem extends ResonanceStoneItem{
                         itemStack.shrink(1);
                     }
                 });
+            } else {
+                player.displayClientMessage(TCRCoreMod.getInfo("can_not_do_this_too_early"), false);
             }
         }
         return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide);

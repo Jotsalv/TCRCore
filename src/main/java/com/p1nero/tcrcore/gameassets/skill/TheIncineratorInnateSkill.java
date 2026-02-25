@@ -3,12 +3,9 @@ package com.p1nero.tcrcore.gameassets.skill;
 import com.p1nero.p1nero_ec.capability.PECPlayer;
 import com.p1nero.p1nero_ec.client.KeyMappings;
 import com.p1nero.p1nero_ec.effect.PECEffects;
-import com.p1nero.p1nero_ec.gameassets.PECAnimations;
-import com.p1nero.p1nero_ec.skills.PECWeaponInnateSkillBase;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.gameassets.TCRAnimations;
 import net.minecraft.client.KeyMapping;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -22,7 +19,7 @@ import yesman.epicfight.world.capabilities.item.CapabilityItem;
 
 import java.util.List;
 
-public class TheIncineratorInnateSkill extends PECWeaponInnateSkillBase {
+public class TheIncineratorInnateSkill extends com.p1nero.p1nero_ec.skills.TheIncineratorInnateSkill {
 
     public TheIncineratorInnateSkill(SkillBuilder<? extends Skill> builder) {
         super(builder);
@@ -39,25 +36,6 @@ public class TheIncineratorInnateSkill extends PECWeaponInnateSkillBase {
     @Override
     public void executeSkill1(ServerPlayerPatch serverPlayerPatch, SkillContainer container) {
         serverPlayerPatch.playAnimationSynchronized(TCRAnimations.SOLAR_BRASERO_OBSCURIDAD, 0.15F);
-    }
-
-    @Override
-    protected void tryExecuteSkill2(ServerPlayerPatch serverPlayerPatch, SkillContainer container) {
-        if(serverPlayerPatch.getTarget() == null) {
-            serverPlayerPatch.getOriginal().displayClientMessage(Component.translatable("info.p1nero_ec.need_target"), true);
-            return;
-        }
-        super.tryExecuteSkill2(serverPlayerPatch, container);
-    }
-
-    @Override
-    public void executeSkill2(ServerPlayerPatch serverPlayerPatch, SkillContainer container) {
-        serverPlayerPatch.playAnimationSynchronized(PECAnimations.THE_INCINERATOR_SKILL2, 0.15F);
-    }
-
-    @Override
-    public void executeSkill3(ServerPlayerPatch serverPlayerPatch, SkillContainer container) {
-        serverPlayerPatch.playAnimationSynchronized(PECAnimations.THE_INCINERATOR_SKILL3, 0.15F);
     }
 
     @OnlyIn(Dist.CLIENT)

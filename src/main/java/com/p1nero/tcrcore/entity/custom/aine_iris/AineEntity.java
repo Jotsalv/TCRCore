@@ -29,8 +29,6 @@ import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.player.KeyMappings;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import moe.plushie.armourers_workshop.init.ModItems;
-import net.acetheeldritchking.cataclysm_spellbooks.registries.CSSchoolRegistry;
-import net.acetheeldritchking.cataclysm_spellbooks.registries.SpellRegistries;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -88,7 +86,6 @@ public class AineEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
     private MerchantOffers bloodOffers = new MerchantOffers();
     private MerchantOffers evocationOffers = new MerchantOffers();
     private MerchantOffers natureOffers = new MerchantOffers();
-    private MerchantOffers technomancyOffers = new MerchantOffers();
 
     public AineEntity(EntityType<? extends PathfinderMob> p_21683_, Level p_21684_) {
         super(p_21683_, p_21684_);
@@ -286,8 +283,7 @@ public class AineEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
                         .addLeaf(SchoolRegistry.ENDER.get().getDisplayName(), -5)
                         .addLeaf(SchoolRegistry.BLOOD.get().getDisplayName(), -6)
                         .addLeaf(SchoolRegistry.EVOCATION.get().getDisplayName(), -7)
-                        .addLeaf(SchoolRegistry.NATURE.get().getDisplayName(), -8)
-                        .addLeaf(CSSchoolRegistry.TECHNOMANCY.get().getDisplayName(), -9);
+                        .addLeaf(SchoolRegistry.NATURE.get().getDisplayName(), -8);
                 root.addChild(learnMagic);
                 root.addLeaf(dBuilder.opt(-4), 8);
             }
@@ -373,7 +369,7 @@ public class AineEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
         }
 
         //法术交易
-        if (code <= -1 && code >= -9) {
+        if (code <= -1 && code >= -8) {
             switch (code) {
                 case -1 -> offers = iceOffers;
                 case -2 -> offers = fireOffers;
@@ -383,7 +379,6 @@ public class AineEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
                 case -6 -> offers = bloodOffers;
                 case -7 -> offers = evocationOffers;
                 case -8 -> offers = natureOffers;
-                case -9 -> offers = technomancyOffers;
             }
             this.startTrade(serverPlayer);
         }
@@ -457,7 +452,6 @@ public class AineEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
         bloodOffers = new MerchantOffers();
         evocationOffers = new MerchantOffers();
         natureOffers = new MerchantOffers();
-        technomancyOffers = new MerchantOffers();
         // 冰霜
         iceOffers.add(new MerchantOffer(
                 new ItemStack(ItemRegistry.FROZEN_BONE_SHARD.get(), 1),
@@ -501,26 +495,6 @@ public class AineEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
                 142857, 0, 0.01f));
 
         // 炽焰
-        fireOffers.add(new MerchantOffer(
-                new ItemStack(Items.BLAZE_ROD, 3),
-                new ItemStack(com.github.L_Ender.cataclysm.init.ModItems.BURNING_ASHES.get(), 1),
-                getSpellScroll(SpellRegistries.ASHEN_BREATH.get()),
-                142857, 0, 0.01f));
-        fireOffers.add(new MerchantOffer(
-                new ItemStack(Items.BLAZE_ROD, 3),
-                new ItemStack(com.github.L_Ender.cataclysm.init.ModItems.BURNING_ASHES.get(), 1),
-                getSpellScroll(SpellRegistries.BONE_STORM.get()),
-                142857, 0, 0.01f));
-        fireOffers.add(new MerchantOffer(
-                new ItemStack(Items.BLAZE_ROD, 2),
-                new ItemStack(com.github.L_Ender.cataclysm.init.ModItems.BURNING_ASHES.get(), 1),
-                getSpellScroll(SpellRegistries.BONE_PIERCE.get()),
-                142857, 0, 0.01f));
-        fireOffers.add(new MerchantOffer(
-                new ItemStack(Items.BLAZE_ROD, 5),
-                new ItemStack(com.github.L_Ender.cataclysm.init.ModItems.IGNITIUM_INGOT.get(), 1),
-                getSpellScroll(SpellRegistries.TECTONIC_TREMBLE.get()),
-                142857, 0, 0.01f));
         fireOffers.add(new MerchantOffer(
                 new ItemStack(Items.BLAZE_ROD, 1),
                 new ItemStack(Items.BLAZE_POWDER, 1),
@@ -725,34 +699,7 @@ public class AineEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
                 getSpellScroll(SpellRegistry.WISP_SPELL.get()),
                 142857, 0, 0.01f));
 
-        // technomancy
-        technomancyOffers.add(new MerchantOffer(
-                new ItemStack(Items.REDSTONE, 3),
-                new ItemStack(ItemRegistry.ENERGIZED_CORE.get(), 1),
-                getSpellScroll(SpellRegistries.LOCK_ON.get()),
-                142857, 0, 0.01f));
-        technomancyOffers.add(new MerchantOffer(
-                new ItemStack(Items.REDSTONE, 2),
-                new ItemStack(ItemRegistry.ENERGIZED_CORE.get(), 1),
-                getSpellScroll(SpellRegistries.REBOOT.get()),
-                142857, 0, 0.01f));
-
         // 猩红
-        bloodOffers.add(new MerchantOffer(
-                new ItemStack(ItemRegistry.BLOOD_VIAL.get(), 5),
-                new ItemStack(ItemRegistry.BLOODY_VELLUM.get(), 1),
-                getSpellScroll(SpellRegistries.FINAL_REND.get()),
-                142857, 0, 0.01f));
-        bloodOffers.add(new MerchantOffer(
-                new ItemStack(ItemRegistry.BLOOD_VIAL.get(), 5),
-                new ItemStack(ItemRegistry.BLOODY_VELLUM.get(), 1),
-                getSpellScroll(SpellRegistries.HEMORRHAGING_IMPACT.get()),
-                142857, 0, 0.01f));
-        bloodOffers.add(new MerchantOffer(
-                new ItemStack(ItemRegistry.BLOOD_VIAL.get(), 3),
-                new ItemStack(ItemRegistry.BLOODY_VELLUM.get(), 1),
-                getSpellScroll(SpellRegistries.QUICK_STRIKE.get()),
-                142857, 0, 0.01f));
         bloodOffers.add(new MerchantOffer(
                 new ItemStack(ItemRegistry.BLOOD_VIAL.get(), 1),
                 new ItemStack(ItemRegistry.BLOODY_VELLUM.get(), 1),

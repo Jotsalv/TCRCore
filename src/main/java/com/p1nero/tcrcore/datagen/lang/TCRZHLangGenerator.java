@@ -132,8 +132,11 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.addQuest(TCRQuests.USE_END_RESONANCE_STONE, "终末之章", "使用[%s]", "我们需要在[%s]，找到通往[%s]的[%s]，才能开启前往[%s]的大门！共鸣石将为我们指引[%s]的位置。");
         this.addQuest(TCRQuests.GO_TO_THE_END, "终末之章", "前往[%s]", "[%s]为我们指引了[%s]的位置，接下来，想办法前往[%s]吧！");
         this.addQuest(TCRQuests.GET_VOID_EYE, "终末之章", "寻回[%s]", "[%s]就在[%s]，拼尽全力夺回它！");
+        this.addQuest(TCRQuests.TALK_TO_ORNN_YAMATO, "神兵之章", "和%s对话", "你意外地获得了[%s]，但它的力量似乎还未完全释放。快找%s聊聊吧！或许有什么办法可以让它恢复力量！");
+
         this.addQuest(TCRQuests.TALK_TO_CHRONOS_END, "终章", "和%对话", "[%s]已经寻回...你终于集齐了8颗神之眼，是时候准备再创世仪式了。");
         this.addQuest(TCRQuests.KILL_MAD_CHRONOS, "终章", "击败[？？？]", "出现巨大的魔物，拼尽全力战胜祂！");
+
         this.addQuest(TCRQuests.TALK_TO_AINE_GAME_CLEAR, "后日谈", "和%s对话", "你，真的读懂[远梦之棺（The Casket of Reveries）]了吗？");
 
         this.addEffect(TCREffects.INVULNERABLE, "无敌");
@@ -207,6 +210,7 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "上面写着古老的神谕，暗示了火种散落的地方。回主城给守望者看看吧，说不定对冒险有帮助！");
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "§c多人模式请勿占据他人任务道具！每人都需各自提交！", 2);
 
+        this.addInfo("pec_weapon_lock", "武器技能已锁定！在[%s]击败[%s]以解锁！");
         this.addInfo("resonance_stone_usage", "可与使徒封印的位置共鸣。");
         this.addInfo("resonance_search_failed", "错误：无法共鸣！请使用locate命令或结构指南针搜索[%s]");
         this.addInfo("yamato_skill_lock", "[%s]已锁定，需对应附魔书以解锁！");
@@ -524,6 +528,8 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.addDialogOption(TCREntities.AINE.get(), 29 , "和他们在一起...");
         this.addDialogAnswer(TCREntities.AINE.get(), 49, "...我尊重你的选择。等你想回到现实了，随时可以来找我！");
 
+        this.addDialogOption(TCREntities.ORNN.get(), -4, "§6高级锻造");
+        this.addDialogOption(TCREntities.ORNN.get(), -3, "§6[解锁新交易选项]");
         this.addDialogOption(TCREntities.ORNN.get(), -2, "结束对话");
         this.addDialogOption(TCREntities.ORNN.get(), -1, "继续");
         this.addDialogAnswer(TCREntities.ORNN.get(), -1, "火焰的温度、钢铁的韧性——这两样东西能解决世上大多数问题。主人，有何吩咐？");
@@ -543,6 +549,9 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.addDialogAnswer(TCREntities.ORNN.get(), 6, "想必此百兵图，乃是是黑潮降临前大地使徒Montis大人所铸。");
         this.addDialogAnswer(TCREntities.ORNN.get(), 7, "交给我吧，我将为你展现这幅精美的画卷！");
         this.addDialogOption(TCREntities.ORNN.get(), 6, "§6解锁图鉴");
+        //阎魔刀交易
+        this.addDialogAnswer(TCREntities.ORNN.get(), 8, "这是，传说中的%s！阁下竟寻回了如此宝具！");
+        this.addDialogAnswer(TCREntities.ORNN.get(), 9, "阁下要我助你解除其中的封印？嗯...我确实有解除封印之法，待阁下找足了材料，再来找我吧！");
 
         this.addDialogOption(TCREntities.FERRY_GIRL.get(), -3, "返回");
         this.addDialogOption(TCREntities.FERRY_GIRL.get(), -2, "结束对话");

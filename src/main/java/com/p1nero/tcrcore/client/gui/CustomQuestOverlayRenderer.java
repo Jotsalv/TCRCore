@@ -32,6 +32,7 @@ public class CustomQuestOverlayRenderer {
     private static float alpha = 0.0f;
     private static final int FADE_DURATION = 30; // 30 ticks = 1.5 seconds
     private static Component lastQuestShortDesc = Component.empty();
+    private static Component lastQuestTitle = Component.empty();
     private static Component hintText = Component.literal("按 %s 键查看任务列表。");
     private static int x;
     private static int y;
@@ -84,6 +85,7 @@ public class CustomQuestOverlayRenderer {
         if (hasQuest) {
             currentQuest = TCRQuestManager.getCurrentQuest(localPlayer);
             lastQuestShortDesc = currentQuest.getShortDesc();
+            lastQuestTitle = currentQuest.getTitle();
             currentQuestIcon = currentQuest.getIcon();
         }
 
@@ -137,15 +139,18 @@ public class CustomQuestOverlayRenderer {
         guiGraphics.blit(icon, x, y, 0, 0, 16, 16, 16, 16);
 
         // Draw text with shadow and alpha
-        int textColor = (int) (alpha * 255) << 24 | 0xFFFFFF; // White text with alpha
+        int titleColor = (int) (alpha * 255) << 24 | 0xFFD700;
+        int textColor = (int) (alpha * 255) << 24 | 0xFFFFFF;
 
+        int h = minecraft.font.lineHeight + 2;
         // Draw main text
-        guiGraphics.drawString(minecraft.font, lastQuestShortDesc, textX, textY, textColor, true);
+        guiGraphics.drawString(minecraft.font, lastQuestTitle, textX, textY - h / 2, titleColor, true);
+        guiGraphics.drawString(minecraft.font, lastQuestShortDesc, textX, textY +  h / 2, textColor, true);
 
         // Draw hint text below in smaller size
         int hintTextColor = (int) (alpha * 255) << 24 | 0xAAAAAA;
         guiGraphics.pose().pushPose();
-        guiGraphics.pose().translate(textX, textY + 12, 0);
+        guiGraphics.pose().translate((float) (x + textX) / 2, textY + 14, 0);
         guiGraphics.pose().scale(0.7F, 0.7F, 0.7F);
         guiGraphics.drawString(minecraft.font, hintText, 0, 0, hintTextColor, true);
         guiGraphics.pose().popPose();
@@ -386,5 +391,6 @@ public class CustomQuestOverlayRenderer {
         hasQuest = false;
         lastHasQuest = false;
         lastQuestShortDesc = Component.empty();
+        lastQuestTitle = Component.empty();
     }
 }

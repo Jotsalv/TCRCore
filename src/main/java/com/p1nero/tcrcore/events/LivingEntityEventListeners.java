@@ -23,7 +23,15 @@ import com.p1nero.battle_field1.worldgen.PBF1Dimensions;
 import com.p1nero.cataclysm_dimension.worldgen.CataclysmDimensions;
 import com.p1nero.entityrespawner.EntityRespawnerMod;
 import com.p1nero.entityrespawner.entity.SoulEntity;
+import com.p1nero.p1nero_ec.capability.PECDataManager;
 import com.p1nero.tcr_bosses.entity.cataclysm.BaseBossEntity;
+import com.p1nero.tcr_bosses.entity.cataclysm.ancient_remnant.AncientRemnantHumanoid;
+import com.p1nero.tcr_bosses.entity.cataclysm.ender_gardian.EnderGuardianHumanoid;
+import com.p1nero.tcr_bosses.entity.cataclysm.ignis.IgnisHumanoid;
+import com.p1nero.tcr_bosses.entity.cataclysm.leviathan.LeviathanHumanoid;
+import com.p1nero.tcr_bosses.entity.cataclysm.maledictus.MaledictusHumanoid;
+import com.p1nero.tcr_bosses.entity.cataclysm.netherite.NetheriteHumanoid;
+import com.p1nero.tcr_bosses.entity.cataclysm.scylla.ScyllaHumanoid;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.capability.PlayerDataManager;
 import com.p1nero.tcrcore.capability.TCRCapabilityProvider;
@@ -333,6 +341,36 @@ public class LivingEntityEventListeners {
                     ItemUtil.addItemEntity(player, ModItems.VOID_EYE.get(), 1, ChatFormatting.LIGHT_PURPLE.getColor().intValue());
                     player.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
                 }
+            }
+
+            if(livingEntity instanceof ScyllaHumanoid) {
+                PECDataManager.ASTRAPE_LOCK.put(player, false);
+                PECDataManager.CERAUNUS_LOCK.put(player, false);
+            }
+
+            if(livingEntity instanceof IgnisHumanoid) {
+                PECDataManager.THE_INCINERATOR_LOCK.put(player, false);
+            }
+
+            if(livingEntity instanceof NetheriteHumanoid) {
+                PECDataManager.INFERNAL_FORGE_LOCK.put(player, false);
+            }
+
+            if(livingEntity instanceof MaledictusHumanoid) {
+                PECDataManager.DUAL_ANNIHILATOR_LOCK.put(player, false);
+                PECDataManager.SOUL_RENDER_LOCK.put(player, false);
+            }
+
+            if(livingEntity instanceof LeviathanHumanoid) {
+                PECDataManager.TIDAL_CLAW_LOCK.put(player, false);
+            }
+
+            if(livingEntity instanceof EnderGuardianHumanoid) {
+                PECDataManager.GAUNTLET_OF_GUARD_LOCK.put(player, false);
+            }
+
+            if(livingEntity instanceof AncientRemnantHumanoid) {
+                PECDataManager.WRATH_OF_THE_DESERT_LOCK.put(player, false);
             }
 
         });

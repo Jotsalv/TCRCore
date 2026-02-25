@@ -2,12 +2,14 @@ package com.p1nero.tcrcore.events;
 
 import com.aetherteam.aether.data.resources.registries.AetherDimensions;
 import com.github.L_Ender.cataclysm.init.ModItems;
+import com.hm.efn.EFN;
 import com.hm.efn.gameasset.EFNSkills;
 import com.obscuria.aquamirae.registry.AquamiraeItems;
 import com.p1nero.battle_field1.worldgen.PBF1Dimensions;
 import com.p1nero.cataclysm_dimension.worldgen.CataclysmDimensions;
 import com.p1nero.dpr.gameassets.DPRSkills;
 import com.p1nero.fast_tpa.network.PacketRelay;
+import com.p1nero.p1nero_ec.capability.PECDataManager;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.capability.*;
 import com.p1nero.tcrcore.datagen.TCRAdvancementData;
@@ -119,6 +121,12 @@ public class PlayerEventListeners {
                 PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new PlayTitlePacket(PlayTitlePacket.RIPTIDE_TUTORIAL), player);
             }
 
+            if(namespace.equals(EFN.MODID) && (path.equals("yamato_dmc4_in_sheath") || path.equals("yamato_dmc_in_sheath"))) {
+                if(!TCRQuestManager.hasFinished(player, TCRQuests.TALK_TO_ORNN_YAMATO)) {
+                    TCRQuests.TALK_TO_ORNN_YAMATO.start(player);
+                }
+            }
+
         }
     }
 
@@ -154,6 +162,8 @@ public class PlayerEventListeners {
                 PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new OpenCustomDialogPacket(OpenCustomDialogPacket.GAME_START), serverPlayer);
                 TCRQuests.TALK_TO_AINE_0.start(serverPlayer);
                 TCRQuests.TALK_TO_CHRONOS_0.start(serverPlayer);
+
+                PECDataManager.resetAll(serverPlayer, true);
 
                 PlayerDataManager.firstJoint.put(serverPlayer, true);
             }
