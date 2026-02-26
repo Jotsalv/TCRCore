@@ -43,6 +43,13 @@ public class TCRItemModelProvider extends ItemModelProvider {
         simpleItem(TCRItems.END_RESONANCE_STONE);
         simpleItem(TCRItems.MAGIC_BOTTLE);
         withExistingItemTexture(TCRItems.NECROMANCY_SCROLL, ItemRegistry.MAGIC_CLOTH);
+        simpleItem(TCRItems.DIVINE_FRAGMENT);
+        simpleItem(TCRItems.ABYSS_FRAGMENT);
+        simpleItem(TCRItems.DESERT_FRAGMENT);
+        simpleItem(TCRItems.ENDER_FRAGMENT);
+        simpleItem(TCRItems.STORM_FRAGMENT);
+        simpleItem(TCRItems.MECH_FRAGMENT);
+        simpleItem(TCRItems.NETHERITE_FRAGMENT);
     }
 
     // Thank you kaupenjoe & El_Redstoniano!

@@ -33,13 +33,21 @@ public class TCRItemTabs {
                 output.accept(TCRItems.LAND_RESONANCE_STONE.get());
                 output.accept(TCRItems.OCEAN_RESONANCE_STONE.get());
                 output.accept(TCRItems.CURSED_RESONANCE_STONE.get());
+                output.accept(TCRItems.CORE_RESONANCE_STONE.get());
                 output.accept(TCRItems.NETHER_RESONANCE_STONE.get());
                 output.accept(TCRItems.SKY_RESONANCE_STONE.get());
-                output.accept(TCRItems.CORE_RESONANCE_STONE.get());
+                output.accept(TCRItems.END_RESONANCE_STONE.get());
                 output.accept(TCRItems.MYSTERIOUS_WEAPONS.get());
                 output.accept(TCRItems.NECROMANCY_SCROLL.get());
                 output.accept(TCRItems.MAGIC_BOTTLE.get());
                 output.accept(TCRItems.WITHER_SOUL_STONE.get());
                 output.accept(TCRItems.WITHER_SOUL_STONE_ACTIVATED.get());
+                output.accept(TCRItems.DIVINE_FRAGMENT.get());
+                output.accept(TCRItems.ABYSS_FRAGMENT.get());
+                output.accept(TCRItems.DESERT_FRAGMENT.get());
+                output.accept(TCRItems.ENDER_FRAGMENT.get());
+                output.accept(TCRItems.STORM_FRAGMENT.get());
+                output.accept(TCRItems.MECH_FRAGMENT.get());
+                output.accept(TCRItems.NETHERITE_FRAGMENT.get());
             }).build());
 }

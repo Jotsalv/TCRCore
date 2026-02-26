@@ -62,6 +62,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -74,6 +75,7 @@ import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Guardian;
 import net.minecraft.world.entity.monster.Pillager;
+import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -496,6 +498,13 @@ public class LivingEntityEventListeners {
         if (TCRCoreMod.hasCheatMod()) {
             event.getEntity().setHealth(0);
         }
+
+        if(event.getSource().is(DamageTypes.LAVA) || event.getSource().is(DamageTypes.IN_FIRE) || event.getSource().is(DamageTypes.ON_FIRE)) {
+            if(event.getEntity() instanceof AbstractPiglin) {
+                event.setCanceled(true);
+            }
+        }
+
     }
 
     /**
