@@ -306,6 +306,10 @@ dependencies {
     implementation fg.deobf("libs:ba_bt:3.2.1")
     implementation fg.deobf("curse.maven:epic-fight-the-leonidas-1445144:7619585")
     implementation fg.deobf("curse.maven:epic-fight-the-arachne-1445154:7529944")
+    implementation fg.deobf("curse.maven:alexs-mobs-426558:5698791")
+
+    implementation fg.deobf("curse.maven:bosses-of-mass-destruction-forge-941573:5067728")
+    implementation fg.deobf("curse.maven:cerbons-api-955605:5050080")
 
     implementation fg.deobf("curse.maven:dodos-mobs-1349823:7018547")
     implementation fg.deobf("curse.maven:mowzies-mobs-250498:6586086")

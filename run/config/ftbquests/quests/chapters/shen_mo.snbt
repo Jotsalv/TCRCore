@@ -6,7 +6,7 @@
 	hide_quest_until_deps_visible: true
 	icon: "cataclysm:altar_of_fire"
 	id: "0CE9782910610D72"
-	order_index: 3
+	order_index: 4
 	quest_links: [ ]
 	quests: [
 		{
@@ -263,64 +263,6 @@
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]
-			description: ["{ftbquests.chapter.shen_mo.quest9130988065080719209.description1}"]
-			icon_scale: 1.5d
-			id: "7EB7C9446377B769"
-			rewards: [
-				{
-					count: 4
-					id: "1DB32CC3D669C6D0"
-					item: "epicskills:ability_stone"
-					type: "item"
-				}
-				{
-					id: "6D18910D14426DFB"
-					item: "tcrcore:artifact_ticket"
-					type: "item"
-				}
-			]
-			shape: "rsquare"
-			size: 1.5d
-			subtitle: "{ftbquests.chapter.shen_mo.quest9130988065080719209.subtitle}"
-			tasks: [{
-				entity: "minecraft:wither"
-				icon: "minecraft:nether_star"
-				id: "306DADBC7A51E380"
-				type: "kill"
-				value: 1L
-			}]
-			title: "{ftbquests.chapter.shen_mo.quest9130988065080719209.title}"
-			x: 0.0d
-			y: 13.5d
-		}
-		{
-			dependencies: ["68EDC89BB022788B"]
-			hide_dependency_lines: true
-			hide_dependent_lines: true
-			icon_scale: 1.5d
-			id: "0A406BFD18A36EC1"
-			rewards: [{
-				count: 3
-				id: "3FFC98A10CE86EA4"
-				item: "epicskills:ability_stone"
-				type: "item"
-			}]
-			shape: "rsquare"
-			size: 1.5d
-			subtitle: "{ftbquests.chapter.shen_mo.quest738709073673023169.subtitle}"
-			tasks: [{
-				entity: "minecraft:ender_dragon"
-				icon: "minecraft:dragon_egg"
-				id: "10A8B6DE432B127E"
-				type: "kill"
-				value: 1L
-			}]
-			title: "{ftbquests.chapter.shen_mo.quest738709073673023169.title}"
-			x: -2.25d
-			y: 18.0d
-		}
-		{
-			dependencies: ["68EDC89BB022788B"]
 			icon_scale: 1.5d
 			id: "5509B6D7C1DF4BB6"
 			rewards: [{
@@ -426,8 +368,8 @@
 				value: 1L
 			}]
 			title: "{ftbquests.chapter.shen_mo.quest8501765718863884973.title}"
-			x: 2.25d
-			y: 18.0d
+			x: 0.0d
+			y: 12.0d
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]

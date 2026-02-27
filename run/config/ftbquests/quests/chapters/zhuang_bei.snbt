@@ -11,7 +11,7 @@
 		}
 	}
 	id: "2454D069098E415A"
-	order_index: 2
+	order_index: 3
 	quest_links: [ ]
 	quests: [
 		{
@@ -43,7 +43,7 @@
 			}]
 			title: "{ftbquests.chapter.zhuang_bei.quest7301166028169305205.title}"
 			x: 0.0d
-			y: -9.0d
+			y: 3.0d
 		}
 		{
 			dependencies: ["6552F3D1C32E5C75"]
@@ -150,7 +150,7 @@
 			]
 			title: "{ftbquests.chapter.zhuang_bei.quest8905345727084916768.title}"
 			x: 3.0d
-			y: -4.0d
+			y: -7.0d
 		}
 		{
 			dependencies: ["6552F3D1C32E5C75"]
@@ -213,7 +213,7 @@
 			]
 			title: "{ftbquests.chapter.zhuang_bei.quest5383589744301195021.title}"
 			x: 0.0d
-			y: -4.0d
+			y: -7.0d
 		}
 		{
 			dependencies: ["6552F3D1C32E5C75"]
@@ -320,7 +320,7 @@
 			]
 			title: "{ftbquests.chapter.zhuang_bei.quest423285769789054440.title}"
 			x: -3.0d
-			y: -4.0d
+			y: -7.0d
 		}
 		{
 			dependencies: ["6552F3D1C32E5C75"]
@@ -389,7 +389,7 @@
 			]
 			title: "{ftbquests.chapter.zhuang_bei.quest6067430759483142731.title}"
 			x: 0.0d
-			y: 0.0d
+			y: -0.75d
 		}
 		{
 			dependencies: ["6552F3D1C32E5C75"]
@@ -564,7 +564,7 @@
 			]
 			title: "{ftbquests.chapter.zhuang_bei.quest4373103800617865196.title}"
 			x: 2.0d
-			y: -2.0d
+			y: -3.0d
 		}
 		{
 			dependencies: ["6552F3D1C32E5C75"]
@@ -633,7 +633,7 @@
 			]
 			title: "{ftbquests.chapter.zhuang_bei.quest7402048465957584144.title}"
 			x: -5.0d
-			y: -2.0d
+			y: -3.0d
 		}
 		{
 			dependencies: ["6552F3D1C32E5C75"]
@@ -702,7 +702,7 @@
 			]
 			title: "{ftbquests.chapter.zhuang_bei.quest6107895593504866504.title}"
 			x: -2.0d
-			y: -2.0d
+			y: -3.0d
 		}
 		{
 			dependencies: ["6552F3D1C32E5C75"]
@@ -771,7 +771,7 @@
 			]
 			title: "{ftbquests.chapter.zhuang_bei.quest3981524518237695884.title}"
 			x: -1.5d
-			y: 3.75d
+			y: 5.25d
 		}
 		{
 			dependencies: ["6552F3D1C32E5C75"]
@@ -840,7 +840,7 @@
 			]
 			title: "{ftbquests.chapter.zhuang_bei.quest3452598305336821364.title}"
 			x: -3.75d
-			y: 3.75d
+			y: 5.25d
 		}
 		{
 			dependencies: ["6552F3D1C32E5C75"]
@@ -873,7 +873,7 @@
 				type: "item"
 			}]
 			x: 5.0d
-			y: -2.0d
+			y: -3.0d
 		}
 		{
 			dependencies: ["6552F3D1C32E5C75"]
@@ -893,7 +893,7 @@
 				type: "item"
 			}]
 			x: -6.0d
-			y: 3.75d
+			y: 5.25d
 		}
 		{
 			dependencies: ["6552F3D1C32E5C75"]
@@ -914,7 +914,7 @@
 				type: "item"
 			}]
 			x: 3.75d
-			y: 3.75d
+			y: 5.25d
 		}
 		{
 			dependencies: ["6552F3D1C32E5C75"]
@@ -1004,7 +1004,7 @@
 			]
 			title: "{ftbquests.chapter.zhuang_bei.quest7795893636116462062.title}"
 			x: 6.0d
-			y: 3.75d
+			y: 5.25d
 		}
 		{
 			dependencies: ["6552F3D1C32E5C75"]
@@ -1073,7 +1073,7 @@
 			]
 			title: "{ftbquests.chapter.zhuang_bei.quest4525109753956982642.title}"
 			x: 1.5d
-			y: 3.75d
+			y: 5.25d
 		}
 	]
 	title: "{ftbquests.chapter.zhuang_bei.title}"

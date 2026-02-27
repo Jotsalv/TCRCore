@@ -589,42 +589,42 @@ public class AineEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
         // 雷霆
         lightningOffers.add(new MerchantOffer(
                 new ItemStack(ItemRegistry.LIGHTNING_BOTTLE.get(), 1),
-                new ItemStack(AetherBlocks.COLD_AERCLOUD.get(), 1),
+                new ItemStack(AetherBlocks.CRYSTAL_LEAVES.get(), 1),
                 getSpellScroll(SpellRegistry.ASCENSION_SPELL.get()),
                 142857, 0, 0.01f));
         lightningOffers.add(new MerchantOffer(
                 new ItemStack(ItemRegistry.LIGHTNING_BOTTLE.get(), 1),
-                new ItemStack(AetherBlocks.COLD_AERCLOUD.get(), 1),
+                new ItemStack(AetherBlocks.CRYSTAL_LEAVES.get(), 1),
                 getSpellScroll(SpellRegistry.BALL_LIGHTNING_SPELL.get()),
                 142857, 0, 0.01f));
         lightningOffers.add(new MerchantOffer(
                 new ItemStack(ItemRegistry.LIGHTNING_BOTTLE.get(), 1),
-                new ItemStack(AetherBlocks.COLD_AERCLOUD.get(), 1),
+                new ItemStack(AetherBlocks.CRYSTAL_LEAVES.get(), 1),
                 getSpellScroll(SpellRegistry.CHAIN_LIGHTNING_SPELL.get()),
                 142857, 0, 0.01f));
         lightningOffers.add(new MerchantOffer(
                 new ItemStack(ItemRegistry.LIGHTNING_BOTTLE.get(), 1),
-                new ItemStack(AetherBlocks.COLD_AERCLOUD.get(), 1),
+                new ItemStack(AetherBlocks.CRYSTAL_LEAVES.get(), 1),
                 getSpellScroll(SpellRegistry.ELECTROCUTE_SPELL.get()),
                 142857, 0, 0.01f));
         lightningOffers.add(new MerchantOffer(
                 new ItemStack(ItemRegistry.LIGHTNING_BOTTLE.get(), 1),
-                new ItemStack(AetherBlocks.COLD_AERCLOUD.get(), 1),
+                new ItemStack(AetherBlocks.CRYSTAL_LEAVES.get(), 1),
                 getSpellScroll(SpellRegistry.LIGHTNING_BOLT_SPELL.get()),
                 142857, 0, 0.01f));
         lightningOffers.add(new MerchantOffer(
                 new ItemStack(ItemRegistry.LIGHTNING_BOTTLE.get(), 1),
-                new ItemStack(AetherBlocks.COLD_AERCLOUD.get(), 1),
+                new ItemStack(AetherBlocks.CRYSTAL_LEAVES.get(), 1),
                 getSpellScroll(SpellRegistry.LIGHTNING_LANCE_SPELL.get()),
                 142857, 0, 0.01f));
         lightningOffers.add(new MerchantOffer(
                 new ItemStack(ItemRegistry.LIGHTNING_BOTTLE.get(), 2),
-                new ItemStack(AetherBlocks.COLD_AERCLOUD.get(), 1),
+                new ItemStack(AetherBlocks.CRYSTAL_LEAVES.get(), 1),
                 getSpellScroll(SpellRegistry.SHOCKWAVE_SPELL.get()),
                 142857, 0, 0.01f));
         lightningOffers.add(new MerchantOffer(
                 new ItemStack(ItemRegistry.LIGHTNING_BOTTLE.get(), 2),
-                new ItemStack(AetherBlocks.COLD_AERCLOUD.get(), 1),
+                new ItemStack(AetherBlocks.CRYSTAL_LEAVES.get(), 1),
                 getSpellScroll(SpellRegistry.THUNDERSTORM_SPELL.get()),
                 142857, 0, 0.01f));
 

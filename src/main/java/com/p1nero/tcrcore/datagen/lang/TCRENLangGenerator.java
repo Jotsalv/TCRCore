@@ -28,6 +28,44 @@ public class TCRENLangGenerator extends TCRLangProvider {
     @Override
     protected void addTranslations() {
 
+        this.add("unlock_tip.epicskills.acrobat.spider_techniques", " Slaught 50 Spider");
+        this.add("unlock_tip.epicskills.acrobat.natural_sprinter", " Slaught 2 Lycanth and sprint 10 km");
+        this.add("unlock_tip.epicskills.acrobat.aqua_maneuvre", " Slaught 3 Elder Guadian and swim 3 km");
+
+        this.add("unlock_tip.epicskills.prodigy.shooting_style", " Slaught 2 Enderman");
+        this.add("unlock_tip.epicskills.prodigy.punishment_kick", " Slaught 25 Enderman");
+
+        this.add("unlock_tip.epicskills.prodigy.arrow_tenacity", " Slaught 5 skeleton");
+        this.add("unlock_tip.epicskills.prodigy.dodge_master", " Slaught 50 skeleton");
+
+        this.add("unlock_tip.epicskills.prodigy.ender_step", " Slaught 50 Enderman");
+        this.add("unlock_tip.epicskills.prodigy.ender_obscuris", " Slaught 250 Enderman");
+        this.add("unlock_tip.epicskills.prodigy.time_travel", " Slaught 1000 Enderman");
+
+        this.add("unlock_tip.epicskills.prodigy.buster_parade", " Slaught 10 Hollow");
+        this.add("unlock_tip.epicskills.prodigy.perfect_bulwark", " Slaught 50 guardian");
+        this.add("unlock_tip.epicskills.prodigy.avatar_of_might", " Slaught 50 Hollow");
+
+        this.add("unlock_tip.epicskills.prodigy.precise_roll", " Sprint 4 km");
+        this.add("unlock_tip.epicskills.prodigy.bull_charge", " Slaught 20 Ravager");
+
+        this.add("unlock_tip.epicskills.prodigy.shulker_cloak", " Slaught 36 shulker");
+        this.add("unlock_tip.epicskills.prodigy.soul_protection", " Slaught 60 Wither Skeleton");
+        this.add("unlock_tip.epicskills.prodigy.vampirize", " Slaught 20 Evil Skeleton");
+        this.add("unlock_tip.epicskills.prodigy.dopamine", " Slaught 27 Lycanth");
+        this.add("unlock_tip.epicskills.prodigy.lunatic_vivacity", " Slaught 9 Ghast");
+        this.add("unlock_tip.epicskills.prodigy.voodoo_magic", " Slaught 10 Evoker");
+        this.add("unlock_tip.epicskills.prodigy.manipulator", " Slaught 6 Saulomnk");
+
+        this.add("unlock_tip.epicskills.prodigy.all_eyes_on_you", " Slaught 100 Evil Skeleton");
+        this.add("unlock_tip.epicskills.prodigy.all_eyes_on_me", " Slaught 100 Saulomnk");
+
+        this.add("unlock_tip.epicskills.prodigy.inner_growth", " Elimate the Ender Dragon");
+        this.add("unlock_tip.epicskills.prodigy.shadow_step", " Elimate the Wither");
+
+        this.add("unlock_tip.epicskills.prodigy.critical_knowledge", " Slaught 50 Creeper and 150 mobs");
+        this.add("unlock_tip.epicskills.prodigy.dancing_blade", " Slaught 5 Witches and 150 mobs");
+
         this.add("travelerstitles.tcrcore.sanctum", "Realm of Dreams");
         this.add("travelerstitles.tcrcore.real", "The Unreal Reality");
         this.add("travelerstitles.minecraft.overworld", "Overworld");

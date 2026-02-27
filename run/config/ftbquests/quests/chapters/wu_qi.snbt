@@ -6,7 +6,7 @@
 	hide_quest_until_deps_visible: true
 	icon: "cataclysm:ceraunus"
 	id: "2D391C2F48D42ABA"
-	order_index: 1
+	order_index: 2
 	quest_links: [ ]
 	quests: [
 		{
@@ -39,7 +39,7 @@
 			}]
 			title: "{ftbquests.chapter.wu_qi.quest3431479692052966900.title}"
 			x: 0.0d
-			y: -2.5d
+			y: 6.25d
 		}
 		{
 			dependencies: ["2F9F109962C8ADF4"]
@@ -520,8 +520,8 @@
 					type: "item"
 				}
 			]
-			x: 6.0d
-			y: -15.0d
+			x: 2.5d
+			y: -14.5d
 		}
 		{
 			dependencies: ["2F9F109962C8ADF4"]
@@ -1717,8 +1717,8 @@
 				}
 				type: "item"
 			}]
-			x: -4.5d
-			y: -15.0d
+			x: -8.0d
+			y: -14.5d
 		}
 		{
 			dependencies: ["1906CC62E077B227"]
@@ -1744,8 +1744,8 @@
 				type: "item"
 			}]
 			title: "斩切模式"
-			x: -4.5d
-			y: -18.5d
+			x: -8.0d
+			y: -18.0d
 		}
 		{
 			dependencies: [
@@ -1867,8 +1867,8 @@
 				type: "item"
 			}]
 			title: "阎魔刀-防御"
-			x: 2.0d
-			y: -15.0d
+			x: -1.5d
+			y: -14.5d
 		}
 		{
 			dependencies: ["627E4A2C0428CC5A"]
@@ -1897,8 +1897,8 @@
 				type: "item"
 			}]
 			title: "阎魔刀-同行者"
-			x: 4.0d
-			y: -18.0d
+			x: 0.5d
+			y: -17.5d
 		}
 		{
 			dependencies: ["627E4A2C0428CC5A"]
@@ -1927,8 +1927,8 @@
 				type: "item"
 			}]
 			title: "阎魔刀-幻影剑"
-			x: 8.0d
-			y: -18.0d
+			x: 4.5d
+			y: -17.5d
 		}
 		{
 			dependencies: ["627E4A2C0428CC5A"]
@@ -1957,8 +1957,8 @@
 				type: "item"
 			}]
 			title: "阎魔刀-次元斩·绝"
-			x: 10.0d
-			y: -15.0d
+			x: 6.5d
+			y: -14.5d
 		}
 		{
 			dependencies: ["016F12E968740FBA"]
