@@ -1,10 +1,10 @@
 {
-  "hidden": false,
+  "hidden": true,
   "locked": true,
+  "disabled": true,
   "menu_color": [
     37,
     27,
     18
-  ],
-  "unlock_tip": "skill_tree.sword_soaring.unlock_tip"
+  ]
 }

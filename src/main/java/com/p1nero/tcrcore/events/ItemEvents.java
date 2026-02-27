@@ -2,9 +2,7 @@ package com.p1nero.tcrcore.events;
 
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.capability.PlayerDataManager;
-import com.p1nero.tcrcore.capability.TCRPlayer;
 import net.genzyuro.uniqueaccessories.registry.UAItems;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
@@ -34,7 +32,7 @@ public class ItemEvents {
             event.getToolTip().add(1, Component.translatable(event.getItemStack().getItem().getDescriptionId() + ".tcr_info"));
         }
 
-        if((!PlayerDataManager.wraithonKilled.get(event.getEntity()) || event.getItemStack().is(UAItems.STARVED_WOLF_SKULL.get())) && PlayerEventListeners.illegalItems.contains(event.getItemStack().getItem())) {
+        if((!PlayerDataManager.finalBossKilled.get(event.getEntity()) || event.getItemStack().is(UAItems.STARVED_WOLF_SKULL.get())) && PlayerEventListeners.illegalItems.contains(event.getItemStack().getItem())) {
             event.getToolTip().add(1, TCRCoreMod.getInfo("illegal_item_tip2"));
         }
 

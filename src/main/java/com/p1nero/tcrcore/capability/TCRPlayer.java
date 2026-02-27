@@ -3,6 +3,8 @@ package com.p1nero.tcrcore.capability;
 import com.github.L_Ender.cataclysm.init.ModItems;
 import com.p1nero.fast_tpa.network.PacketRelay;
 import com.p1nero.tcrcore.TCRCoreMod;
+import com.p1nero.tcrcore.entity.TCREntities;
+import com.p1nero.tcrcore.entity.custom.mimic.TCRMimic;
 import com.p1nero.tcrcore.network.TCRPacketHandler;
 import com.p1nero.tcrcore.network.packet.clientbound.OpenEndScreenPacket;
 import com.p1nero.tcrcore.network.packet.clientbound.SyncTCRPlayerPacket;
@@ -23,6 +25,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -32,9 +35,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+import org.merlin204.mimic.worldgen.WraithonDimensions;
 import org.merlin204.wraithon.entity.WraithonEntities;
 import org.merlin204.wraithon.entity.wraithon.WraithonEntity;
-import org.merlin204.wraithon.worldgen.WraithonDimensions;
 import yesman.epicfight.world.entity.ai.attribute.EpicFightAttributes;
 
 import java.util.ArrayList;
@@ -71,10 +74,12 @@ public class TCRPlayer {
         currentQuests.add(quest);
     }
 
-    public void finishQuest(TCRQuestManager.Quest quest) {
+    public boolean finishQuest(TCRQuestManager.Quest quest) {
         if(currentQuests.remove(quest)) {
             finishedQuests.add(quest.getId());
+            return true;
         }
+        return false;
     }
 
     public boolean hasFinished(TCRQuestManager.Quest quest) {
@@ -320,7 +325,7 @@ public class TCRPlayer {
         if (tickAfterBossDieLeft > 0) {
             tickAfterBossDieLeft--;
             //保险
-            new ArrayList<WraithonEntity>(player.server.getLevel(WraithonDimensions.SANCTUM_OF_THE_WRAITHON_LEVEL_KEY).getEntities(WraithonEntities.WRAITHON.get(), (wraithonEntity -> !wraithonEntity.isDead())))
+            new ArrayList<TCRMimic>(player.server.getLevel(WraithonDimensions.THE_LETHEAN_SEA_LEVEL_KEY).getEntities(TCREntities.TCR_MIMIC.get(), (LivingEntity::isAlive)))
                     .forEach(Entity::discard);
             if (tickAfterBossDieLeft % 40 == 0) {
                 player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ANVIL_LAND, SoundSource.BLOCKS, 0.8F, 0.5F + tickAfterBossDieLeft / 400.0F);

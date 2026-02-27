@@ -1,5 +1,8 @@
 package com.p1nero.tcrcore.entity.custom.mimic;
 
+import com.p1nero.tcrcore.save_data.TCRDimSaveData;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
@@ -7,6 +10,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
 import org.merlin204.mimic.entity.proteus.ProteusEntity;
+import org.merlin204.mimic.worldgen.WraithonDimensions;
 import yesman.epicfight.world.entity.ai.attribute.EpicFightAttributes;
 
 public class TCRMimic extends ProteusEntity {
@@ -18,14 +22,25 @@ public class TCRMimic extends ProteusEntity {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 1000)
                 .add(Attributes.ATTACK_DAMAGE, 5)
-                .add(Attributes.ARMOR, 20)
+                .add(Attributes.ARMOR, 30)
                 .add(Attributes.FOLLOW_RANGE, 72)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1000)
-                .add(Attributes.ATTACK_SPEED,1.5F)
-                .add(EpicFightAttributes.IMPACT.get(), 5)
-                .add(EpicFightAttributes.ARMOR_NEGATION.get(), 50.0F)
+                .add(Attributes.ATTACK_SPEED,1.2F)
+                .add(EpicFightAttributes.IMPACT.get(), 1)
+                .add(EpicFightAttributes.ARMOR_NEGATION.get(), 10.0F)
                 .add(EpicFightAttributes.MAX_STRIKES.get(), 50.0F)
                 .add(EpicFightAttributes.WEIGHT.get(), 0).build();
     }
 
+    @Override
+    public void die(DamageSource cause) {
+        super.die(cause);
+        ServerLevel wraithonLevel = this.getServer().getLevel(WraithonDimensions.THE_LETHEAN_SEA_LEVEL_KEY);
+        TCRDimSaveData.get(wraithonLevel).setBossSummoned(false);
+    }
+
+    @Override
+    public boolean removeWhenFarAway(double v) {
+        return false;
+    }
 }

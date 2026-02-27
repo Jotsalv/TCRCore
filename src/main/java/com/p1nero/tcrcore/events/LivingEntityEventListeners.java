@@ -46,6 +46,7 @@ import com.p1nero.tcrcore.client.sound.WraithonMusicPlayer;
 import com.p1nero.tcrcore.entity.TCREntities;
 import com.p1nero.tcrcore.entity.custom.fake_npc.fake_end_golem.FakeEndGolem;
 import com.p1nero.tcrcore.entity.custom.fake_npc.fake_sky_golem.FakeSkyGolem;
+import com.p1nero.tcrcore.entity.custom.mimic.TCRMimic;
 import com.p1nero.tcrcore.gameassets.TCRSkills;
 import com.p1nero.tcrcore.item.TCRItems;
 import com.p1nero.tcrcore.save_data.TCRDimSaveData;
@@ -96,7 +97,6 @@ import net.sonmok14.fromtheshadows.server.entity.mob.BulldrogiothEntity;
 import org.merlin204.wraithon.entity.wraithon.WraithonEntity;
 import org.merlin204.wraithon.worldgen.WraithonDimensions;
 import yesman.epicfight.api.animation.AnimationPlayer;
-import yesman.epicfight.api.utils.AttackResult;
 import yesman.epicfight.client.input.EpicFightKeyMappings;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
@@ -404,11 +404,12 @@ public class LivingEntityEventListeners {
 
             }
 
-            //打似战灵处理通关
-            if (livingEntity instanceof WraithonEntity wraithonEntity && !wraithonEntity.isDead()) {
+            //打似最终boss处理通关
+            if (livingEntity instanceof TCRMimic) {
                 serverLevel.players().forEach(serverPlayer -> {
-                    TCRQuests.KILL_MAD_CHRONOS.finish(serverPlayer, true);
-                    PlayerDataManager.gameCleared.put(serverPlayer, true);
+                    if(TCRQuests.KILL_MAD_CHRONOS.finish(serverPlayer, true)) {
+                        PlayerDataManager.gameCleared.put(serverPlayer, true);
+                    }
                     TCRCapabilityProvider.getTCRPlayer(serverPlayer).setTickAfterBossDieLeft(600);
                 });
             }
@@ -501,13 +502,9 @@ public class LivingEntityEventListeners {
             }
         }
 
-        if (livingEntity instanceof WraithonEntity wraithonEntity && !wraithonEntity.isDead()) {
+        if (livingEntity instanceof WraithonEntity) {
             if (livingEntity.level().isClientSide) {
                 WraithonMusicPlayer.stopBossMusic(livingEntity);
-            } else {
-                ItemUtil.addItemEntity(livingEntity, SwordSoaringItems.VATANSEVER.get(), 1, ChatFormatting.LIGHT_PURPLE.getColor().intValue());
-                ServerLevel wraithonLevel = wraithonEntity.getServer().getLevel(WraithonDimensions.SANCTUM_OF_THE_WRAITHON_LEVEL_KEY);
-                TCRDimSaveData.get(wraithonLevel).setBossSummoned(false);
             }
         }
 

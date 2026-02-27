@@ -26,7 +26,7 @@ public class PlayerDataManager {
     public static BoolData chronosTalked = new BoolData("chronosTalked", false);
     public static BoolData ferryGirlTalked = new BoolData("ferryGirlTalked", false);
     public static BoolData ferryGirlGiftGet = new BoolData("ferryGirlGiftGet", false);
-    public static BoolData wraithonKilled = new BoolData("wraithonKilled", false);
+    public static BoolData finalBossKilled = new BoolData("finalBossKilled", false);
     public static BoolData tudigongGiftGet = new BoolData("tudigongGiftGet", false);
     public static BoolData canEnterNether = new BoolData("canEnterNether", false);
     public static BoolData canEnterAether = new BoolData("canEnterAether", false);

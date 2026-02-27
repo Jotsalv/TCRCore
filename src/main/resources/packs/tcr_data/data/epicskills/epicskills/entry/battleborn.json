@@ -80,7 +80,25 @@
           "skill": "efn:stomp",
           "position_in_screen": [20, 170],
           "ability_points": 2
-        }
+        },
+		{
+			"position_in_screen": [
+				160,
+				240
+			],
+			"custom_condition": true,
+			"unlock_tip": "unlock_tip.tcrcore.battleborn.fire_avoid",
+			"skill": "sword_soaring:sword_soaring_elytra_master"
+		},
+		{
+			"position_in_screen": [
+				60,
+				240
+			],
+			"skill": "sword_soaring:sword_soaring_master",
+			"custom_condition": true,
+			"unlock_tip": "unlock_tip.tcrcore.battleborn.fire_avoid"
+		}
 	],
 	"priority": 0
 }

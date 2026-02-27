@@ -76,8 +76,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.p1nero.ss.SwordSoaringMod;
 import net.p1nero.ss.gameassets.skills.SwordControllerSkills;
+import org.merlin204.mimic.worldgen.WraithonDimensions;
 import org.merlin204.wraithon.util.PositionTeleporter;
-import org.merlin204.wraithon.worldgen.WraithonDimensions;
 import top.theillusivec4.curios.api.event.CurioEquipEvent;
 import yesman.epicfight.api.utils.math.MathUtils;
 import yesman.epicfight.network.EpicFightNetworkManager;
@@ -159,6 +159,7 @@ public class PlayerEventListeners {
                 ItemUtil.addItem(serverPlayer, Items.LANTERN, 1);
                 ItemUtil.addItem(serverPlayer, Items.BREAD, 32);
                 ItemUtil.addItem(serverPlayer, EpicSkillsItems.ABILIITY_STONE.get(), 1);
+                ItemUtil.addItem(serverPlayer, com.wintercogs.beyonddimensions.Item.ModItems.XP_EXCHANGE_ITEM.get(), 1);
 
                 PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new OpenCustomDialogPacket(OpenCustomDialogPacket.GAME_START), serverPlayer);
                 TCRQuests.TALK_TO_AINE_0.start(serverPlayer);
@@ -249,7 +250,7 @@ public class PlayerEventListeners {
     @SubscribeEvent
     public static void onCurioEquip(CurioEquipEvent event) {
         if (illegalItems.contains(event.getStack().getItem())) {
-            if (event.getEntity() instanceof Player player && (!PlayerDataManager.wraithonKilled.get(player) || event.getStack().is(UAItems.STARVED_WOLF_SKULL.get()))) {
+            if (event.getEntity() instanceof Player player && (!PlayerDataManager.finalBossKilled.get(player) || event.getStack().is(UAItems.STARVED_WOLF_SKULL.get()))) {
                 player.displayClientMessage(TCRCoreMod.getInfo("illegal_item_tip"), true);
                 event.setResult(Event.Result.DENY);
             }
@@ -267,7 +268,7 @@ public class PlayerEventListeners {
             }
             if (event.player instanceof ServerPlayer serverPlayer) {
                 ItemStack mainHandItem = serverPlayer.getMainHandItem();
-                if (illegalItems.contains(mainHandItem.getItem()) && !PlayerDataManager.wraithonKilled.get(serverPlayer)) {
+                if (illegalItems.contains(mainHandItem.getItem()) && !PlayerDataManager.finalBossKilled.get(serverPlayer)) {
                     serverPlayer.drop(mainHandItem.copy(), true);
                     mainHandItem.shrink(1);
                     serverPlayer.displayClientMessage(TCRCoreMod.getInfo("illegal_item_tip"), true);
@@ -392,8 +393,8 @@ public class PlayerEventListeners {
     public static void onPlayerEnteredDim(PlayerEvent.PlayerChangedDimensionEvent event) {
         if (event.getEntity() instanceof ServerPlayer serverPlayer) {
             TCRCapabilityProvider.syncPlayerDataToClient(serverPlayer);
-            if (event.getFrom() == WraithonDimensions.SANCTUM_OF_THE_WRAITHON_LEVEL_KEY) {
-                ServerLevel wraithonLevel = serverPlayer.server.getLevel(WraithonDimensions.SANCTUM_OF_THE_WRAITHON_LEVEL_KEY);
+            if (event.getFrom() == WraithonDimensions.THE_LETHEAN_SEA_LEVEL_KEY) {
+                ServerLevel wraithonLevel = serverPlayer.server.getLevel(WraithonDimensions.THE_LETHEAN_SEA_LEVEL_KEY);
                 if (wraithonLevel != null && wraithonLevel.players().isEmpty()) {
                     EntityUtil.safelyClearAll(wraithonLevel);
                     TCRDimSaveData.get(wraithonLevel).setBossSummoned(false);

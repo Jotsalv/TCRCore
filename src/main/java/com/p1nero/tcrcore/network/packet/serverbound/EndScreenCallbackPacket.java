@@ -25,7 +25,7 @@ public record EndScreenCallbackPacket() implements BasePacket {
             ServerLevel real = player.getServer().getLevel(TCRDimensions.REAL_LEVEL_KEY);
             if (real != null) {
                 if(player.level().dimension() != TCRDimensions.REAL_LEVEL_KEY) {
-                    PlayerDataManager.wraithonKilled.put(serverPlayer, true);
+                    PlayerDataManager.finalBossKilled.put(serverPlayer, true);
                     serverPlayer.changeDimension(real, new PositionTeleporter(new BlockPos(WorldUtil.BED_POS)));
                 }
             }

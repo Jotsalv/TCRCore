@@ -14,6 +14,7 @@ import com.p1nero.tcr_bosses.entity.TCRBossEntities;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.capability.*;
 import com.p1nero.tcrcore.entity.TCREntities;
+import com.p1nero.tcrcore.entity.custom.mimic.TCRMimic;
 import com.p1nero.tcrcore.gameassets.TCRSkills;
 import com.p1nero.tcrcore.item.TCRItems;
 import com.p1nero.tcrcore.network.TCRPacketHandler;
@@ -50,15 +51,12 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.p1nero.ss.SwordSoaringMod;
 import net.p1nero.ss.gameassets.skills.FlyingSkills;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.merlin204.wraithon.WraithonMod;
-import org.merlin204.wraithon.entity.WraithonEntities;
-import org.merlin204.wraithon.entity.wraithon.WraithonEntity;
-import org.merlin204.wraithon.util.WraithonFieldTeleporter;
-import org.merlin204.wraithon.worldgen.WraithonDimensions;
+import org.merlin204.mimic.MimicMod;
+import org.merlin204.mimic.util.PositionTeleporter;
+import org.merlin204.mimic.worldgen.WraithonDimensions;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -439,7 +437,7 @@ public class ChronosSolEntity extends PathfinderMob implements IEntityNpc, GeoEn
             TCRQuests.GO_TO_AETHER.start(player);
             PlayerDataManager.canEnterAether.put(player, true);
             player.getCapability(SkillTreeProgression.SKILL_TREE_PROGRESSION).ifPresent(skillTreeProgression -> {
-                ResourceKey<SkillTree> resourceKey = ResourceKey.create(SkillTree.SKILL_TREE_REGISTRY_KEY, ResourceLocation.fromNamespaceAndPath(SwordSoaringMod.MOD_ID, "sword_soaring_skills"));
+                ResourceKey<SkillTree> resourceKey = ResourceKey.create(SkillTree.SKILL_TREE_REGISTRY_KEY, ResourceLocation.fromNamespaceAndPath(DodgeParryRewardMod.MOD_ID, "passive"));
                 skillTreeProgression.unlockTree(resourceKey, player);
                 skillTreeProgression.unlockNode(resourceKey, FlyingSkills.SWORD_SOARING_ELYTRA_MASTER, player);
                 skillTreeProgression.unlockNode(resourceKey, FlyingSkills.SWORD_SOARING_MASTER, player);
@@ -465,14 +463,14 @@ public class ChronosSolEntity extends PathfinderMob implements IEntityNpc, GeoEn
             if(!TCRQuestManager.hasQuest(player, TCRQuests.KILL_MAD_CHRONOS)) {
                 TCRQuests.KILL_MAD_CHRONOS.start(player);
             }
-            ServerLevel wraithonDim = player.server.getLevel(WraithonDimensions.SANCTUM_OF_THE_WRAITHON_LEVEL_KEY);
-            if(wraithonDim != null) {
-                player.changeDimension(wraithonDim, new WraithonFieldTeleporter());
-                if(wraithonDim.getEntities(WraithonEntities.WRAITHON.get(), (Entity::isAlive)).isEmpty()) {
-                    TCRDimSaveData saveData = TCRDimSaveData.get(wraithonDim);
+            ServerLevel mimicDim = player.server.getLevel(WraithonDimensions.THE_LETHEAN_SEA_LEVEL_KEY);
+            if(mimicDim != null) {
+                player.changeDimension(mimicDim, new PositionTeleporter(MimicMod.PLAYER_SPAWN_POS));
+                if(mimicDim.getEntities(TCREntities.TCR_MIMIC.get(), (Entity::isAlive)).isEmpty()) {
+                    TCRDimSaveData saveData = TCRDimSaveData.get(mimicDim);
                     if(!saveData.isBossSummoned()) {
-                        WraithonEntity wraithonEntity = WraithonEntities.WRAITHON.get().spawn(wraithonDim, WraithonMod.WRAITHON_SPAWN_POS, MobSpawnType.MOB_SUMMONED);
-                        if(wraithonEntity != null) {
+                        TCRMimic tcrMimic = TCREntities.TCR_MIMIC.get().spawn(mimicDim, MimicMod.PLAYER_SPAWN_POS, MobSpawnType.MOB_SUMMONED);
+                        if(tcrMimic != null) {
                             saveData.setBossSummoned(true);
                         }
                     }

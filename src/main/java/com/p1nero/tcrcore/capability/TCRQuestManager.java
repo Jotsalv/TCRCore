@@ -115,12 +115,17 @@ public class TCRQuestManager {
             return false;
         }
         TCRPlayer tcrPlayer = TCRCapabilityProvider.getTCRPlayer(player);
-        tcrPlayer.finishQuest(quest);
-        List<Quest> currentQuests = tcrPlayer.getCurrentQuests();
-        if (!currentQuests.isEmpty()) {
-            PlayerDataManager.currentQuestId.put(player, currentQuests.get(currentQuests.size() - 1).getId());
-        } else {
-            PlayerDataManager.currentQuestId.put(player, EMPTY.getId());
+        if(!tcrPlayer.finishQuest(quest)) {
+            return false;
+        }
+        //当前追踪的任务被完成了则要切换一下任务，否则不变
+        if(quest.getId() == currentQuestId) {
+            List<Quest> currentQuests = tcrPlayer.getCurrentQuests();
+            if (!currentQuests.isEmpty()) {
+                PlayerDataManager.currentQuestId.put(player, currentQuests.get(currentQuests.size() - 1).getId());
+            } else {
+                PlayerDataManager.currentQuestId.put(player, EMPTY.getId());
+            }
         }
         ensureQuest(player);
         tcrPlayer.syncToClient(player);
