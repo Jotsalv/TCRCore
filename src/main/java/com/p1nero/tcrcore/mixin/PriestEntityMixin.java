@@ -49,10 +49,10 @@ public abstract class PriestEntityMixin extends NeutralWizard implements Village
             this.offers.add(new MerchantOffer(new ItemStack(Items.EMERALD, 24), ItemStack.EMPTY, FurledMapItem.of(IronsSpellbooks.id("evoker_fort"), FurledMapItem.OVERWORLD, Component.translatable("item.irons_spellbooks.evoker_fort_battle_plans")), 0, 1, 5, 10.0F));
             this.offers.add(new MerchantOffer(new ItemStack(ItemRegistry.GREATER_HEALING_POTION.get()), new ItemStack(Items.EMERALD, 18), 3, 0, 0.2F));
             this.offers.add(new MerchantOffer(new ItemStack(Items.EMERALD, 6), PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.HEALING), 2, 0, 0.2F));
-
             this.offers.removeIf(Objects::isNull);
             this.setLastRestockGameTime(this.level().getGameTime());
         }
+        this.offers.removeIf((merchantOffer -> merchantOffer.getResult().is(ItemRegistry.VILLAGER_SPELL_BOOK.get())));
 
         cir.setReturnValue(this.offers);
     }

@@ -694,13 +694,13 @@ public class LivingEntityEventListeners {
 
     @SubscribeEvent
     public static void livingEquipmentChange(LivingEquipmentChangeEvent event) {
-        if(event.getEntity() instanceof Player player) {
-            if(player.level().dimension().equals(PBF1Dimensions.SANCTUM_OF_THE_BATTLE_LEVEL_KEY)) {
-                if(!EntityUtil.getNearByEntities(BaseBossEntity.class, player, 50).isEmpty()) {
-
-                }
-            }
-        }
+//        if(event.getEntity() instanceof Player player) {
+//            if(player.level().dimension().equals(PBF1Dimensions.SANCTUM_OF_THE_BATTLE_LEVEL_KEY)) {
+//                if(!EntityUtil.getNearByEntities(BaseBossEntity.class, player, 50).isEmpty()) {
+//
+//                }
+//            }
+//        }
     }
 
     public static void saveSpawnPos(Entity entity) {

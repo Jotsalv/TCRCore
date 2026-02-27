@@ -31,6 +31,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -96,6 +97,10 @@ public class FakeEndGolem extends FakeNPCEntity {
             ItemUtil.addItemEntity(player, ModItems.VOID_EYE.get(), 1, ChatFormatting.LIGHT_PURPLE.getColor().intValue());
             if(i == 2) {
                 ItemUtil.addItemEntity(player, EFNItem.YAMATO_DMC_IN_SHEATH.get(), 1, ChatFormatting.LIGHT_PURPLE.getColor().intValue());
+            }
+            if(!ExecutionHandler.isHoldingWeapon(player)) {
+                ItemUtil.addItemEntity(player, player.getMainHandItem().copy());
+                player.setItemInHand(InteractionHand.MAIN_HAND, Items.IRON_SWORD.getDefaultInstance());
             }
             if(!ExecutionHandler.entityForceExecute(player, this, false)) {
                 this.discard();
