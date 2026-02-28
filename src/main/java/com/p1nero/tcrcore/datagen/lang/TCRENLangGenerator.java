@@ -267,7 +267,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addAdvancement(TCRCoreMod.MOD_ID, "The Casket of Reveries", "Where the dream begins.");
         this.addAdvancement("unlock_weapon_armor_book", "Mysterious Weapons", "");
         this.addAdvancement("unlock_magic_and_boss", "Necromancy Scroll", "");
-        this.addAdvancement("unlock_epic_boss", "Wither Soul Stone", "");
+        this.addAdvancement("unlock_epic_boss", "Primal Arena", "");
 
         this.add(TCREntities.CHRONOS_SOL.get(), "Chronos Sol");
         this.add(TCREntities.FERRY_GIRL.get(), "Ferry girl");

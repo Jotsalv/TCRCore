@@ -212,7 +212,7 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.add(TCRItems.WITHER_SOUL_STONE.get(), "凋灵魂石");
         this.addItemUsageInfo(TCRItems.WITHER_SOUL_STONE.get(), "它现在似乎失去了魔力，只是一块独特的石头。想办法激活它吧！");
         this.add(TCRItems.WITHER_SOUL_STONE_ACTIVATED.get(), "凋灵魂石");
-        this.addItemUsageInfo(TCRItems.WITHER_SOUL_STONE_ACTIVATED.get(), "可打开前往§6[轮回绝境]§r的大门。");
+        this.addItemUsageInfo(TCRItems.WITHER_SOUL_STONE_ACTIVATED.get(), "可打开前往§6[{travelerstitles.pbf1.sanctum_of_the_battle1}]§r的大门。");
         this.add(TCRItems.MAGIC_BOTTLE.get(), "魔力之瓶");
         this.addItemUsageInfo(TCRItems.MAGIC_BOTTLE.get(), "使用后可恢复一定比例的魔力。当用尽后，需在主城中使用以补充魔力。");
         this.add(TCRItems.MYSTERIOUS_WEAPONS.get(), "百兵图");
@@ -364,9 +364,9 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.addInfo("eye_pos_mark", "[%s]之所在：[%s]");
 
         this.addAdvancement(TCRCoreMod.MOD_ID, "远梦之棺", "梦开始的地方");
-        this.addAdvancement("unlock_weapon_armor_book", "百兵图", "");
-        this.addAdvancement("unlock_magic_and_boss", "死灵法卷", "");
-        this.addAdvancement("unlock_epic_boss", "凋灵魂石", "");
+        this.addAdvancement("unlock_weapon_armor_book", "百兵图", "开启了武器图鉴和盔甲图鉴");
+        this.addAdvancement("unlock_magic_and_boss", "死灵法卷", "开启了法术图鉴和生物图鉴");
+        this.addAdvancement("unlock_epic_boss", "始源决斗场", "开启了新的篇章");
 
         this.add(TCREntities.CHRONOS_SOL.get(), "羲轮｜Chronos Sol");
         this.add(TCREntities.FERRY_GIRL.get(), "摆渡人");

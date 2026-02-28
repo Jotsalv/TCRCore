@@ -123,6 +123,8 @@ public class TCRItems {
                     }))
     );
 
+    public static final RegistryObject<Item> STONE_OF_REINCARNATION = REGISTRY.register("stone_of_reincarnation", () -> new SimpleDescriptionItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(), true));
+
     public static final RegistryObject<Item> MYSTERIOUS_WEAPONS = REGISTRY.register("mysterious_weapons", () -> new SimpleDescriptionItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(), true));
 
     public static final RegistryObject<Item> NECROMANCY_SCROLL = REGISTRY.register("necromancy_scroll", () -> new SimpleDescriptionItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(), true));

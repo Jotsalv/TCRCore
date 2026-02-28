@@ -52,6 +52,9 @@ public class TCRItemModelProvider extends ItemModelProvider {
         simpleItem(TCRItems.MECH_FRAGMENT);
         simpleItem(TCRItems.FLAME_FRAGMENT);
         simpleItem(TCRItems.NETHERITE_FRAGMENT);
+        simpleItem(TCRItems.WITHER_SOUL_STONE);
+        simpleItem(TCRItems.WITHER_SOUL_STONE_ACTIVATED);
+        simpleItem(TCRItems.STONE_OF_REINCARNATION);
     }
 
     // Thank you kaupenjoe & El_Redstoniano!
