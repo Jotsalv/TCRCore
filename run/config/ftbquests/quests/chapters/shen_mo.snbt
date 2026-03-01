@@ -19,7 +19,6 @@
 	quests: [
 		{
 			description: [
-				"{ftbquests.chapter.shen_mo.quest7560919920425465995.description1}"
 				"{ftbquests.chapter.shen_mo.quest7560919920425465995.description2}"
 				"{ftbquests.chapter.shen_mo.quest7560919920425465995.description3}"
 			]
