@@ -383,8 +383,9 @@ public class LivingEntityEventListeners {
             }
 
             if (livingEntity instanceof Bone_Chimera_Entity) {
-                if (!TCRQuestManager.hasQuest(player, TCRQuests.TALK_TO_ORNN_1) && !TCRQuests.TALK_TO_ORNN_1.isFinished(player)) {
-                    //百兵图任务
+                //百兵图任务
+                if(TCRQuestManager.hasQuest(player, TCRQuests.BONE_CHIMERA_QUEST)) {
+                    TCRQuests.BONE_CHIMERA_QUEST.finish(player, true);
                     ItemUtil.addItemEntity(livingEntity, TCRItems.MYSTERIOUS_WEAPONS.get(), 1, ChatFormatting.GOLD.getColor());
                     TCRQuests.TALK_TO_ORNN_1.start(player);
                 }

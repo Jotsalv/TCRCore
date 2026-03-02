@@ -61,7 +61,6 @@ public class BoneChimeraDialogExtension implements IEntityDialogueExtension<Bone
         //开打
         if(i == 1) {
             TCREntityCapabilityProvider.getTCREntityPatch(boneChimeraEntity).setFighting(true);
-            TCRQuests.BONE_CHIMERA_QUEST.finish(serverPlayer, true);
         }
         removeConservingPlayer(boneChimeraEntity);
     }
