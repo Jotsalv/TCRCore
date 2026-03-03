@@ -80,7 +80,7 @@
     "PonderLocalizationMixin",
     "TitleScreenMixin",
     "YatamoItemMixin",
-    "ba_bt.BTSpawnerBlockEntityRendererMixin",
+    "ba_bt.BTSpawnerBlockEntityMixin",
     "epicfight.AbilityStoneItemClientMixin",
     "epicfight.CEPosFollowBaseParticleMixin",
     "epicfight.ClientAnimatorMixin",

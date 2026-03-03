@@ -29,6 +29,18 @@ public class TCRRecipeGenerator extends TCRRecipeProvider implements IConditionB
                 .requires(TCRItemTags.CATACLYSM_HUMANOID_BOSS_DROP)
                 .unlockedBy(getHasName(TCRItems.WITHER_SOUL_STONE.get()), has(TCRItems.WITHER_SOUL_STONE.get()))
                 .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, TCRItems.PROOF_OF_ADVENTURE_PLUS.get(), 1)
+                .requires(TCRItems.ABYSS_FRAGMENT.get())
+                .requires(TCRItems.STORM_FRAGMENT.get())
+                .requires(TCRItems.FLAME_FRAGMENT.get())
+                .requires(TCRItems.MECH_FRAGMENT.get())
+                .requires(TCRItems.SOUL_FRAGMENT.get())
+                .requires(TCRItems.DESERT_FRAGMENT.get())
+                .requires(TCRItems.ENDER_FRAGMENT.get())
+                .requires(TCRItems.NETHERITE_FRAGMENT.get())
+                .requires(TCRItems.DIVINE_FRAGMENT.get())
+                .unlockedBy(getHasName(TCRItems.WITHER_SOUL_STONE.get()), has(TCRItems.WITHER_SOUL_STONE.get()))
+                .save(consumer);
     }
 
 }

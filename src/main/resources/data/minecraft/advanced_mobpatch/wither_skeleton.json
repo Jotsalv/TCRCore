@@ -2796,27 +2796,6 @@
 						"convert_time": -0.7,			
 						 "play_speed": 1.1,		
 						 "command_list": [									
-							 {"time":0.8, "command":"item replace entity @s weapon.mainhand with air", "execute_at_target":false},
-							 {"time":0.8, "command":"item replace entity @s weapon.offhand with air", "execute_at_target":false}
-						 ],																												
-						 "set_phase": 1
-					}
-				]                 
-			},
-			{
-				"weight": 1.5,
-				"canBeInterrupted": true,
-				"looping": false,
-				"cooldown":50,
-				"behaviors": [					
-					{
-						"conditions": [
-							{"predicate":"indestructible:phase", "min": 0, "max": 0}, {"predicate":"epicfight:within_distance", "min": 0.0, "max": 100.0}
-						],
-						"animation": "efn:biped/yamato/biped_hit_ground_l0", 	
-						"convert_time": -0.7,			
-						 "play_speed": 1.1,		
-						 "command_list": [									
 							 {"time":0.8, "command":"item replace entity @s weapon.mainhand with epicfight:glove", "execute_at_target":false},
 							 {"time":0.8, "command":"item replace entity @s weapon.offhand with epicfight:glove", "execute_at_target":false}
 						 ],																												

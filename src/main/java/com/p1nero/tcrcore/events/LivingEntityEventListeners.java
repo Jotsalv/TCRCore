@@ -22,10 +22,13 @@ import com.obscuria.aquamirae.Aquamirae;
 import com.obscuria.aquamirae.AquamiraeUtils;
 import com.obscuria.aquamirae.common.entities.CaptainCornelia;
 import com.obscuria.aquamirae.registry.AquamiraeItems;
+import com.p1nero.battle_field1.PBF1Mod;
+import com.p1nero.battle_field1.worldgen.PBF1Dimensions;
 import com.p1nero.cataclysm_dimension.worldgen.CataclysmDimensions;
 import com.p1nero.entityrespawner.EntityRespawnerMod;
 import com.p1nero.entityrespawner.entity.SoulEntity;
 import com.p1nero.p1nero_ec.capability.PECDataManager;
+import com.p1nero.tcr_bosses.entity.cataclysm.BaseBossEntity;
 import com.p1nero.tcr_bosses.entity.cataclysm.ancient_remnant.AncientRemnantHumanoid;
 import com.p1nero.tcr_bosses.entity.cataclysm.ender_gardian.EnderGuardianHumanoid;
 import com.p1nero.tcr_bosses.entity.cataclysm.harbinger.HarbingerHumanoid;
@@ -64,6 +67,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -565,6 +569,17 @@ public class LivingEntityEventListeners {
             if (event.getEntity() instanceof AbstractPiglin) {
                 event.getEntity().clearFire();
                 event.setCanceled(true);
+            }
+        }
+
+        if(event.getEntity() instanceof BaseBossEntity baseBossEntity) {
+            if(event.getSource().is(DamageTypes.IN_WALL)) {
+                event.setCanceled(true);
+                if(baseBossEntity.level().dimension() == PBF1Dimensions.SANCTUM_OF_THE_BATTLE_LEVEL_KEY) {
+                    baseBossEntity.setPos(PBF1Mod.START_POS.getCenter());
+                } else {
+                    baseBossEntity.discard();
+                }
             }
         }
 

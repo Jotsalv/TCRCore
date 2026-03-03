@@ -212,6 +212,8 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.addSkill("fire_avoid", "避火咒", "免疫火焰伤害！");
         this.addSkill("perfect_dodge", "闪避特效", "完美闪避时将有帅气的动作！");
 
+        this.add(TCRItems.PROOF_OF_ADVENTURE_PLUS.get(), "真·冒险之证");
+        this.addItemUsageInfo(TCRItems.PROOF_OF_ADVENTURE_PLUS.get(), "至高无上的荣耀！");
         this.add(TCRItems.DIVINE_FRAGMENT.get(), "神性碎片");
         this.addItemUsageInfo(TCRItems.DIVINE_FRAGMENT.get(), "上面记载了神的意志");
         this.add(TCRItems.ABYSS_FRAGMENT.get(), "渊海葬歌的回响");

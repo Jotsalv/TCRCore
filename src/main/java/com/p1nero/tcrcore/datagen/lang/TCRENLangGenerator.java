@@ -214,6 +214,10 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addSkill("fire_avoid", "Fire Avoidance Charm", "Immunity to fire damage!");
         this.addSkill("perfect_dodge", "Dodge Effect", "Play a cool animation when perfect dodge!");
 
+        this.add(TCRItems.PROOF_OF_ADVENTURE_PLUS.get(), "True · Proof of Adventure");
+        this.addItemUsageInfo(TCRItems.PROOF_OF_ADVENTURE_PLUS.get(), "The ultimate glory!");
+        this.add(TCRItems.DIVINE_FRAGMENT.get(), "Divine Fragment");
+        this.addItemUsageInfo(TCRItems.DIVINE_FRAGMENT.get(), "It records the will of the gods.");
         this.add(TCRItems.ABYSS_FRAGMENT.get(), "Echo of the Abyssal Dirge");
         this.add(TCRItems.DESERT_FRAGMENT.get(), "Echo of Forgotten Sands");
         this.add(TCRItems.ENDER_FRAGMENT.get(), "Shard of the Final Verse");

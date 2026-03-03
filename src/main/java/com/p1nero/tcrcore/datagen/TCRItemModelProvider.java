@@ -31,6 +31,7 @@ public class TCRItemModelProvider extends ItemModelProvider {
         simpleItem(TCRItems.ABYSS_CORE);
         simpleItem(TCRItems.VOID_CORE);
         simpleItem(TCRItems.PROOF_OF_ADVENTURE);
+        simpleItem(TCRItems.PROOF_OF_ADVENTURE_PLUS);
         simpleItem(TCRItems.DRAGON_FLUTE);
         simpleItem(TCRItems.CORE_FLINT);
         simpleItem(TCRItems.MYSTERIOUS_WEAPONS);
