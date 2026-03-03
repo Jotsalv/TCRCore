@@ -349,13 +349,15 @@ public class PlayerEventListeners {
                         boolean hasNonCreativeOrSpectator = targetLevel.players().stream()
                                 .anyMatch(p -> !p.isCreative() && !p.isSpectator());
                         if (hasNonCreativeOrSpectator) {
-                        event.setCanceled(true);
-                        serverPlayer.displayClientMessage(TCRCoreMod.getInfo("dim_max_players"), true);
+                            event.setCanceled(true);
+                            serverPlayer.displayClientMessage(TCRCoreMod.getInfo("dim_max_players"), true);
+                        }
                     }
                 }
 
                 if (event.getDimension() == TCRDimensions.REAL_LEVEL_KEY) {
-                    if (!(TCRQuests.TALK_TO_AINE_GAME_CLEAR.isFinished(serverPlayer) || TCRQuestManager.hasQuest(serverPlayer, TCRQuests.TALK_TO_AINE_GAME_CLEAR))) {
+                    //卡在中间，只有击败最终boss才能进，后日谈完成后也不能进
+                    if (TCRQuests.TALK_TO_AINE_GAME_CLEAR.isFinished(serverPlayer) || !TCRQuests.KILL_MAD_CHRONOS.isFinished(serverPlayer)) {
                         event.setCanceled(true);
                         serverPlayer.displayClientMessage(TCRCoreMod.getInfo("can_not_do_this_too_early"), true);
                     }
@@ -388,25 +390,26 @@ public class PlayerEventListeners {
                                 .filter(p -> !p.isCreative() && !p.isSpectator())
                                 .count();
                         if (realPlayerCount >= 4) {
+                            event.setCanceled(true);
+                            serverPlayer.displayClientMessage(TCRCoreMod.getInfo("dim_max_players"), false);
+                        }
+                    }
+
+                    if ((event.getDimension() == CataclysmDimensions.CATACLYSM_SANCTUM_FALLEN_LEVEL_KEY && !PlayerDataManager.stormEyeGotten.get(serverPlayer))
+                            || (event.getDimension() == CataclysmDimensions.CATACLYSM_INFERNOS_MAW_LEVEL_KEY && !PlayerDataManager.flameEyeGotten.get(serverPlayer))
+                            || (event.getDimension() == CataclysmDimensions.CATACLYSM_ETERNAL_FROSTHOLD_LEVEL_KEY && !PlayerDataManager.cursedEyeGotten.get(serverPlayer))
+                            || (event.getDimension() == CataclysmDimensions.CATACLYSM_PHARAOHS_BANE_LEVEL_KEY && !PlayerDataManager.desertEyeGotten.get(serverPlayer))
+                            || (event.getDimension() == CataclysmDimensions.CATACLYSM_ABYSSAL_DEPTHS_LEVEL_KEY && !PlayerDataManager.abyssEyeGotten.get(serverPlayer))
+                            || (event.getDimension() == CataclysmDimensions.CATACLYSM_SOULS_ANVIL_LEVEL_KEY && !PlayerDataManager.monstEyeGotten.get(serverPlayer))
+                            || (event.getDimension() == CataclysmDimensions.CATACLYSM_BASTION_LOST_LEVEL_KEY && !PlayerDataManager.voidEyeGotten.get(serverPlayer))
+                            || (event.getDimension() == CataclysmDimensions.CATACLYSM_FORGE_OF_AEONS_LEVEL_KEY && !PlayerDataManager.mechEyeGotten.get(serverPlayer))) {
+                        serverPlayer.displayClientMessage(TCRCoreMod.getInfo("can_not_enter_before_finish"), false);
                         event.setCanceled(true);
-                        serverPlayer.displayClientMessage(TCRCoreMod.getInfo("dim_max_players"), false);
                     }
                 }
-
-                if ((event.getDimension() == CataclysmDimensions.CATACLYSM_SANCTUM_FALLEN_LEVEL_KEY && !PlayerDataManager.stormEyeGotten.get(serverPlayer))
-                        || (event.getDimension() == CataclysmDimensions.CATACLYSM_INFERNOS_MAW_LEVEL_KEY && !PlayerDataManager.flameEyeGotten.get(serverPlayer))
-                        || (event.getDimension() == CataclysmDimensions.CATACLYSM_ETERNAL_FROSTHOLD_LEVEL_KEY && !PlayerDataManager.cursedEyeGotten.get(serverPlayer))
-                        || (event.getDimension() == CataclysmDimensions.CATACLYSM_PHARAOHS_BANE_LEVEL_KEY && !PlayerDataManager.desertEyeGotten.get(serverPlayer))
-                        || (event.getDimension() == CataclysmDimensions.CATACLYSM_ABYSSAL_DEPTHS_LEVEL_KEY && !PlayerDataManager.abyssEyeGotten.get(serverPlayer))
-                        || (event.getDimension() == CataclysmDimensions.CATACLYSM_SOULS_ANVIL_LEVEL_KEY && !PlayerDataManager.monstEyeGotten.get(serverPlayer))
-                        || (event.getDimension() == CataclysmDimensions.CATACLYSM_BASTION_LOST_LEVEL_KEY && !PlayerDataManager.voidEyeGotten.get(serverPlayer))
-                        || (event.getDimension() == CataclysmDimensions.CATACLYSM_FORGE_OF_AEONS_LEVEL_KEY && !PlayerDataManager.mechEyeGotten.get(serverPlayer))) {
-                    serverPlayer.displayClientMessage(TCRCoreMod.getInfo("can_not_enter_before_finish"), false);
-                    event.setCanceled(true);
-                }
             }
-        }
 
+        }
     }
 
     @SubscribeEvent
