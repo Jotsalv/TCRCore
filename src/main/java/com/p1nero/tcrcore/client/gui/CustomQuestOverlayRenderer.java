@@ -64,6 +64,14 @@ public class CustomQuestOverlayRenderer {
         String distanceText;
     }
 
+    private static class ScreenPos {
+        boolean inside;
+        int x;
+        int y;
+        double nx;
+        double ny;
+    }
+
     public static void tick() {
         Minecraft minecraft = Minecraft.getInstance();
         LocalPlayer localPlayer = minecraft.player;
@@ -172,11 +180,26 @@ public class CustomQuestOverlayRenderer {
             return;
         }
         Minecraft minecraft = Minecraft.getInstance();
-
+        Window window = minecraft.getWindow();
+        Camera camera = minecraft.gameRenderer.getMainCamera();
 
         for (QuestIndicatorInfo info : QUEST_INDICATOR_INFOS) {
-            float iconX = Mth.lerp(partialTick, info.lastIconX, info.iconX);
-            float iconY = Mth.lerp(partialTick, info.lastIconY, info.iconY);
+            ScreenPos screenPos = calculateScreenPos(info.quest.getTrackingPos(), camera, window);
+            boolean onScreen = screenPos != null && screenPos.inside;
+
+            float iconX, iconY;
+            String distText;
+
+            if (onScreen) {
+                iconX = screenPos.x - QUEST_ICON_SIZE / 2;
+                iconY = screenPos.y - QUEST_ICON_SIZE / 2;
+                double dist = localPlayer.position().distanceTo(Vec3.atCenterOf(info.quest.getTrackingPos()));
+                distText = ((int) dist) + "m";
+            } else {
+                iconX = Mth.lerp(partialTick, info.lastIconX, info.iconX);
+                iconY = Mth.lerp(partialTick, info.lastIconY, info.iconY);
+                distText = info.distanceText;
+            }
 
             RenderSystem.enableBlend();
             //非追踪的则画透明点
@@ -184,14 +207,14 @@ public class CustomQuestOverlayRenderer {
 
             guiGraphics.blit(info.icon, (int) iconX, (int) iconY, 0, 0, QUEST_ICON_SIZE, QUEST_ICON_SIZE, QUEST_ICON_SIZE, QUEST_ICON_SIZE);
 
-            int textWidth = minecraft.font.width(info.distanceText);
+            int textWidth = minecraft.font.width(distText);
             guiGraphics.pose().pushPose();
             guiGraphics.pose().translate(iconX + QUEST_ICON_SIZE / 2.0F, iconY + QUEST_ICON_SIZE + 4.0F, 0.0F);
             guiGraphics.pose().scale(0.6F, 0.6F, 0.6F);
-            guiGraphics.drawString(minecraft.font, info.distanceText, -textWidth / 2, 0, 0xFFFFFFFF, true);
+            guiGraphics.drawString(minecraft.font, distText, -textWidth / 2, 0, 0xFFFFFFFF, true);
             guiGraphics.pose().popPose();
 
-            if (info.drawArrow) {
+            if (!onScreen && info.drawArrow) {
                 float arrowCenterX = Mth.lerp(partialTick, info.lastArrowCenterX, info.arrowCenterX);
                 float arrowCenterY = Mth.lerp(partialTick, info.lastArrowCenterY, info.arrowCenterY);
 
@@ -276,23 +299,11 @@ public class CustomQuestOverlayRenderer {
         }
     }
 
-    private static QuestIndicatorInfo computeQuestIndicator(LocalPlayer localPlayer, BlockPos pos, ResourceLocation icon, Window window, boolean drawArrowWhenOffscreen) {
-        if (localPlayer == null) {
-            return null;
-        }
-        Minecraft minecraft = Minecraft.getInstance();
-        Camera camera = minecraft.gameRenderer.getMainCamera();
-
+    private static ScreenPos calculateScreenPos(BlockPos pos, Camera camera, Window window) {
         Vec3 camPos = camera.getPosition();
         Vec3 targetPos = Vec3.atCenterOf(pos);
-
-        double distance = localPlayer.position().distanceTo(targetPos);
-
-//        if (distance < QUEST_INDICATOR_MIN_DISTANCE) {
-//            return null;
-//        }
-
         Vec3 camToTarget = targetPos.subtract(camPos);
+
         if (camToTarget.lengthSqr() < 1.0e-4) {
             return null;
         }
@@ -308,35 +319,52 @@ public class CustomQuestOverlayRenderer {
 
         int screenWidth = window.getGuiScaledWidth();
         int screenHeight = window.getGuiScaledHeight();
-        int centerX = screenWidth / 2;
-        int centerY = screenHeight / 2;
 
-        float fovDegrees = minecraft.options.fov().get();
+        float fovDegrees = Minecraft.getInstance().options.fov().get();
         double fovRad = Math.toRadians(fovDegrees);
         double tanHalfFovY = Math.tan(fovRad / 2.0);
         double aspect = (double) screenWidth / (double) screenHeight;
         double tanHalfFovX = tanHalfFovY * aspect;
-
-        if (zCam <= 0.1) {
-            if (!drawArrowWhenOffscreen) {
-                return null;
-            }
-        }
 
         double nx = xCam / (zCam * tanHalfFovX);
         double ny = yCam / (zCam * tanHalfFovY);
 
         boolean inside = zCam > 0.1 && nx >= -1.0 && nx <= 1.0 && ny >= -1.0 && ny <= 1.0;
 
+        ScreenPos result = new ScreenPos();
+        result.inside = inside;
+        result.nx = nx;
+        result.ny = ny;
+
+        if (inside) {
+            result.x = (int) ((nx * 0.5 + 0.5) * screenWidth);
+            result.y = (int) ((-ny * 0.5 + 0.5) * screenHeight);
+        }
+
+        return result;
+    }
+
+    private static QuestIndicatorInfo computeQuestIndicator(LocalPlayer localPlayer, BlockPos pos, ResourceLocation icon, Window window, boolean drawArrowWhenOffscreen) {
+        if (localPlayer == null) {
+            return null;
+        }
+        ScreenPos screenPos = calculateScreenPos(pos, Minecraft.getInstance().gameRenderer.getMainCamera(), window);
+        if (screenPos == null) {
+            return null;
+        }
+
+        if (!screenPos.inside && !drawArrowWhenOffscreen) {
+            return null;
+        }
+
+        double distance = localPlayer.position().distanceTo(Vec3.atCenterOf(pos));
         QuestIndicatorInfo info = new QuestIndicatorInfo();
         info.icon = icon;
         info.distanceText = ((int) distance) + "m";
 
-        if (inside) {
-            int screenX = (int) ((nx * 0.5 + 0.5) * screenWidth) - QUEST_ICON_SIZE / 2;
-            int screenY = (int) ((-ny * 0.5 + 0.5) * screenHeight) - QUEST_ICON_SIZE / 2;
-            info.iconX = screenX;
-            info.iconY = screenY;
+        if (screenPos.inside) {
+            info.iconX = screenPos.x - QUEST_ICON_SIZE / 2;
+            info.iconY = screenPos.y - QUEST_ICON_SIZE / 2;
             info.drawArrow = false;
             info.arrowCenterX = 0;
             info.arrowCenterY = 0;
@@ -344,9 +372,12 @@ public class CustomQuestOverlayRenderer {
             return info;
         }
 
-        if (!drawArrowWhenOffscreen) {
-            return null;
-        }
+        double nx = screenPos.nx;
+        double ny = screenPos.ny;
+        int screenWidth = window.getGuiScaledWidth();
+        int screenHeight = window.getGuiScaledHeight();
+        int centerX = screenWidth / 2;
+        int centerY = screenHeight / 2;
 
         double dx = nx;
         double dy = -ny;

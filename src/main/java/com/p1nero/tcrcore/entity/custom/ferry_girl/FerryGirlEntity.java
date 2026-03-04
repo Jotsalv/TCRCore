@@ -324,6 +324,7 @@ public class FerryGirlEntity extends PathfinderMob implements IEntityNpc, GeoEnt
             }
             ItemUtil.addItemEntity(serverPlayer, ModItems.BOOK_OF_DRAGONS.get().getDefaultInstance());
             ItemUtil.addItemEntity(serverPlayer, TCRItems.DRAGON_FLUTE.get().getDefaultInstance());
+            ItemUtil.addItemEntity(serverPlayer, ModItems.RATTLE_STAFF.get().getDefaultInstance());
             TCRQuests.TAME_DRAGON.start(serverPlayer, false);
             PlayerDataManager.ferryGirlGiftGet.put(serverPlayer, true);
         }

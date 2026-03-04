@@ -341,7 +341,7 @@ public class PlayerEventListeners {
 
         if (event.getEntity() instanceof ServerPlayer serverPlayer) {
             //允许创造和旁观进
-            if (!serverPlayer.isCreative() || !serverPlayer.isSpectator()) {
+            if (!serverPlayer.isCreative() && !serverPlayer.isSpectator()) {
 
                 if (event.getDimension() == PBF1Dimensions.SANCTUM_OF_THE_BATTLE_LEVEL_KEY) {
                     ServerLevel targetLevel = serverPlayer.server.getLevel(PBF1Dimensions.SANCTUM_OF_THE_BATTLE_LEVEL_KEY);
