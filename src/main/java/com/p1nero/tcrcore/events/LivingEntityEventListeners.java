@@ -282,6 +282,7 @@ public class LivingEntityEventListeners {
                     ItemUtil.addItemEntity(player, ModItems.FLAME_EYE.get(), 1, ChatFormatting.RED.getColor().intValue());
                     player.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
                 }
+                ItemUtil.addItemEntity(player, EFNItem.DUSKFIRE_INGOT.get(), 1, ChatFormatting.RED.getColor().intValue());
             }
 
             if (livingEntity instanceof NetherGolem) {
@@ -290,6 +291,7 @@ public class LivingEntityEventListeners {
                     ItemUtil.addItemEntity(player, ModItems.MONSTROUS_EYE.get(), 1, ChatFormatting.DARK_RED.getColor().intValue());
                     player.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
                 }
+                ItemUtil.addItemEntity(player, EFNItem.DUSKFIRE_INGOT.get(), 1, ChatFormatting.RED.getColor().intValue());
             }
 
             if (livingEntity instanceof WitherBoss) {
@@ -476,11 +478,15 @@ public class LivingEntityEventListeners {
                 EntityType<BTMonolith> entityType = GolemType.getMonolithFor(abstractGolem.golemType);
                 Item item = getMonolithKeyItemFor(abstractGolem.golemType);
                 BlockPos home = livingEntity.getEntityData().get(((AbstractGolemInvoker) livingEntity).getSpawnPosKey());
+                BTMonolith monolith;
                 if (entityType == BTEntityType.END_MONOLITH.get()) {
                     BlockPos pos = WorldUtil.getSurfaceBlockPos(serverLevel, 0, 0).above(3);
-                    entityType.spawn(serverLevel, pos, MobSpawnType.MOB_SUMMONED);
+                    monolith = entityType.spawn(serverLevel, pos, MobSpawnType.MOB_SUMMONED);
                 } else {
-                    entityType.spawn(serverLevel, home, MobSpawnType.MOB_SUMMONED);
+                    monolith = entityType.spawn(serverLevel, home, MobSpawnType.MOB_SUMMONED);
+                }
+                if(monolith != null) {
+                    monolith.setKeyCountInEntity(1);//第二次只要一个
                 }
                 ItemUtil.addItemEntity(livingEntity, item, 1, ChatFormatting.GOLD.getColor());
             }

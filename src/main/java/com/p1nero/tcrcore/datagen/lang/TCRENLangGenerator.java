@@ -70,7 +70,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.add("unlock_tip.epicskills.prodigy.critical_knowledge", " Slaught 50 Creeper and 150 mobs");
         this.add("unlock_tip.epicskills.prodigy.dancing_blade", " Slaught 5 Witches and 150 mobs");
 
-        this.add("travelerstitles.tcrcore.sanctum", "Realm of Dreams");
+        this.add("travelerstitles.tcrcore.Sanctum", "Realm of Dreams");
         this.add("travelerstitles.tcrcore.real", "The Unreal Reality");
         this.add("travelerstitles.minecraft.overworld", "Overworld");
         this.add("travelerstitles.aether.the_aether", "The Aether");
@@ -78,48 +78,48 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.add("travelerstitles.minecraft.the_nether.color", "750909");
         this.add("travelerstitles.minecraft.the_end", "The End");
         this.add("travelerstitles.minecraft.the_end.color", "4f219e");
-        this.add("travelerstitles.pbf1.sanctum_of_the_battle1", "Infinite Samsara");
+        this.add("travelerstitles.pbf1.Sanctum_of_the_battle1", "Infinite Samsara");
 
         this.addBiome(TCRBiomes.AIR, "");
         this.addBiome(TCRBiomes.REAL, "");
 
         this.addQuest(TCRQuests.WAIT_RESONANCE_STONE_CHARGE, "Interlude", "Wait for [%s] to charge", "[%s]'s energy has been depleted, and recharging will take some time. Before it finishes charging, go do something else!");
-        this.addQuest(TCRQuests.PUT_DESERT_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the sanctum corridor!");
-        this.addQuest(TCRQuests.PUT_ABYSS_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the sanctum corridor!");
-        this.addQuest(TCRQuests.PUT_CURSED_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the sanctum corridor!");
-        this.addQuest(TCRQuests.PUT_FLAME_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the sanctum corridor!");
-        this.addQuest(TCRQuests.PUT_MECH_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the sanctum corridor!");
-        this.addQuest(TCRQuests.PUT_STORM_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the sanctum corridor!");
-        this.addQuest(TCRQuests.PUT_VOID_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the sanctum corridor!");
-        this.addQuest(TCRQuests.PUT_MONST_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the sanctum corridor!");
-        this.addQuest(TCRQuests.BLESS_ON_THE_GODNESS_STATUE, "Interlude", "Pray at the goddess statue", "[The Eye of God] has been retrieved. By using the goddess statue in the garden, we can resonate with the Eye of God and gain power from the apostles.");
+        this.addQuest(TCRQuests.PUT_DESERT_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the Sanctum corridor!");
+        this.addQuest(TCRQuests.PUT_ABYSS_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the Sanctum corridor!");
+        this.addQuest(TCRQuests.PUT_CURSED_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the Sanctum corridor!");
+        this.addQuest(TCRQuests.PUT_FLAME_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the Sanctum corridor!");
+        this.addQuest(TCRQuests.PUT_MECH_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the Sanctum corridor!");
+        this.addQuest(TCRQuests.PUT_STORM_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the Sanctum corridor!");
+        this.addQuest(TCRQuests.PUT_VOID_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the Sanctum corridor!");
+        this.addQuest(TCRQuests.PUT_MONST_EYE_ON_ALTAR, "Interlude", "Place [%s] on the altar", "[%s] has been retrieved. Hurry and return it to the altar in the Sanctum corridor!");
+        this.addQuest(TCRQuests.BLESS_ON_THE_GODNESS_STATUE, "Interlude", "Pray at the goddess statue", "[The Eye of God] has been retrieved. By using the goddess statue in the garden, we can resonate with the Eye of God and gain power from the Angel.");
 
         this.addQuest(TCRQuests.TALK_TO_AINE_CLOUDLAND, "Interlude", "Talk to %s", "When you touched the altar, you were drawn into a mysterious world. Perhaps we should call it the Cloudland. Go talk to %s; maybe she knows what this place is.");
 
         // Prologue
-        this.addQuest(TCRQuests.TALK_TO_AINE_0, "Prologue", "Talk to %s", "You agreed to come to this world with %s, but when you came to your senses, %s was nowhere to be found. Hurry and look for her in the sanctum! You vaguely remember her saying she had a new outfit to give you.");
-        this.addQuest(TCRQuests.TALK_TO_CHRONOS_0, "Prologue", "Talk to ?", "You agreed to come to this world with %s, but when you came to your senses, %s was nowhere to be found. What is this place? Try talking to the dignified woman in the sanctum corridor!");
+        this.addQuest(TCRQuests.TALK_TO_AINE_0, "Prologue", "Talk to %s", "You agreed to come to this world with %s, but when you came to your senses, %s was nowhere to be found. Hurry and look for her in the Sanctum! You vaguely remember her saying she had a new outfit to give you.");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_0, "Prologue", "Talk to ?", "You agreed to come to this world with %s, but when you came to your senses, %s was nowhere to be found. What is this place? Try talking to the dignified woman in the Sanctum corridor!");
         this.addQuest(TCRQuests.TALK_TO_FERRY_GIRL_0, "Prologue", "Go to [%s]", "You’ve heard the story of this world. When you’re ready, head to the dock to find %s! She will open the path to [%s] for us! She also seems to have some treasure to give you.");
         this.addQuest(TCRQuests.TALK_TO_ORNN_0, "Prologue", "Talk to %s", "On %s's suggestion, go to the armory to equip yourself with %s! Proper equipment will ensure a smooth adventure!");
 
         // Dragon Taming Side Quest
-        this.addQuest(TCRQuests.TAME_DRAGON, "Dragon-Taming Chapter", "Raise the dragon to adulthood", "%s gave you a dragon. Now, follow the method described in [%s] to raise it to adulthood! You can feed your dragon any foods! A dragon is a symbol of kingship!\n\n§a[Quest Reward]: §f[%s] [%s]");
+        this.addQuest(TCRQuests.TAME_DRAGON, "Dragon-Taming Chapter", "Raise the dragon to adulthood", "%s gave you a dragon. Now, follow the method described in [%s] to raise it to adulthood! You can feed your dragon any foods!\n\n§a[Quest Reward]: §f[%s] [%s]");
         this.addQuest(TCRQuests.TAME_DRAGON_BACK_TO_FERRY_GIRL, "Dragon-Taming Chapter", "Talk to %s", "With your careful care, the dragon has grown to adulthood. %s mentioned earlier that she would give us a treasure once the dragon is grown. Hurry back to %s to see!\n\n§a[Quest Reward]: §f[%s] [%s]");
 
         // Main Quest · Desert Eye
         this.addQuest(TCRQuests.USE_LAND_RESONANCE_STONE, "Earth Chapter", "Use [%s]", "You’ve finally arrived at the legendary [%s]. What adventures await here? Hurry and use [%s]! It will guide us to retrieve the first eye.");
         this.addQuest(TCRQuests.GET_DESERT_EYE, "Earth Chapter", "Retrieve [%s]", "[%s] has marked the scattered locations of [%s]. Set out to retrieve [%s]!\n\n§a[Hint]: Explore the tower to find the key to summon the boss! Note that [%s§a] may be hidden within blocks!\n\n§4[Note]: If you cannot complete the quest after obtaining it, try disabling any plugins that might automatically pick up items, then drop and re-pick up the item!");
-        this.addQuest(TCRQuests.TALK_TO_CHRONOS_1, "Earth Chapter", "Talk to %s", "[%s] has been retrieved. Hurry back to the main city to report to %s! She will tell us what to do next.");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_1, "Earth Chapter", "Talk to %s", "[%s] has been retrieved. Hurry back to the Sanctum to report to %s! She will tell us what to do next.");
         // Chimera Side Quest
         this.addQuest(TCRQuests.BONE_CHIMERA_QUEST, "Weapon Chapter", "Go to [%s]", "[%s] seems to have marked another location. Perhaps there’s an unexpected adventure there. Hurry and check it out!\n\n§a[Quest Reward]: §f[%s§f]");
-        this.addQuest(TCRQuests.TALK_TO_ORNN_1, "Weapon Chapter", "Talk to %s", "You obtained [%s] from [%s]. What secrets does it hold? Take it back to the main city and show it to %s!");
+        this.addQuest(TCRQuests.TALK_TO_ORNN_1, "Weapon Chapter", "Talk to %s", "You obtained [%s] from [%s]. What secrets does it hold? Take it back to the Sanctum and show it to %s!");
 
         // Main Quest · Abyss Eye
-        this.addQuest(TCRQuests.TALK_TO_CHRONOS_2, "Ocean Chapter", "Talk to %s", "After a long wait, %s has finished charging. Hurry back to %s! She’s waiting for you in the sanctum.");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_2, "Ocean Chapter", "Talk to %s", "After a long wait, %s has finished charging. Hurry back to %s! She’s waiting for you in the Sanctum.");
         this.addQuest(TCRQuests.GO_TO_OVERWORLD_OCEAN, "Ocean Chapter", "Go to [%s]", "[%s] has finished charging. It’s time to go to [%s] and use it! It will guide us to the location of [%s]!");
         this.addQuest(TCRQuests.USE_OCEAN_RESONANCE_STONE, "Ocean Chapter", "Use [%s]", "You’ve arrived at [%s]. Hurry and use [%s]! It will guide us to the location of [%s]! What adventures await us?");
         this.addQuest(TCRQuests.GET_OCEAN_EYE, "Ocean Chapter", "Retrieve [%s]", "[%s] has marked the scattered locations of [%s]. Set out to retrieve [%s]!\n\n§a[Hint]: [%s§a] may be hidden within blocks!\n\n§4[Note]: If you cannot complete the quest after obtaining it, try disabling any plugins that might automatically pick up items, then drop and re-pick up the item!");
-        this.addQuest(TCRQuests.TALK_TO_CHRONOS_3, "Ocean Chapter", "Talk to %s", "[%s] has been retrieved. Hurry back to the main city to report to %s! She will tell us what to do next.\n\nThis time, we also retrieved [%s]. What secrets does it hold? Ask her while you’re at it!");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_3, "Ocean Chapter", "Talk to %s", "[%s] has been retrieved. Hurry back to the Sanctum to report to %s! She will tell us what to do next.\n\nThis time, we also retrieved [%s]. What secrets does it hold? Ask her while you’re at it!");
 
         this.addQuest(TCRQuests.RIBBITS_QUEST, "Ocean Chapter", "Explore [%s]", "[%s] seems to have marked another location. Perhaps there’s an unexpected adventure there. Hurry and check it out!\n\n§a[Quest Reward]: §f[%s] [%s]\n\n§6[Recommended to complete first]");
         this.addQuest(TCRQuests.GIVE_AMETHYST_BLOCK_TO_RIBBITS, "Ocean Chapter", "Give [%s] to %s", "It seems that to learn more about [%s], you’ll need to make a deal with the %s. Gather 12 [%s] and return to them!\n\n§a[Quest Reward]: §f[%s] [%s]\n\n§6[Recommended to complete first]");
@@ -130,7 +130,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addQuest(TCRQuests.GO_TO_OVERWORLD_CURSED, "Soul Chapter", "Go to [%s]", "You unexpectedly obtained the scattered location of [%s] from [%s]. Hurry to [%s] to retrieve it! [%s] will guide us to its location.");
         this.addQuest(TCRQuests.USE_CURSED_RESONANCE_STONE, "Soul Chapter", "Use [%s]", "You unexpectedly obtained the scattered location of [%s] from [%s]. Hurry to [%s] to retrieve it! [%s] will guide us to its location.");
         this.addQuest(TCRQuests.GET_CURSED_EYE, "Soul Chapter", "Retrieve [%s]", "[%s] has marked the scattered locations of [%s]. Set out to retrieve [%s]!\n\n§a[Hint]: §fExplore to find clues to summon [%s]!");
-        this.addQuest(TCRQuests.TALK_TO_CHRONOS_5, "Soul Chapter", "Talk to %s", "[%s] has been retrieved. Hurry back to the main city to report to %s! She will tell us what to do next.");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_5, "Soul Chapter", "Talk to %s", "[%s] has been retrieved. Hurry back to the Sanctum to report to %s! She will tell us what to do next.");
 
         // Iron Magic Side Quest
         this.addQuest(TCRQuests.TALK_TO_AINE_MAGIC, "Magic Chapter", "Talk to %s", "[%s] dropped a mysterious %s. Perhaps %s, who understands magic, can decipher its secrets!");
@@ -138,34 +138,34 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addQuest(TCRQuests.TALK_TO_AINE_MAGIC_2, "Magic Chapter", "Talk to %s", "You’ve learned how to infuse spells into your weapon. Go talk to %s! She will teach you how to use magic effectively!");
 
         // Main Quest · Flame Eye
-        this.addQuest(TCRQuests.TALK_TO_CHRONOS_6, "Flame Chapter", "Talk to %s", "After a long wait, %s has finished charging. Hurry back to %s! She’s waiting for you in the sanctum.");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_6, "Flame Chapter", "Talk to %s", "After a long wait, %s has finished charging. Hurry back to %s! She’s waiting for you in the Sanctum.");
         this.addQuest(TCRQuests.GO_TO_OVERWORLD_CORE, "Flame Chapter", "Go to [%s]", "[%s] has finished charging. It’s time to go to [%s] and use it! It will guide us to the location of [%s]!");
         this.addQuest(TCRQuests.USE_CORE_RESONANCE_STONE, "Flame Chapter", "Use [%s]", "You’ve arrived at [%s]. Hurry and use [%s]! It will guide us to the location of [%s]! What adventures await us?");
         this.addQuest(TCRQuests.GET_FLAME_EYE, "Flame Chapter", "Retrieve [%s]", "[%s] has marked the scattered locations of [%s]. Set out to retrieve [%s]!\n\n§a[Hint]: §f[%s] may be hidden in an underground tower. You’ll need the power to break through the obsidian barrier!");
-        this.addQuest(TCRQuests.TALK_TO_CHRONOS_7, "Flame Chapter", "Talk to %s", "[%s] has been retrieved. Hurry back to the main city to report to %s! She will tell us what to do next.");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_7, "Flame Chapter", "Talk to %s", "[%s] has been retrieved. Hurry back to the Sanctum to report to %s! She will tell us what to do next.");
 
         this.addQuest(TCRQuests.TALK_TO_AINE_1, "Interlude", "Talk to %s", "You’ve retrieved half of the Eyes of God on your journey. Talk to %s!");
 
         // Main Quest · Nether Chapter
-        this.addQuest(TCRQuests.TALK_TO_CHRONOS_8, "Nether Chapter", "Talk to %s", "After a long wait, %s has finished charging. Hurry back to %s! She’s waiting for you in the sanctum.");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_8, "Nether Chapter", "Talk to %s", "After a long wait, %s has finished charging. Hurry back to %s! She’s waiting for you in the Sanctum.");
         this.addQuest(TCRQuests.GO_TO_NETHER, "Nether Chapter", "Go to [%s]", "All the Eyes of God scattered in [%s] have been retrieved. The Resonance Stone may not work in [%s]. As %s said, use [%s] to ignite the obsidian frame and open %s!");
         this.addQuest(TCRQuests.USE_NETHER_RESONANCE_STONE, "Nether Chapter", "Use [%s]", "You’ve arrived at [%s]. Hurry and use [%s]! It will guide us to the location of [%s]! What adventures await us?");
         this.addQuest(TCRQuests.GET_MONST_EYE, "Nether Chapter", "Retrieve [%s]", "[%s] has marked the scattered locations of [%s]. Set out to retrieve [%s]!\n\n§a[Hint]: It is recommended to equip [%s]");
-        this.addQuest(TCRQuests.TALK_TO_CHRONOS_9, "Nether Chapter", "Talk to %s", "[%s] has been retrieved. Hurry back to the main city to report to %s! She will tell us what to do next.");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_9, "Nether Chapter", "Talk to %s", "[%s] has been retrieved. Hurry back to the Sanctum to report to %s! She will tell us what to do next.");
 
         // Main Quest · Destruction Chapter
-        this.addQuest(TCRQuests.GET_WITHER_EYE, "Destruction Chapter", "Retrieve [%s]", "Research on the echoes of the Ship Graveyard has progressed! We must perform an ancient ritual to summon the Apostle of Death! Hurry and follow %s's instructions to summon [%s] and retrieve [%s]!");
-        this.addQuest(TCRQuests.TALK_TO_CHRONOS_10, "Destruction Chapter", "Talk to %s", "[%s] has been retrieved. Hurry back to the main city to report to %s! She will tell us what to do next.");
+        this.addQuest(TCRQuests.GET_WITHER_EYE, "Destruction Chapter", "Retrieve [%s]", "Research on the echoes of the Ship Graveyard has progressed! We must perform an ancient ritual to summon the Angel of Death! Hurry and follow %s's instructions to summon [%s] and retrieve [%s]!");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_10, "Destruction Chapter", "Talk to %s", "[%s] has been retrieved. Hurry back to the Sanctum to report to %s! She will tell us what to do next.");
         this.addQuest(TCRQuests.TALK_TO_AINE_SAMSARA, "Interlude", "Talk to %s", "%s told us that [%s] is the key to opening [%s]. What secrets does [%s] hold? Hurry and ask %s!");
         this.addQuest(TCRQuests.GO_TO_SAMSARA, "Cycle Chapter", "Go to [%s]", "What secrets lie within [%s]? Hurry and follow %s's instructions to activate [%s]!");
 
         // Main Quest · Sky Chapter
-        this.addQuest(TCRQuests.TALK_TO_CHRONOS_11, "Sky Chapter", "Talk to %s", "After a long wait, %s has finished charging. Hurry back to %s! She’s waiting for you in the sanctum.");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_11, "Sky Chapter", "Talk to %s", "After a long wait, %s has finished charging. Hurry back to %s! She’s waiting for you in the Sanctum.");
         this.addQuest(TCRQuests.GO_TO_AETHER, "Sky Chapter", "Go to [%s]", "Water the frame built by %s with the source of life (%s) to open the gates of heaven!");
         this.addQuest(TCRQuests.USE_AETHER_RESONANCE_STONE, "Sky Chapter", "Use [%s]", "On your journey to collect the Eyes of God, only the eyes of the Sky Angel and the Void Angel remain to be retrieved...");
         this.addQuest(TCRQuests.GET_STORM_EYE, "Sky Chapter", "Retrieve [%s]", "[%s] has marked the scattered locations of [%s]. Set out to retrieve [%s]!");
         this.addQuest(TCRQuests.TALK_TO_SKY_GOLEM, "Sky Chapter", "Talk to %s", "%s seems... not entirely dissipated. It appears to have regained consciousness. Try talking to %s!");
-        this.addQuest(TCRQuests.TALK_TO_CHRONOS_12, "Sky Chapter", "Talk to %s", "[%s] has been retrieved, and its story has been understood... Hurry back to the main city to report to %s! She will tell us what to do next.");
+        this.addQuest(TCRQuests.TALK_TO_CHRONOS_12, "Sky Chapter", "Talk to %s", "[%s] has been retrieved, and its story has been understood... Hurry back to the Sanctum to report to %s! She will tell us what to do next.");
         this.addQuest(TCRQuests.TALK_TO_AINE_2, "Sky Chapter", "Talk to %s", "[%s] has been retrieved, and its story has been understood... Talk to %s.");
 
         // Main Quest · Final Chapter
@@ -227,14 +227,14 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.add(TCRItems.FLAME_FRAGMENT.get(), "Echo of the First Flame");
         this.add(TCRItems.STORM_FRAGMENT.get(), "Shard of the Thunderous Roar");
         this.add(TCRItems.SOUL_FRAGMENT.get(), "Dust of the Cursed Bone Prison");
-        this.add(TCRItems.STONE_OF_REINCARNATION.get(), "轮回之石");
+        this.add(TCRItems.STONE_OF_REINCARNATION.get(), "Stone of Reincarnation");
         this.addItemUsageInfo(TCRItems.STONE_OF_REINCARNATION.get(), "After use, you will return to the beginning of the journey.");
         this.add(TCRItems.WITHER_SOUL_STONE.get(), "Wither Soul Stone");
         this.addItemUsageInfo(TCRItems.WITHER_SOUL_STONE.get(), "It seems to have lost its magic for now, just a unique stone. Figure out how to reawaken it!");
         this.add(TCRItems.WITHER_SOUL_STONE_ACTIVATED.get(), "Wither Soul Stone");
         this.addItemUsageInfo(TCRItems.WITHER_SOUL_STONE_ACTIVATED.get(), "Can open a gateway to the §6[Infinite Samsara]§r.");
         this.add(TCRItems.MAGIC_BOTTLE.get(), "Magic Bottle");
-        this.addItemUsageInfo(TCRItems.MAGIC_BOTTLE.get(), "Restores a certain percentage of mana when used. Once depleted, must be used in the main city to replenish MP.");
+        this.addItemUsageInfo(TCRItems.MAGIC_BOTTLE.get(), "Restores a certain percentage of mana when used. Once depleted, must be used in the Sanctum to replenish MP.");
         this.add(TCRItems.MYSTERIOUS_WEAPONS.get(), "Mysterious Weapons Scroll");
         this.addItemUsageInfo(TCRItems.MYSTERIOUS_WEAPONS.get(), "It seems to record all manner of weapons from around the world. You should show it to someone who knows about such things.");
         this.add(TCRItems.NECROMANCY_SCROLL.get(), "Necromancy Scroll");
@@ -435,28 +435,28 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 0, "Traveler, is your adventure going well?");
         this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 0, "About this world");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 1, "A thousand years ago, 'our' world was struck by an unknown calamity from beyond the heavens, and the Black Tide descended upon the realm. Facing the endless Black Tide, 'we' were powerless. Affected by the Black Tide, 'our' memories gradually faded... One by one, They were devoured by the Black Tide, and their souls were sealed away across the world. When 'we' realized that 'our' memories were receding like the tide, 'we' used magic to inscribe the Dead Sea Scrolls, to remind us that a savior would eventually return from beyond the heavens, unite 'our' power, achieve recreation, and vanquish the Black Tide!");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 2, "I was the least eroded by the Black Tide. They used their remaining strength to seal me and this main city beneath us into the Primordial Sea, to slow the Black Tide's erosion and await the savior's return. As for who the savior is, or why they possess the power to save us, 'we' have no way of knowing. But in the face of the Black Tide, 'we' can only believe in this ancient memory and believe in the arrival of recreation...");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 2, "I was the least eroded by the Black Tide. They used their remaining strength to seal me and this Sanctum beneath us into the Primordial Sea, to slow the Black Tide's erosion and await the savior's return. As for who the savior is, or why they possess the power to save us, 'we' have no way of knowing. But in the face of the Black Tide, 'we' can only believe in this ancient memory and believe in the arrival of recreation...");
         this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 1, "About %s");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 3, "Traveler, are you referring to the witch who has settled here? She seems to possess power from beyond this world, much like yourself. I believe in the prophecy; I believe that you and the witch can save the sanctum. Everything here will be open to you both!");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 3, "Traveler, are you referring to the witch who has settled here? She seems to possess power from beyond this world, much like yourself. I believe in the prophecy; I believe that you and the witch can save the Sanctum. Everything here will be open to you both!");
         this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 2, "About %s");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 4, "Since the Black Tide invasion, she has stood guard at the harbor for a thousand years, the only link between this place and the world. She is a puppet 'we' crafted. As 'our' memories faded, so too did her power dwindle.");
         this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 3, "About %s");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 5, "He is a demigod from the Overworld, master of forging and craftsmanship. All the divine weapons and armor used by the apostles were forged by his hand.");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 5, "He is a demigod from the Overworld, master of forging and craftsmanship. All the divine weapons and armor used by the Angel were forged by his hand.");
 
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 6, "Oh, prophesied savior, I have awaited your arrival! Only you can retrieve the Eyes of the Gods and restore the world's former glory!");
         this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 4, "Who are you?");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 7, "I am one of the world's ten great apostles, named %s, and I govern time.");
-        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 5, "Apostles?");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 8, "At the dawn of creation, ten apostles were born in the sanctum, governing all things in the world. I am one of them. 'We' often gathered to discuss important matters. When a situation required 'our' intervention, 'we' would choose one among 'us' to go.");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 7, "I am one of the world's ten great Angel, named %s, and I govern time.");
+        this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 5, "Angel?");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 8, "At the dawn of creation, ten Angel were born in the Sanctum, governing all things in the world. I am one of them. 'We' often gathered to discuss important matters. When a situation required 'our' intervention, 'we' would choose one among 'us' to go.");
         this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 6, "§aAbout the Next Step");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 9, "Traveler, you must retrieve their anchors—the Eyes of the Gods—and return the souls of the apostles to the altars. Then, I shall offer my own soul, and we can achieve the recreation recorded in the Dead Sea Scrolls!");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 10, "The Primordial Sea shields us from the outside world's aura. I cannot sense their locations from here. However, this §6Resonance Stone§f can help you find where the Eyes of the Gods are scattered in the outer world. I give this Resonance Stone to you. Once you reach the Overworld, it will guide you to the apostles' locations. Remember, the Resonance Stone can only be used once per stage! After you retrieve an Eye of God, I can use it to forge a new Resonance Stone.");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 9, "Traveler, you must retrieve their anchors—the Eyes of the Gods—and return the souls of the Angel to the altars. Then, I shall offer my own soul, and we can achieve the recreation recorded in the Dead Sea Scrolls!");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 10, "The Primordial Sea shields us from the outside world's aura. I cannot sense their locations from here. However, this §6Resonance Stone§f can help you find where the Eyes of the Gods are scattered in the outer world. I give this Resonance Stone to you. Once you reach the Overworld, it will guide you to the Angel' locations. Remember, the Resonance Stone can only be used once per stage! After you retrieve an Eye of God, I can use it to forge a new Resonance Stone.");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 11, "Traveler, you might first go to the §6[Armory]§f to get a suitable weapon from %s. Once you're ready, head to the harbor to find %s. She will take you to the starting point of your journey.");
 
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 12, "Traveler, has your journey to find [%s] been successful?");
         this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 7, "§aI have retrieved [%s§a]");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 13, "Truly, you are the prophesied savior! Please, place the Eye of God upon the altar!");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 14, "You can also pray at the goddess statue with the Eye of God. A portion of the apostle's power contained within the Eye will be shared with you through the statue.");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 14, "You can also pray at the goddess statue with the Eye of God. A portion of the Angel's power contained within the Eye will be shared with you through the statue.");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 15, "The Resonance Stone still needs time to recharge. Please wait, traveler!");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 16, "The Resonance Stone has finished recharging. Set forth, traveler!");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 17, "Well done, traveler! Allow me to recharge the Resonance Stone. Please rest awhile!");
@@ -465,16 +465,16 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 19, "Traveler, the Resonance Stone has not yet finished recharging. Please be patient.");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 20, "This is... %s?!");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 21, "In that case, this memory can restore the Resonance Stone's magic prematurely. I will infuse this echo into the Resonance Stone. You must retrieve its spark!");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 22, "Please place the Eye of God upon the altar! The apostle governing the underworld has, in the end, stepped into the underworld themselves...");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 22, "Please place the Eye of God upon the altar! The Angel governing the underworld has, in the end, stepped into the underworld themselves...");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 23, "Please place the Eye of God upon the altar! You have buried the code of resurrection in the ashes, melting the rusted lock into a flowing golden river…");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 24, "Traveler, all the Eyes of God scattered in the Overworld have been retrieved. The Resonance Stone may no longer function there. If it doesn't respond, perhaps it's time to try other dimensions.");
         this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 9, "Other dimensions?");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 25, "At the dawn of creation, the world was divided into four dimensions: the Overworld, the Nether, the Aether, and the End. Each was governed by its respective apostle.");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 25, "At the dawn of creation, the world was divided into four dimensions: the Overworld, the Nether, the Aether, and the End. Each was governed by its respective Angel.");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 26, "After the Black Tide invasion, their souls remained there forever. I used the power of [%s] to forge [%s] for you. Use [%s] to ignite the obsidian frame and open the gate to the Nether!");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 27, "Traveler, when you are ready, head to the Nether and use the Resonance Stone! Before you go, accept my blessing to protect you from the flames!");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 28, "Traveler, you've arrived just in time! The witch has made progress researching the echoes of the Ship Graveyard! We must perform the ancient ritual to summon the Death Angel back!");
         this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 10, "Death Angel?");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 29, "The apostle governing death—%s. According to information left by the Soul Angel in the Ship Graveyard, their soul is imprisoned in the River Styx!");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 29, "The Angel governing death—%s. According to information left by the Soul Angel in the Ship Graveyard, their soul is imprisoned in the River Styx!");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 30, "We must perform the summoning ritual to rescue them from the Styx!");
         this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 11, "Summoning ritual?");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 31, "Traveler, did you see [%s] in the Nether? Arrange [%s] in a T-shape, then place three [%s] on top to summon them!");
@@ -494,7 +494,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 14, "%s,");
         this.addDialogOption(TCREntities.CHRONOS_SOL.get(), 15, "I know who I am");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 43, "...(You tell %s about what happened in %s)");
-        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 44, "So that's it... So the savior in the Dead Sea Scrolls is the Pure Apostle... Only purity can sweep away all darkness...");
+        this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 44, "So that's it... So the savior in the Dead Sea Scrolls is the Pure Angel... Only purity can sweep away all darkness...");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 45, "No wonder I always felt you shared our essence, traveler, and could traverse the three realms.");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 46, "Cough, now only the final step remains... to begin the ritual... The Void Angel's Eye is in the End...");
         this.addDialogAnswer(TCREntities.CHRONOS_SOL.get(), 47, "I lack the power to recharge the Resonance Stone. Its remaining energy is only enough to guide you to [%s]... For the rest of the journey, please take care, traveler!");
@@ -521,29 +521,29 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addDialogAnswer(TCREntities.AINE.get(), 4, "%s, need something?");
         this.addDialogOption(TCREntities.AINE.get(), 5, "§aAbout the Cloudland");
         this.addDialogAnswer(TCREntities.AINE.get(), 5, "Cloudland? Let me check...");
-        this.addDialogAnswer(TCREntities.AINE.get(), 6, "Hmm... Based on the information in the archives and my experience, the Cloudland you entered after touching the altar is likely the merged result of the apostles' original mental worlds, eroded by the Black Tide.");
+        this.addDialogAnswer(TCREntities.AINE.get(), 6, "Hmm... Based on the information in the archives and my experience, the Cloudland you entered after touching the altar is likely the merged result of the Angel' original mental worlds, eroded by the Black Tide.");
         this.addDialogOption(TCREntities.AINE.get(), 6, "Mental worlds?");
-        this.addDialogAnswer(TCREntities.AINE.get(), 7, "Yeah, maybe deep within the Cloudland, you can find reflections of the apostles and gain their power!");
+        this.addDialogAnswer(TCREntities.AINE.get(), 7, "Yeah, maybe deep within the Cloudland, you can find reflections of the Angel and gain their power!");
         this.addDialogAnswer(TCREntities.AINE.get(), 8, "Try exploring the Cloudland! You might find something significant, maybe even valuable memory essence materials!");
         this.addDialogOption(TCREntities.AINE.get(), 7, "§aAbout [%s§a]");
         this.addDialogAnswer(TCREntities.AINE.get(), 9, "This is... special memory essence. It seems to record the memories of a group, not just a single life. Let's see what secrets it holds!");
         this.addDialogAnswer(TCREntities.AINE.get(), 10, "!!");
         this.addDialogAnswer(TCREntities.AINE.get(), 11, "It records the adventure story of Captain Cornelia. And from the memory, after the Soul Angel %s was eroded by the Black Tide, they possessed Captain Cornelia! Hurry and show this deciphered memory to %s!");
         this.addDialogOption(TCREntities.AINE.get(), 8, "%s? %s?");
-        this.addDialogAnswer(TCREntities.AINE.get(), 12, "The Soul Apostle, %s, governs the world of the dead. Captain Cornelia's fleet was a world-renowned ocean-going fleet. Cursed by the Black Tide, they were trapped forever in that icy labyrinth along with [%s]!");
+        this.addDialogAnswer(TCREntities.AINE.get(), 12, "The Soul Angel, %s, governs the world of the dead. Captain Cornelia's fleet was a world-renowned ocean-going fleet. Cursed by the Black Tide, they were trapped forever in that icy labyrinth along with [%s]!");
         this.addDialogAnswer(TCREntities.AINE.get(), 13, "[%s]? Let me see, another special memory...");
-        this.addDialogAnswer(TCREntities.AINE.get(), 14, "Heh heh, it seems the Soul Apostle, who governs the underworld, also mastered the magic of the living!");
+        this.addDialogAnswer(TCREntities.AINE.get(), 14, "Heh heh, it seems the Soul Angel, who governs the underworld, also mastered the magic of the living!");
         this.addDialogAnswer(TCREntities.AINE.get(), 15, "[%s] gives us two pieces of information. §6First, it depicts most of the monsters in the world eroded by the Black Tide!");
         this.addDialogAnswer(TCREntities.AINE.get(), 16, "§6Second, it records the magic of this world! Heh, the magic here is quite similar to the magic I know!");
         this.addDialogAnswer(TCREntities.AINE.get(), 17, "The scroll depicts spell essences and their corresponding spells. §6Bring me the spell essence described in the compendium, and I will convert it into a corresponding spell scroll for you.");
         this.addDialogAnswer(TCREntities.AINE.get(), 18, "§6Give me your weapon, and I will enchant it with the spell recorded on the scroll! §fI happen to have a scroll here. Go try it out!");
         this.addDialogAnswer(TCREntities.AINE.get(), 19, "%s, looks like you've learned how to enchant weapons! Now, let me teach you how to cast spells! §6Watch closely, I'll only teach this once!");
         this.addDialogAnswer(TCREntities.AINE.get(), 20, "When holding an enchanted weapon, press [%s] to cast the corresponding spell. See? Simple, right?");
-        this.addDialogAnswer(TCREntities.AINE.get(), 21, "Casting spells consumes mana. When mana is depleted, you cannot cast spells. §6Note, mana can only be recovered in the main city! Once you leave the main city, I cannot infuse you with magic. §fHowever, there's one more thing...");
-        this.addDialogAnswer(TCREntities.AINE.get(), 22, "One more thing! In case you can't recover mana outside the main city, I've specially prepared [%s] for you! With [%s], you can replenish mana anytime, anywhere!");
+        this.addDialogAnswer(TCREntities.AINE.get(), 21, "Casting spells consumes mana. When mana is depleted, you cannot cast spells. §6Note, mana can only be recovered in the Sanctum! Once you leave the Sanctum, I cannot infuse you with magic. §fHowever, there's one more thing...");
+        this.addDialogAnswer(TCREntities.AINE.get(), 22, "One more thing! In case you can't recover mana outside the Sanctum, I've specially prepared [%s] for you! With [%s], you can replenish mana anytime, anywhere!");
         this.addDialogOption(TCREntities.AINE.get(), 9, "§6I've learned");
         this.addDialogOption(TCREntities.AINE.get(), 10, "§aSay it again");
-        this.addDialogAnswer(TCREntities.AINE.get(), 23, "However, [%s] has limited uses! When it's used up, just use it in the main city, and it will automatically refill! Embark on the path of magic, Sa—vi—or!");
+        this.addDialogAnswer(TCREntities.AINE.get(), 23, "However, [%s] has limited uses! When it's used up, just use it in the Sanctum, and it will automatically refill! Embark on the path of magic, Sa—vi—or!");
         this.addDialogAnswer(TCREntities.AINE.get(), 24, "%s, is your adventure going well recently?");
         this.addDialogOption(TCREntities.AINE.get(), 11, "Easy peasy!");
         this.addDialogOption(TCREntities.AINE.get(), 12, "I'm exhausted!");
@@ -558,7 +558,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addDialogOption(TCREntities.AINE.get(), 17, "%s?");
         this.addDialogAnswer(TCREntities.AINE.get(), 29, "Alright, alright, once we return all the Eyes of God, all questions will surely be answered!");
         this.addDialogAnswer(TCREntities.AINE.get(), 30, "Hmm... The archives say that infusing [%s] can activate it and open a portal to [%s]!");
-        this.addDialogAnswer(TCREntities.AINE.get(), 31, "§6[%s§6] is a realm between the underworld and the Overworld. Inside [%s§6], we can use summoning altars to meet the apostles of the past.");
+        this.addDialogAnswer(TCREntities.AINE.get(), 31, "§6[%s§6] is a realm between the underworld and the Overworld. Inside [%s§6], we can use summoning altars to meet the Angel of the past.");
         this.addDialogAnswer(TCREntities.AINE.get(), 32, "Maybe we can go in and take a look. Perhaps we can gain their power from the memories!");
         this.addDialogAnswer(TCREntities.AINE.get(), 33, "%s, you seem troubled. What happened in %s?");
         this.addDialogOption(TCREntities.AINE.get(), 18, "%s, actually I...");
@@ -597,7 +597,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addDialogAnswer(TCREntities.ORNN.get(), -1, "The heat of fire, the toughness of steel—these two things can solve most problems in the world. Master, what is your command?");
         this.addDialogAnswer(TCREntities.ORNN.get(), 0, "The heat of fire, the toughness of steel—these two things can solve most problems in the world.");
         this.addDialogOption(TCREntities.ORNN.get(), 0, "Who are you?");
-        this.addDialogAnswer(TCREntities.ORNN.get(), 1, "I am a demigod, master of forging and craftsmanship, forging divine weapons for the sanctum. Before the Black Tide came, I thought the weapons I forged were unmatched in the world. Thinking back now... laughable, laughable.");
+        this.addDialogAnswer(TCREntities.ORNN.get(), 1, "I am a demigod, master of forging and craftsmanship, forging divine weapons for the Sanctum. Before the Black Tide came, I thought the weapons I forged were unmatched in the world. Thinking back now... laughable, laughable.");
         this.addDialogOption(TCREntities.ORNN.get(), 1, "About %s");
         this.addDialogAnswer(TCREntities.ORNN.get(), 2, "The Warden is truly unfathomable, but it's best to follow her arrangements.");
         this.addDialogAnswer(TCREntities.ORNN.get(), 3, "That young lady is freer than I am. I can never return to my homeland.");
@@ -608,7 +608,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         // Show Armamentarium
         this.addDialogOption(TCREntities.ORNN.get(), 5, "§6Show [%s§6]");
         this.addDialogAnswer(TCREntities.ORNN.get(), 5, "God of Forging above! This Armamentarium... records all the high-tier weapons of the world and how to forge them! There are even weapons I've never known!");
-        this.addDialogAnswer(TCREntities.ORNN.get(), 6, "This Armamentarium must have been forged by the Earth Apostle Montis before the Black Tide descended.");
+        this.addDialogAnswer(TCREntities.ORNN.get(), 6, "This Armamentarium must have been forged by the Earth Angel Montis before the Black Tide descended.");
         this.addDialogAnswer(TCREntities.ORNN.get(), 7, "Leave it to me. I will unveil this exquisite tome for you!");
         this.addDialogOption(TCREntities.ORNN.get(), 6, "§6Unlock Compendium");
         // Yamato trade
@@ -621,9 +621,9 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), -1, "Hello, master. How may I assist you?");
         this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 0, "Hello, traveler. How may I assist you?");
         this.addDialogOption(TCREntities.FERRY_GIRL.get(), 0, "Who are you?");
-        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 1, "I am the Ferryman of the sanctum, ordered by Lady %s to escort you out of the barrier and to that world. I also receive the souls of that world, thus I have collected many of their scattered trinkets and relics. However, you need [%s] to retrieve them from the Primordial Sea. If you have %s, you can also give them to me.");
+        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 1, "I am the Ferryman of the Sanctum, ordered by Lady %s to escort you out of the barrier and to that world. I also receive the souls of that world, thus I have collected many of their scattered trinkets and relics. However, you need [%s] to retrieve them from the Primordial Sea. If you have %s, you can also give them to me.");
         this.addDialogOption(TCREntities.FERRY_GIRL.get(), 1, "About %s");
-        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 2, "The Warden toils day and night to save the sanctum. It is truly admirable.");
+        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 2, "The Warden toils day and night to save the Sanctum. It is truly admirable.");
         this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 3, "%s's forging skill is unmatched here. I often entrust him with repairing some rare trinkets.");
         this.addDialogOption(TCREntities.FERRY_GIRL.get(), 2, "§6Extract Trinkets");
         this.addDialogOption(TCREntities.FERRY_GIRL.get(), 3, "§aGo to Overworld");
@@ -637,7 +637,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addDialogOption(ModEntities.BONE_CHIMERA, -1, "Return");
         this.addDialogAnswer(ModEntities.BONE_CHIMERA, 0, "Human? To find this place... did the Resonance Stone guide you here?");
         this.addDialogOption(ModEntities.BONE_CHIMERA, 0, "Why are you imprisoned here?");
-        this.addDialogAnswer(ModEntities.BONE_CHIMERA, 1, "I am the mount of the Earth Apostle. When the tower's seal descended, the Earth Apostle transported me here so the Resonance Stone could find my location.");
+        this.addDialogAnswer(ModEntities.BONE_CHIMERA, 1, "I am the mount of the Earth Angel. When the tower's seal descended, the Earth Angel transported me here so the Resonance Stone could find my location.");
         this.addDialogOption(ModEntities.BONE_CHIMERA, 1, "Release Soul");
         this.addDialogAnswer(ModEntities.BONE_CHIMERA, 2, "This body carries an undying curse. If you help me find release, my bones can be forged into a fine weapon. Are you ready?");
         this.addDialogOption(ModEntities.BONE_CHIMERA, 2, "Ready");
@@ -666,7 +666,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 1, "You don't remember? Purus Absolutus!");
         this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 2, "Me?");
         this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 3, "My name?");
-        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 2, "It seems you've also lost your memories to the Black Tide... That's right, you are Purus Absolutus, the Pure Apostle!");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 2, "It seems you've also lost your memories to the Black Tide... That's right, you are Purus Absolutus, the Pure Angel!");
         this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 4, "???");
         this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 5, "What is all this?");
         this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 3, "I placed my divinity into [%s] to protect it from the Black Tide's erosion.");
@@ -680,12 +680,12 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 9, "Who am I, really?");
         this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 10, "What is the Black Tide, really?");
         this.addDialogOption(TCREntities.FAKE_SKY_GOLEM.get(), 11, "§6I have no more questions");
-        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 8, "Your name is Purus Absolutus. You are the Pure Apostle, responsible for purifying the darkness of the world. Like us, you are one of the Ten Ruling Council of the World.");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 8, "Your name is Purus Absolutus. You are the Pure Angel, responsible for purifying the darkness of the world. Like us, you are one of the Ten Ruling Council of the World.");
         this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 9, "A thousand years ago, it was your turn to handle affairs beyond the heavens. But shortly after you left, the Black Tide descended upon the world.");
         this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 10, "Perhaps bereft of your purifying divine power, we were powerless against the Black Tide and could only let it erode us.");
         this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 11, "I don't know. When the Black Tide first fell, we conducted extensive research on it, but made no progress.");
         this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 12, "The Black Tide was originally a medium codenamed Risperdal. We couldn't perceive its existence specifically. But all living things affected by it gradually turned black and died, so we named it the Black Tide.");
-        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 13, "We only know the Black Tide came from a world beyond the heavens, but its target seemed very clear, always aiming for life forms led by us apostles.");
+        this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 13, "We only know the Black Tide came from a world beyond the heavens, but its target seemed very clear, always aiming for life forms led by us Angel.");
         this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 14, "Perhaps you leading us in recreation is the only hope for our civilization's survival.");
         this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 15, "So, you need the Eye of God, which represents my divinity, to assist in completing the ritual. But separating the Eye of God means I will abandon my mortal form.");
         this.addDialogAnswer(TCREntities.FAKE_SKY_GOLEM.get(), 16, "Ah, well. Now, I am covered in the Black Tide, no longer my original body... Without the power of the Eye of God, I cannot maintain human form...");

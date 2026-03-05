@@ -2,13 +2,6 @@
   "travelerstitles.commands.biometitle.invalid": "“%s”似乎不是一个有效的生物群系",
   "travelerstitles.commands.biometitle.notfound": "未找到“%s”生物群系的标题",
 
-  "travelerstitles.minecraft.overworld": "记忆中的主世界",
-  "travelerstitles.aether.the_aether": "记忆中的天界",
-  "travelerstitles.minecraft.the_nether": "记忆中的下界",
-  "travelerstitles.minecraft.the_nether.color": "750909",
-  "travelerstitles.minecraft.the_end": "记忆中的终界",
-  "travelerstitles.minecraft.the_end.color": "4f219e",
-
   "biome.terralith.alpha_islands": "遥思岛",
   "biome.terralith.alpha_islands_winter": "冬季的遥思岛",
   "biome.terralith.alpine_grove": "阿尔卑斯林地",

@@ -27,7 +27,7 @@ public class IronGolemMixin extends AbstractGolem {
 
     @Inject(method = "mobInteract", at = @At("HEAD"))
     private void tcr$interact(Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
-        if(this.getTarget() == null && player instanceof ServerPlayer serverPlayer && serverPlayer.isAlive() && WorldUtil.isInStructure(player, WorldUtil.SKY_ISLAND)) {
+        if(this.getTarget() == null && player instanceof ServerPlayer serverPlayer && serverPlayer.isAlive() && WorldUtil.isInStructure(player, WorldUtil.SKY_GOLEM)) {
             TCRCapabilityProvider.getTCRPlayer(serverPlayer).setCurrentTalkingEntity(this);
             CompoundTag tag = new CompoundTag();
             DialogueLib.sendDialog((IronGolem)(Object)this, tag, serverPlayer);

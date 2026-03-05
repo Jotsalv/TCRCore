@@ -91,6 +91,7 @@ public class FerryGirlEntity extends PathfinderMob implements IEntityNpc, GeoEnt
                 UAItems.MOON_STONE.get(),
                 UAItems.HERO_EMBLEM.get(),
                 UAItems.MASTER_NINJA_TABI.get(),
+                UAItems.ENDER_LENS.get(),
                 UAItems.SHINY_STONE.get());
     }
 

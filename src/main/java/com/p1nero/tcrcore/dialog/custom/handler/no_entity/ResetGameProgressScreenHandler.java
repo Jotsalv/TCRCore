@@ -42,14 +42,14 @@ public class ResetGameProgressScreenHandler {
         generator.addScreenAns(name, 0, "确定要重置所有游戏进度吗？重置进度将保留所有物品数据，仅重置所有任务进度。并且在单人模式下，所有怪物将获得增强！");
         generator.addScreenOpt(name, 0, "§4[确定]");
         generator.addScreenAns(name, 1, "§4你确定吗？该操作不可撤回！");
-        generator.addScreenOpt(name, 1, "再想想");
+        generator.addScreenOpt(name, 1, "[再想想]");
     }
 
     public static void onGenerateEN(TCRLangProvider generator) {
         generator.addScreenAns(name, 0, "Are you sure you want to reset all game progress? Resetting progress will retain all item data and only reset all task progress. Additionally, in single-player mode, all monsters will be enhanced!");
         generator.addScreenOpt(name, 0, "§4[Confirm]");
         generator.addScreenAns(name, 1, "§4Are you absolutely sure? This action cannot be undone!");
-        generator.addScreenOpt(name, 1, "Think again");
+        generator.addScreenOpt(name, 1, "[Think again]");
     }
 
 }
