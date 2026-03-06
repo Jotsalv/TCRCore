@@ -194,13 +194,9 @@
 	enableAAAWarning = true
 	#Internal: Whether the AAA Particles warning has been shown
 	#Do not modify manually - this is managed by the mod
-	hasShownAAAWarning = false
+	hasShownAAAWarning = true
 
 [impact_frame]
 	#if enable it, some weapons will have impact frame effect
 	impact_frame = true
-
-[afterimage]
-	#if enable it, some weapons will have unique afterimage
-	afterimage = false
 

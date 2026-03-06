@@ -118,17 +118,17 @@ public class ClientModEvents {
             PonderIndex.addPlugin(new TCRPonderPlugin());
 
             //借大小来判断是否启动过
-            if(ClientConfig.miningPreferredItems != null && ClientConfig.combatPreferredItems != null) {
-                if(ClientConfig.miningPreferredItems.size() < 10) {
-                    ForgeRegistries.ITEMS.getValues().forEach(item -> {
-                        if (!ClientConfig.combatPreferredItems.contains(item)) {
-                            ClientConfig.miningPreferredItems.add(item);
-                        }
-                    });
-                }
-            } else {
-                TCRCoreMod.LOGGER.error("[TCRCore]: Preferred items is null!!!");
-            }
+//            if(ClientConfig.miningPreferredItems != null && ClientConfig.combatPreferredItems != null) {
+//                if(ClientConfig.miningPreferredItems.size() < 10) {
+//                    ForgeRegistries.ITEMS.getValues().forEach(item -> {
+//                        if (!ClientConfig.combatPreferredItems.contains(item)) {
+//                            ClientConfig.miningPreferredItems.add(item);
+//                        }
+//                    });
+//                }
+//            } else {
+//                TCRCoreMod.LOGGER.error("[TCRCore]: Preferred items is null!!!");
+//            }
 
         });
     }
