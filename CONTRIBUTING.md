@@ -1,16 +1,3 @@
-# ⚠️⚠️⚠️ STOP TRANSLATION! ⚠️⚠️⚠️
-We are preparing the casket of reveries 2.0 now. So please wait until 2.0 release!
-
--
--
--
--
--
--
--
--
--
-
 # 🌍 Join the Translation Team
 
 First and foremost, I want to extend my deepest gratitude to every contributor who's willing to help translate this modpack. Your efforts are what make this project accessible to players worldwide, breaking down language barriers and bringing our community closer together.
@@ -20,20 +7,22 @@ First and foremost, I want to extend my deepest gratitude to every contributor w
 If you'd like to contribute translations, please focus on the following sections:
 
 ### 🎯 Core Mod
-**Location**: [`main/resources/packs/tcr_assets/assets/tcrcore_i18n_patch/lang`](https://github.com/GaylordFockerCN/TCRCore/tree/master/src/main/resources/packs/tcr_assets/assets/tcrcore_i18n_patch/lang)
+**Location**: [`src/main/resources/packs/i18n/assets/tcrcore/lang`](https://github.com/GaylordFockerCN/TCRCore/tree/master/src/main/resources/packs/i18n/assets/tcrcore/lang)
 
 💡 **Important**: English fix: [`TCRENLangGenerator.java`](https://github.com/GaylordFockerCN/TCRCore/blob/master/src/main/java/com/p1nero/tcrcore/datagen/lang/TCRENLangGenerator.java)
 
+### 🏁 End Screen
+**Location**: [`src/main/resources/packs/i18n/assets/tcrcore/texts`](https://github.com/GaylordFockerCN/TCRCore/tree/master/src/main/resources/packs/i18n/assets/tcrcore/texts)
+
+🌐 **Note**: Don't forget to add your name to translator credits!
+
 ### 🏆 FTB Quests
-**Location**: [`main/resources/packs/tcr_assets/assets/tcr_ftb_lang/lang`](https://github.com/GaylordFockerCN/TCRCore/tree/master/src/main/resources/packs/tcr_assets/assets/tcr_ftb_lang/lang)
+**Location**: [`src/main/resources/packs/i18n/assets/ftb_translations/lang`](https://github.com/GaylordFockerCN/TCRCore/tree/master/src/main/resources/packs/i18n/assets/ftb_translations/lang)
 
 ### 🗺️ Structure Names
-**Location**: [`main/resources/packs/tcr_assets/assets/structure_translations/lang`](https://github.com/GaylordFockerCN/TCRCore/tree/master/src/main/resources/packs/tcr_assets/assets/structure_translations/lang)
+**Location**: [`src/main/resources/packs/i18n/assets/structure_translations/lang`](https://github.com/GaylordFockerCN/TCRCore/tree/master/src/main/resources/packs/i18n/assets/structure_translations/lang)
 
 🌐 **Note**: Structure names are shared with the Explorers Compass mod.
-
-### 🏁 End Screen
-**Location**: [`main/resources/assets/tcrcore/texts`](https://github.com/GaylordFockerCN/TCRCore/tree/master/src/main/resources/assets/tcrcore/texts)
 
 ## ✨ Special Recognition
 
