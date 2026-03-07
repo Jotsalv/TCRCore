@@ -45,9 +45,9 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.add("unlock_tip.epicskills.prodigy.ender_obscuris", " 击杀250只末影人");
         this.add("unlock_tip.epicskills.prodigy.time_travel", " 击杀1000只末影人");
 
-        this.add("unlock_tip.epicskills.prodigy.buster_parade", " 击杀10只 Hollow");
+        this.add("unlock_tip.epicskills.prodigy.buster_parade", " 击杀10只 活尸");
         this.add("unlock_tip.epicskills.prodigy.perfect_bulwark", " 击杀50只守卫者");
-        this.add("unlock_tip.epicskills.prodigy.avatar_of_might", " 击杀50只 Hollow");
+        this.add("unlock_tip.epicskills.prodigy.avatar_of_might", " 击杀50只 活尸");
 
         this.add("unlock_tip.epicskills.prodigy.precise_roll", " 冲刺4公里");
         this.add("unlock_tip.epicskills.prodigy.bull_charge", " 击杀40只劫掠兽");
@@ -58,10 +58,10 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.add("unlock_tip.epicskills.prodigy.dopamine", " 击杀27只狼人");
         this.add("unlock_tip.epicskills.prodigy.lunatic_vivacity", " 击杀9只恶魂");
         this.add("unlock_tip.epicskills.prodigy.voodoo_magic", " 击杀10只唤魔者");
-        this.add("unlock_tip.epicskills.prodigy.manipulator", " 击杀6只 Saulomnk");
+        this.add("unlock_tip.epicskills.prodigy.manipulator", " 击杀6只 索罗蒙僧");
 
         this.add("unlock_tip.epicskills.prodigy.all_eyes_on_you", " 击杀100只邪恶骷髅");
-        this.add("unlock_tip.epicskills.prodigy.all_eyes_on_me", " 击杀100只 Saulomnk");
+        this.add("unlock_tip.epicskills.prodigy.all_eyes_on_me", " 击杀100只 索罗蒙僧");
 
         this.add("unlock_tip.epicskills.prodigy.inner_growth", " 击败末影龙");
         this.add("unlock_tip.epicskills.prodigy.shadow_step", " 击败凋灵");

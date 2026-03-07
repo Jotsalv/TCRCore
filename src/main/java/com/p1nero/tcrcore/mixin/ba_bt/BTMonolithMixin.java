@@ -2,12 +2,19 @@ package com.p1nero.tcrcore.mixin.ba_bt;
 
 import com.brass_amber.ba_bt.entity.block.BTMonolith;
 import com.brass_amber.ba_bt.init.BTEntityType;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -74,4 +81,14 @@ public abstract class BTMonolithMixin extends Entity {
             }
         }
     }
+
+    @WrapOperation(method = "spawnGolem", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;explode(Lnet/minecraft/world/entity/Entity;DDDFLnet/minecraft/world/level/Level$ExplosionInteraction;)Lnet/minecraft/world/level/Explosion;"))
+    private Explosion tcr$spawnGolem(Level instance, Entity p_256599_, double x, double y, double z, float r, Level.ExplosionInteraction p_256178_, Operation<Explosion> original) {
+        if(instance instanceof ServerLevel serverLevel){
+            serverLevel.sendParticles(ParticleTypes.EXPLOSION, getX(), getY(), getZ(), 10, 0.0D, 0.1D, 0.0D, 0.01);
+            serverLevel.playSound(null, getX(), getY(), getZ(), SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 1, 1);
+        }
+        return null;
+    }
+
 }
