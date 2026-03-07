@@ -64,8 +64,9 @@ public class ResonanceStoneItem extends Item {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
-        if(player instanceof ServerPlayer serverPlayer) {
+        if(player instanceof ServerPlayer serverPlayer && !itemStack.getOrCreateTag().getBoolean("searching")) {
             if(predicate.test(serverPlayer) && level.dimension().equals(dimension)) {
+                itemStack.getOrCreateTag().putBoolean("searching", true);
                 CompletableFuture.supplyAsync(() -> {
                     serverPlayer.displayClientMessage(TCRCoreMod.getInfo("resonance_stone_working", this.getDescription()), true);
                     serverPlayer.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(EpicSkillsSounds.GAIN_ABILITY_POINTS.get()), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
@@ -75,6 +76,7 @@ public class ResonanceStoneItem extends Item {
                     } catch (Exception e) {
                         TCRCoreMod.LOGGER.error("TCRCore : Error finding structure [{}]: {}", targetStructure, e.getMessage());
                         player.displayClientMessage(TCRCoreMod.getInfo("resonance_search_failed", targetStructure).withStyle(ChatFormatting.RED), false);
+                        itemStack.getOrCreateTag().putBoolean("searching", false);
                     }
                     return pos;
                 })
@@ -93,6 +95,7 @@ public class ResonanceStoneItem extends Item {
                         callback.accept(pos, serverPlayer);
                     } else {
                         player.displayClientMessage(TCRCoreMod.getInfo("resonance_search_failed", targetStructure).withStyle(ChatFormatting.RED), false);
+                        itemStack.getOrCreateTag().putBoolean("searching", false);
                     }
                 });
             } else {

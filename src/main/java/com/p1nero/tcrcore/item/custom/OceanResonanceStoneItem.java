@@ -43,8 +43,9 @@ public class OceanResonanceStoneItem extends ResonanceStoneItem{
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
-        if(player instanceof ServerPlayer serverPlayer) {
+        if(player instanceof ServerPlayer serverPlayer && !itemStack.getOrCreateTag().getBoolean("searching")) {
             if(predicate.test(serverPlayer) && level.dimension().equals(Level.OVERWORLD)) {
+                itemStack.getOrCreateTag().putBoolean("searching", true);
                 CompletableFuture.supplyAsync(() -> {
                     serverPlayer.displayClientMessage(TCRCoreMod.getInfo("resonance_stone_working", this.getDescription()), true);
                     serverPlayer.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(EpicSkillsSounds.GAIN_ABILITY_POINTS.get()), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
@@ -55,6 +56,7 @@ public class OceanResonanceStoneItem extends ResonanceStoneItem{
                     } catch (Exception e) {
                         TCRCoreMod.LOGGER.error("TCRCore : Error finding structure [{}]: {}", targetStructure, e.getMessage());
                         player.displayClientMessage(TCRCoreMod.getInfo("resonance_search_failed", targetStructure).withStyle(ChatFormatting.RED), false);
+                        itemStack.getOrCreateTag().putBoolean("searching", false);
                     }
 
                     BlockPos pos1 = null;
@@ -64,6 +66,7 @@ public class OceanResonanceStoneItem extends ResonanceStoneItem{
                     } catch (Exception e) {
                         TCRCoreMod.LOGGER.error("TCRCore : Error finding structure [{}]: {}", WorldUtil.RIBBIT_VILLAGE, e.getMessage());
                         player.displayClientMessage(TCRCoreMod.getInfo("resonance_search_failed", WorldUtil.RIBBIT_VILLAGE).withStyle(ChatFormatting.RED), false);
+                        itemStack.getOrCreateTag().putBoolean("searching", false);
                     }
                     return Pair.of(pos, pos1);
                 })
@@ -75,6 +78,7 @@ public class OceanResonanceStoneItem extends ResonanceStoneItem{
                         serverPlayer.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(EpicSkillsSounds.GAIN_ABILITY_POINTS.get()), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
                     } else {
                         player.displayClientMessage(TCRCoreMod.getInfo("resonance_search_failed", targetStructure).withStyle(ChatFormatting.RED), false);
+                        itemStack.getOrCreateTag().putBoolean("searching", false);
                     }
                     BlockPos pos1 = posPair.second();
                     if(pos1 != null) {
@@ -85,6 +89,7 @@ public class OceanResonanceStoneItem extends ResonanceStoneItem{
                         }
                     } else {
                         player.displayClientMessage(TCRCoreMod.getInfo("resonance_search_failed", WorldUtil.RIBBIT_VILLAGE).withStyle(ChatFormatting.RED), false);
+                        itemStack.getOrCreateTag().putBoolean("searching", false);
                     }
                     //保险，俩都找到再消耗
                     if(pos != null && pos1 != null) {
@@ -95,6 +100,8 @@ public class OceanResonanceStoneItem extends ResonanceStoneItem{
                         }
                         callback.accept(pos, serverPlayer);
                         TCRQuests.RIBBITS_QUEST.start(serverPlayer);
+                    } else {
+                        itemStack.getOrCreateTag().putBoolean("searching", false);
                     }
                 });
             } else {
