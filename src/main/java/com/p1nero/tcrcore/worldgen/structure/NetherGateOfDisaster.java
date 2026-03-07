@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.worldgen.TCRStructures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -36,9 +37,9 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 import org.jetbrains.annotations.NotNull;
 
 public class NetherGateOfDisaster extends Structure {
-    public static final ResourceLocation GATE_OF_DISASTER_P1 = ResourceLocation.fromNamespaceAndPath("nightfall_invade", "gate_of_disaster_part1");
-    public static final ResourceLocation GATE_OF_DISASTER_P2 = ResourceLocation.fromNamespaceAndPath("nightfall_invade", "gate_of_disaster_part2");
-    public static final ResourceLocation GATE_OF_DISASTER_P3 = ResourceLocation.fromNamespaceAndPath("nightfall_invade", "gate_of_disaster_part3");
+    public static final ResourceLocation GATE_OF_DISASTER_P1 = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "gate_of_disaster_part1");
+    public static final ResourceLocation GATE_OF_DISASTER_P2 = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "gate_of_disaster_part2");
+    public static final ResourceLocation GATE_OF_DISASTER_P3 = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "gate_of_disaster_part3");
     public static final Codec<NetherGateOfDisaster> CODEC = simpleCodec(NetherGateOfDisaster::new);
     private static final Map<ResourceLocation, BlockPos> OFFSET = new HashMap<>();
 

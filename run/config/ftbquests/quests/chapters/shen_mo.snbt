@@ -445,28 +445,6 @@
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]
-			id: "67D08F9D3A135152"
-			rewards: [{
-				count: 5
-				id: "0CFCBAA4C6F17F7F"
-				item: "epicskills:ability_stone"
-				type: "item"
-			}]
-			shape: "none"
-			size: 1.5d
-			tasks: [{
-				entity: "nightfall_invade:arterius"
-				icon: "efn:duskfire_helmet"
-				id: "6242471AD0228534"
-				type: "kill"
-				value: 1L
-			}]
-			title: "{ftbquests.chapter.shen_mo.quest67D08F9D3A135152.title}"
-			x: 0.0d
-			y: -2.25d
-		}
-		{
-			dependencies: ["68EDC89BB022788B"]
 			id: "1C6CF37F43D11ED9"
 			rewards: [{
 				count: 5
