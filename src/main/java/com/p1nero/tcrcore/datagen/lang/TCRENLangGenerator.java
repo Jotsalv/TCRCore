@@ -626,7 +626,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), -1, "Hello, master. How may I assist you?");
         this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 0, "Hello, traveler. How may I assist you?");
         this.addDialogOption(TCREntities.FERRY_GIRL.get(), 0, "Who are you?");
-        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 1, "I am the Ferryman of the Sanctum, ordered by Lady %s to escort you out of the barrier and to that world. I also receive the souls of that world, thus I have collected many of their scattered trinkets and relics. However, you need [%s] to retrieve them from the Primordial Sea. If you have %s, you can also give them to me.");
+        this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 1, "I am the Ferry girl of the Sanctum, ordered by Lady %s to escort you out of the barrier and to that world. I also receive the souls of that world, thus I have collected many of their scattered trinkets and relics. However, you need [%s] to retrieve them from the Primordial Sea. If you have %s, you can also give them to me.");
         this.addDialogOption(TCREntities.FERRY_GIRL.get(), 1, "About %s");
         this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 2, "The Warden toils day and night to save the Sanctum. It is truly admirable.");
         this.addDialogAnswer(TCREntities.FERRY_GIRL.get(), 3, "%s's forging skill is unmatched here. I often entrust him with repairing some rare trinkets.");
