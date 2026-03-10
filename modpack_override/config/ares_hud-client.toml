@@ -25,12 +25,16 @@
 		statusHorizontalPadding = 19
 		#Range: 0 ~ 50
 		statusBarVerticalSpacing = 1
+		#Bounds for Flask UI in Default layout. DuelCraft Only
+		flaskDefaultProperties = "0.2734375000,0.8892215490,1.1126120090"
+		#Enable Flask UI in Default layout. DuelCraft Only
+		flaskEnabledDefault = true
 
 	[properties.Layout_HOTBAR_1X9]
-		hotbar1x9Properties = "0.3346938789,0.9097473025,0.9144459963"
-		offhand1x9Properties = "0.2612244785,0.9097473025,0.8887360096"
-		centerHud1x9Properties = "0.3204081655,0.8194946051,0.7765340209"
-		xpBar1x9Properties = "0.4812499881,0.8203592896,0.7641100287"
+		hotbar1x9Properties = "0.3515625000,0.9341317415,0.7815815210"
+		offhand1x9Properties = "0.3031249940,0.9311377406,0.7824444175"
+		centerHud1x9Properties = "0.3486394584,0.8383233547,0.6702424288"
+		xpBar1x9Properties = "0.4829931855,0.8383233547,0.7109642625"
 		statusValueBar1x9Properties = "0.6796875000,0.9520958066,0.7747759819"
 		1x9MainHandOffsets = "1,1,0,0"
 		hotbarEnabled = true
@@ -43,9 +47,13 @@
 		staminaBarEnabled = true
 		armorBarEnabled = true
 		#Range: 0 ~ 50
-		statusHorizontalPadding = 15
+		statusHorizontalPadding = 17
 		#Range: 0 ~ 50
-		statusBarVerticalSpacing = 1
+		statusBarVerticalSpacing = 2
+		#Bounds for Flask UI in 1x9 layout. DuelCraft Only
+		flask1x9Properties = "0.6578124762,0.8832335472,1.1501494646"
+		#Enable Flask UI in 1x9 layout. DuelCraft Only
+		flaskEnabled1x9 = true
 
 	[properties.Layout_HOTBAR_1X9_VERTICAL]
 		hotbar1x9VerticalProperties = "0.9510204196,0.2129963934,0.7628343105"
@@ -67,6 +75,10 @@
 		statusHorizontalPadding = 18
 		#Range: 0 ~ 50
 		statusBarVerticalSpacing = 4
+		#Bounds for Flask UI in 1x9Vertical layout. DuelCraft Only
+		flask1x9VerticalProperties = "0.2671875060,0.8802395463,1.1501494646"
+		#Enable Flask UI in 1x9Vertical layout. DuelCraft Only
+		flaskEnabled1x9Vertical = true
 
 	[properties.Layout_HOTBAR_3X3]
 		hotbar3x3Properties = "0.0937500000,0.6932269931,1.1799999475"
@@ -88,6 +100,10 @@
 		statusHorizontalPadding = 20
 		#Range: 0 ~ 50
 		statusBarVerticalSpacing = 4
+		#Bounds for Flask UI in 3x3 layout. DuelCraft Only
+		flask3x3Properties = "0.2687500119,0.8802395463,1.1876868010"
+		#Enable Flask UI in 3x3 layout. DuelCraft Only
+		flaskEnabled3x3 = true
 
 	[properties.Global_Offsets]
 		defaultOffHandOffsets = "0,0,0,0"
